@@ -1,0 +1,63 @@
+{
+  "name": "vnwatch-manager",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Ứng dụng Windows quản lý cửa hàng VNWatch",
+  "author": "VNWatch",
+  "license": "UNLICENSED",
+  "type": "commonjs",
+  "main": "dist/main.js",
+  "scripts": {
+    "build:main": "tsc -p tsconfig.json",
+    "build:ui": "npm --prefix ../vnwatch-frontend run build:desktop",
+    "build": "npm run build:main && npm run build:ui",
+    "start": "electron .",
+    "dist:win": "npm run build && electron-builder --win nsis --x64 --publish never",
+    "pack:win": "npm run build && electron-builder --win --dir --x64 --publish never",
+    "test:unit": "npm run build:main && node --test tests/*.test.cjs"
+  },
+  "devDependencies": {
+    "electron": "44.7.0",
+    "electron-builder": "26.15.3",
+    "@types/node": "^24.10.0",
+    "typescript": "~5.9.3"
+  },
+  "build": {
+    "appId": "vnwatch.manager.desktop",
+    "productName": "VNWatch Manager",
+    "asar": true,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "ui/**/*",
+      "build/manager.ico",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/manager.ico",
+      "artifactName": "VNWatch-Manager-Setup-${version}.${ext}",
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": "always",
+      "createStartMenuShortcut": true,
+      "shortcutName": "VNWatch Manager",
+      "runAfterFinish": false,
+      "deleteAppDataOnUninstall": false
+    }
+  }
+}

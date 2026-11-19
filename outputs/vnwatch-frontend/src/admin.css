@@ -1,0 +1,547 @@
+/* HỌC VNWATCH — outputs/vnwatch-frontend/src/admin.css
+ * CSS quản trị và thanh trạng thái app Windows: login, sidebar, bảng, form, thống kê và responsive.
+ * Selector chọn phần tử; declaration dạng property: value; cascade kết hợp specificity và thứ tự.
+ */
+.admin-form-grid,
+.admin-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  align-items: end;
+}
+/* Nhóm selector .admin-filter-grid: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-filter-grid {
+  grid-template-columns: minmax(220px, 2fr) repeat(3, minmax(130px, 1fr));
+  margin-bottom: 24px;
+}
+/* Nhóm selector .admin-filter-grid > button: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-filter-grid > button {
+  grid-column: 1/-1;
+  justify-self: start;
+}
+/* Nhóm selector .admin-order-tools: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-order-tools {
+  border-top: 1px solid #dedfd5;
+  padding-top: 20px;
+}
+/* Nhóm selector .admin-panel fieldset: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-panel fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+/* Nhóm selector .admin-panel .order-actions: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-panel .order-actions {
+  flex-wrap: wrap;
+}
+/* Nhóm selector .admin-panel .order-id: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-panel .order-id {
+  overflow-wrap: anywhere;
+}
+/* Breakpoint: quy tắc bên trong chỉ áp dụng khi điều kiện kích thước/thiết bị phù hợp. */
+@media (max-width: 1000px) {
+  .admin-filter-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+/* Breakpoint: quy tắc bên trong chỉ áp dụng khi điều kiện kích thước/thiết bị phù hợp. */
+@media (max-width: 620px) {
+  .admin-form-grid,
+  .admin-filter-grid {
+    grid-template-columns: 1fr;
+  }
+  .admin-panel .summary-line {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+
+/* Dedicated admin workspace; colors follow the storefront. */
+/* Nhóm selector .admin-login: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-login {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #f5f4ee;
+}
+/* Nhóm selector .admin-login-brand: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-login-brand {
+  background: #173d32;
+  color: #ede9dc;
+  padding: 10vh 8vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.admin-login-brand a,
+.admin-logo {
+  font-family: Georgia, serif;
+  font-size: 30px;
+  font-weight: 700;
+  text-decoration: none;
+  color: inherit;
+}
+.admin-login-brand a span,
+.admin-logo span {
+  color: #bea16c;
+}
+/* Nhóm selector .admin-login-brand h1: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-login-brand h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(40px, 4.5vw, 70px);
+  line-height: 1.12;
+  margin: 50px 0 25px;
+  font-weight: 400;
+  letter-spacing: -2px;
+}
+/* Nhóm selector .admin-login-brand p: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-login-brand p {
+  color: #c1ccbd;
+}
+/* Nhóm selector .admin-brand-rule: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-brand-rule {
+  width: 60px;
+  height: 1px;
+  background: #bea16c;
+  margin: 20px 0;
+}
+/* Nhóm selector .admin-login-brand small: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-login-brand small {
+  margin-top: 35px;
+  color: #afbdb0;
+}
+/* Nhóm selector .admin-login-card: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-login-card {
+  width: min(460px, 100%);
+  margin: auto;
+  padding: 50px 32px;
+}
+/* Nhóm selector .admin-login-card h2: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-login-card h2 {
+  font-family: Georgia, serif;
+  font-size: 34px;
+  letter-spacing: -1px;
+  margin: 15px 0;
+}
+/* Nhóm selector .admin-login-card form: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-login-card form {
+  margin: 30px 0;
+}
+/* Nhóm selector .admin-store-link: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-store-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #173d32;
+}
+/* Nhóm selector .admin-shell: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  background: #f4f4ef;
+  color: #18352e;
+}
+/* Nhóm selector .admin-sidebar: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-sidebar {
+  background: #15382e;
+  color: #eeeade;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 30px 18px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+/* Nhóm selector .admin-logo: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-logo {
+  padding: 0 12px;
+}
+/* Nhóm selector .admin-sidebar-caption: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-sidebar-caption {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #a8b7aa;
+  padding: 24px 12px 12px;
+}
+/* Nhóm selector .admin-sidebar nav: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+/* Nhóm selector .admin-sidebar nav button: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-sidebar nav button {
+  padding: 13px 14px;
+  border: 0;
+  text-align: left;
+  display: flex;
+  gap: 14px;
+  color: #c8d2c6;
+  background: transparent;
+  border-radius: 5px;
+  font-size: 13px;
+}
+/* Nhóm selector .admin-sidebar nav button span: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-sidebar nav button span {
+  font-size: 10px;
+  opacity: 0.65;
+  min-width: 14px;
+}
+.admin-sidebar nav button:hover,
+.admin-sidebar nav button.active {
+  background: #2a4c3d;
+  color: #fff;
+}
+/* Nhóm selector .admin-sidebar nav button.active: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-sidebar nav button.active {
+  box-shadow: inset 3px 0 #c2a76e;
+}
+/* Nhóm selector .admin-sidebar-bottom: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-sidebar-bottom {
+  margin-top: auto;
+  padding: 25px 12px 0;
+  border-top: 1px solid #446150;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 12px;
+}
+/* Nhóm selector .admin-sidebar-bottom p: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-sidebar-bottom p {
+  margin: 0;
+}
+/* Nhóm selector .admin-sidebar-bottom small: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-sidebar-bottom small {
+  color: #aabaad;
+}
+.admin-sidebar-bottom a,
+.admin-sidebar-bottom button {
+  color: #e6dfca;
+  background: none;
+  border: 0;
+  text-decoration: none;
+  text-align: left;
+  padding: 0;
+}
+/* Nhóm selector .admin-main: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-main {
+  min-height: 100vh;
+  min-width: 0;
+  padding: 32px 40px;
+}
+/* Nhóm selector .admin-topbar: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 30px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #dddccf;
+}
+/* Nhóm selector .admin-topbar h1: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-topbar h1 {
+  font-family: Georgia, serif;
+  font-size: 36px;
+  font-weight: 400;
+  margin: 12px 0 0;
+  letter-spacing: -1px;
+}
+/* Nhóm selector .admin-access-badge: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-access-badge {
+  font-size: 11px;
+  background: #e8eee4;
+  padding: 10px 15px;
+  border-radius: 20px;
+  max-width: 240px;
+  overflow-wrap: anywhere;
+}
+/* Nhóm selector .admin-panel: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-panel {
+  background: #fff;
+  padding: 28px;
+  border: 1px solid #e3e3d8;
+  border-radius: 8px;
+  min-width: 0;
+}
+/* Nhóm selector .admin-panel h2: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-panel h2 {
+  font-family: Georgia, serif;
+  font-size: 25px;
+  font-weight: 400;
+  margin: 0 0 16px;
+}
+/* Nhóm selector .admin-panel-heading: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+/* Nhóm selector .admin-panel-heading h2: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-panel-heading h2 {
+  margin: 0 0 10px;
+}
+/* Nhóm selector .admin-panel-heading p: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-panel-heading p {
+  margin: 0;
+}
+/* Nhóm selector .admin-footer: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-footer {
+  background: transparent;
+  padding: 30px 0 0;
+  font-size: 11px;
+  color: #7d897b;
+}
+/* Nhóm selector .admin-filters: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-filters {
+  display: flex;
+  gap: 14px;
+  align-items: end;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+/* Nhóm selector .admin-filters label: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-filters label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  flex: 1;
+  min-width: 140px;
+}
+/* Nhóm selector .admin-editor: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-editor {
+  max-width: 780px;
+  background: #fafbf7;
+  border: 1px solid #e4e8df;
+  border-radius: 6px;
+  padding: 24px;
+  margin: 20px 0;
+}
+/* Nhóm selector .admin-table-wrap: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+}
+/* Nhóm selector .admin-table: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+  min-width: 600px;
+}
+/* Nhóm selector .admin-table th: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-table th {
+  background: #f5f7f1;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  color: #738071;
+}
+.admin-table td,
+.admin-table th {
+  text-align: left;
+  padding: 18px 16px;
+  border-bottom: 1px solid #e9ebe4;
+}
+/* Nhóm selector .admin-table small: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-table small {
+  display: block;
+  color: #7b8679;
+  margin-top: 6px;
+  overflow-wrap: anywhere;
+}
+/* Nhóm selector .admin-panel .management-tabs: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-panel .management-tabs {
+  display: none;
+}
+/* Nhóm selector .admin-panel .stat-grid: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-panel .stat-grid {
+  margin-top: 15px;
+}
+/* Nhóm selector .admin-panel .stat-card: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-panel .stat-card {
+  border-color: #e6e8df;
+}
+.admin-panel .admin-filters input,
+.admin-panel .admin-filters select {
+  width: 100%;
+}
+/* Breakpoint: quy tắc bên trong chỉ áp dụng khi điều kiện kích thước/thiết bị phù hợp. */
+@media (max-width: 1000px) {
+  .admin-main {
+    padding: 24px;
+  }
+  .admin-shell {
+    grid-template-columns: 205px minmax(0, 1fr);
+  }
+  .admin-panel {
+    padding: 20px;
+  }
+  .admin-topbar h1 {
+    font-size: 30px;
+  }
+}
+/* Breakpoint: quy tắc bên trong chỉ áp dụng khi điều kiện kích thước/thiết bị phù hợp. */
+@media (max-width: 720px) {
+  .admin-login {
+    display: block;
+  }
+  .admin-login-brand {
+    padding: 35px 28px;
+  }
+  .admin-login-brand h1 {
+    font-size: 36px;
+    margin: 25px 0 15px;
+  }
+  .admin-login-brand small,
+  .admin-brand-rule {
+    display: none;
+  }
+  .admin-login-card {
+    padding: 30px 24px;
+  }
+  .admin-shell {
+    display: block;
+  }
+  .admin-sidebar {
+    height: auto;
+    position: static;
+    padding: 20px;
+  }
+  .admin-sidebar-caption {
+    padding: 16px 0 10px;
+  }
+  .admin-sidebar nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+  }
+  .admin-sidebar nav button {
+    padding: 10px;
+    font-size: 12px;
+  }
+  .admin-sidebar-bottom {
+    margin-top: 18px;
+    padding: 15px 0 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .admin-sidebar-bottom small {
+    display: none;
+  }
+  .admin-main {
+    padding: 20px 14px;
+  }
+  .admin-panel {
+    padding: 18px 14px;
+  }
+  .admin-topbar {
+    align-items: start;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+  .admin-topbar h1 {
+    font-size: 28px;
+  }
+  .admin-access-badge {
+    max-width: 130px;
+    line-height: 1.6;
+  }
+  .admin-panel-heading {
+    flex-direction: column;
+    align-items: start;
+    gap: 15px;
+  }
+  .admin-editor {
+    padding: 16px;
+  }
+  .admin-panel .feature-grid {
+    grid-template-columns: 1fr;
+  }
+  .admin-filters {
+    gap: 12px;
+  }
+  .admin-table-wrap {
+    width: 100%;
+  }
+}
+
+/* Dashboard cards share the lists' navigation, including keyboard access. */
+/* Nhóm selector .stat-card.stat-link: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.stat-card.stat-link {
+  position: relative;
+  width: 100%;
+  border: 1px solid transparent;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding-right: 38px;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+/* Phản hồi trực quan khi con trỏ đặt trên thành phần. */
+.stat-card.stat-link:hover {
+  background: #e1ebdb;
+  border-color: #95ae91;
+}
+/* Trạng thái focus bàn phím: giữ chỉ báo nhìn thấy cho khả năng truy cập. */
+.stat-card.stat-link:focus-visible {
+  outline: 3px solid #315e4c;
+  outline-offset: 3px;
+}
+.stat-link .stat-arrow {
+  position: absolute;
+  right: 16px;
+  top: 18px;
+  font-style: normal;
+  color: #315e4c;
+}
+/* Nhóm selector .admin-topbar: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.admin-topbar {
+  scroll-margin-top: 20px;
+}
+
+/* Nhóm selector .desktop-servicebar: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.desktop-servicebar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 10px 24px;
+  background: #e9efe4;
+  color: #234a38;
+  border-bottom: 1px solid #d5dfce;
+  font-size: 12px;
+}
+/* Nhóm selector .desktop-servicebar strong: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.desktop-servicebar strong {
+  margin-right: auto;
+}
+/* Nhóm selector .desktop-servicebar strong span: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.desktop-servicebar strong span {
+  font-weight: 400;
+}
+/* Nhóm selector .desktop-servicebar.offline: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.desktop-servicebar.offline {
+  background: #fff0dc;
+  color: #79542b;
+}
+/* Nhóm selector .desktop-servicebar button: kiểu hiển thị của thành phần được gắn className tương ứng trong React. */
+.desktop-servicebar button {
+  padding: 6px 12px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}

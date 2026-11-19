@@ -1,0 +1,6 @@
+# HỌC VNWATCH — outputs/vnwatch-agent/requirements.txt
+# Dependency Python khai báo trực tiếp để chạy FastAPI/agent.
+fastapi==0.142.2
+uvicorn==0.54.0
+openai==3.24.0
+python-dotenv==1.2.4

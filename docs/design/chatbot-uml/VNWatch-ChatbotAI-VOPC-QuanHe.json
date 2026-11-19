@@ -1,0 +1,952 @@
+{
+  "classes": [
+    {
+      "id": "form",
+      "name": "ChatbotForm",
+      "role": "boundary",
+      "x": 230,
+      "y": 400,
+      "w": 400,
+      "attributes": [
+        "cuaSoChat",
+        "oNhapCauHoi",
+        "dsChuDeHoTro"
+      ],
+      "methods": [
+        "hienThiLoiChao()",
+        "nhapCauHoi()",
+        "guiTinNhan()",
+        "hienThiTraLoi()",
+        "hienThiSanPhamGoiY()",
+        "hienThiNguonTraLoi()",
+        "dongCuaSo()"
+      ],
+      "h": 354
+    },
+    {
+      "id": "controller",
+      "name": "ChatbotController",
+      "role": "control",
+      "x": 800,
+      "y": 400,
+      "w": 480,
+      "attributes": [
+        "maPhien",
+        "maTK?",
+        "nguCanhHoiThoai",
+        "yDinh",
+        "tieuChi",
+        "ketQuaTuVan"
+      ],
+      "methods": [
+        "moPhienChat()",
+        "kiemTraChuPhien()",
+        "guiTinNhan()",
+        "layLichSuHoiThoai()",
+        "timSanPhamPhuHop()",
+        "layKienThucDaDuyet()",
+        "goiHeThongAI()",
+        "kiemTraKetQuaVaNguon()",
+        "luuKetQuaTuVan()",
+        "dongPhienChat()"
+      ],
+      "h": 504
+    },
+    {
+      "id": "account",
+      "name": "TaiKhoan",
+      "role": "entity",
+      "table": "taikhoan",
+      "x": 1600,
+      "y": 230,
+      "w": 460,
+      "attributes": [
+        "maTK {PK}",
+        "hoTen",
+        "email",
+        "vaiTro",
+        "trangThai"
+      ],
+      "methods": [
+        "layThongTinKhach()",
+        "kiemTraTrangThaiTaiKhoan()"
+      ],
+      "fields": [
+        "MaTK",
+        "HoTen",
+        "Email",
+        "VaiTro",
+        "TrangThai"
+      ],
+      "h": 279
+    },
+    {
+      "id": "session",
+      "name": "PhienChat",
+      "role": "entity",
+      "table": "phienchat",
+      "x": 2240,
+      "y": 230,
+      "w": 460,
+      "attributes": [
+        "maPhien {PK}",
+        "maTK? {FK}",
+        "tieuDe?",
+        "trangThai",
+        "ngayTao",
+        "ngayCapNhat"
+      ],
+      "methods": [
+        "taoPhien()",
+        "layPhien()",
+        "kiemTraChuPhien()",
+        "capNhatThoiGian()",
+        "dongPhien()"
+      ],
+      "fields": [
+        "MaPhien",
+        "MaTK",
+        "TieuDe",
+        "TrangThai",
+        "NgayTao",
+        "NgayCapNhat"
+      ],
+      "h": 379
+    },
+    {
+      "id": "message",
+      "name": "TinNhanChat",
+      "role": "entity",
+      "table": "tinnhanchat",
+      "x": 2880,
+      "y": 230,
+      "w": 500,
+      "attributes": [
+        "maTN {PK}",
+        "maPhien {FK}",
+        "maTK? {FK}",
+        "nguoiGui",
+        "noiDung",
+        "yDinh?",
+        "cheDo?",
+        "tenMoHinh?",
+        "trangThai",
+        "thoiGian"
+      ],
+      "methods": [
+        "luuTinKhach()",
+        "layLichSuTruoc()",
+        "luuTinAI()",
+        "layLichSuPhien()"
+      ],
+      "fields": [
+        "MaTN",
+        "MaPhien",
+        "MaTK",
+        "NguoiGui",
+        "NoiDung",
+        "YDinh",
+        "CheDo",
+        "TenMoHinh",
+        "TrangThai",
+        "ThoiGian"
+      ],
+      "h": 454
+    },
+    {
+      "id": "category",
+      "name": "DanhMuc",
+      "role": "entity",
+      "table": "danhmuc",
+      "x": 1600,
+      "y": 1000,
+      "w": 460,
+      "attributes": [
+        "maDM {PK}",
+        "tenDM",
+        "maDMCha? {FK}",
+        "thuTuHienThi",
+        "moTa"
+      ],
+      "methods": [
+        "layDanhMuc()",
+        "layDanhMucLienQuan()"
+      ],
+      "fields": [
+        "MaDM",
+        "TenDM",
+        "MaDMCha",
+        "ThuTuHienThi",
+        "MoTa"
+      ],
+      "h": 279
+    },
+    {
+      "id": "product",
+      "name": "SanPham",
+      "role": "entity",
+      "table": "sanpham",
+      "x": 2240,
+      "y": 1000,
+      "w": 460,
+      "attributes": [
+        "maSP {PK}",
+        "maDM {FK}",
+        "tenSP",
+        "thuongHieu",
+        "kieuMay",
+        "chatLieuDay",
+        "giaBan",
+        "soLuongTon",
+        "hinhAnh",
+        "thongSoChiTiet",
+        "trangThai"
+      ],
+      "methods": [
+        "timSanPhamLienQuan()",
+        "layThongTinSanPham()",
+        "kiemTraConHang()"
+      ],
+      "fields": [
+        "MaSP",
+        "MaDM",
+        "TenSP",
+        "ThuongHieu",
+        "KieuMay",
+        "ChatLieuDay",
+        "GiaBan",
+        "SoLuongTon",
+        "HinhAnh",
+        "ThongSoChiTiet",
+        "TrangThai"
+      ],
+      "h": 454
+    },
+    {
+      "id": "knowledge",
+      "name": "KienThucChatbot",
+      "role": "entity",
+      "table": "kienthucchatbot",
+      "x": 2880,
+      "y": 1000,
+      "w": 500,
+      "attributes": [
+        "maKT {PK}",
+        "loai",
+        "chuDe",
+        "tieuDe",
+        "noiDung",
+        "urlNguon?",
+        "trangThai",
+        "nguoiDuyet? {FK}",
+        "ngayDuyet?",
+        "ngayCapNhat"
+      ],
+      "methods": [
+        "layKienThucDaDuyet()",
+        "timTheoChuDe()"
+      ],
+      "fields": [
+        "MaKT",
+        "Loai",
+        "ChuDe",
+        "TieuDe",
+        "NoiDung",
+        "URLNguon",
+        "TrangThai",
+        "NguoiDuyet",
+        "NgayDuyet",
+        "NgayCapNhat"
+      ],
+      "h": 404
+    },
+    {
+      "id": "selection",
+      "name": "SanPhamGoiY",
+      "role": "entity",
+      "table": "sanphamgoiy",
+      "x": 2240,
+      "y": 1770,
+      "w": 460,
+      "attributes": [
+        "maTN {PK,FK}",
+        "maSP {PK,FK}",
+        "thuTu",
+        "lyDo?"
+      ],
+      "methods": [
+        "luuDanhSachGoiY()",
+        "layDanhSachGoiY()"
+      ],
+      "fields": [
+        "MaTN",
+        "MaSP",
+        "ThuTu",
+        "LyDo"
+      ],
+      "h": 254
+    },
+    {
+      "id": "source",
+      "name": "NguonTraLoi",
+      "role": "entity",
+      "table": "nguontraloi",
+      "x": 2880,
+      "y": 1770,
+      "w": 500,
+      "attributes": [
+        "maNguon {PK}",
+        "maTN {FK}",
+        "maKT? {FK}",
+        "tieuDeNguon",
+        "urlNguon?",
+        "noiDungTrichDan?",
+        "thoiDiemSuDung"
+      ],
+      "methods": [
+        "luuNguonVaBanChup()",
+        "layNguonTheoTinNhan()"
+      ],
+      "fields": [
+        "MaNguon",
+        "MaTN",
+        "MaKT",
+        "TieuDeNguon",
+        "URLNguon",
+        "NoiDungTrichDan",
+        "ThoiDiemSuDung"
+      ],
+      "h": 329
+    }
+  ],
+  "relations": [
+    {
+      "source": "customer",
+      "target": "form",
+      "name": "sử dụng",
+      "points": [
+        [
+          119,
+          550
+        ],
+        [
+          175,
+          550
+        ],
+        [
+          175,
+          570
+        ],
+        [
+          230,
+          570
+        ]
+      ],
+      "label": [
+        171,
+        528
+      ],
+      "kind": "communication"
+    },
+    {
+      "source": "form",
+      "target": "controller",
+      "name": "gửi yêu cầu",
+      "points": [
+        [
+          630,
+          560
+        ],
+        [
+          800,
+          560
+        ]
+      ],
+      "label": [
+        715,
+        540
+      ],
+      "kind": "dependency"
+    },
+    {
+      "source": "controller",
+      "target": "ai",
+      "name": "gọi tư vấn",
+      "points": [
+        [
+          1040,
+          904
+        ],
+        [
+          1040,
+          1327
+        ]
+      ],
+      "label": [
+        1040,
+        1110
+      ],
+      "kind": "dependency"
+    },
+    {
+      "source": "controller",
+      "target": "account",
+      "name": "xác định khách",
+      "points": [
+        [
+          1280,
+          470
+        ],
+        [
+          1380,
+          470
+        ],
+        [
+          1380,
+          380
+        ],
+        [
+          1600,
+          380
+        ]
+      ],
+      "label": [
+        1475,
+        357
+      ],
+      "kind": "dependency"
+    },
+    {
+      "source": "controller",
+      "target": "session",
+      "name": "quản lý phiên",
+      "points": [
+        [
+          1280,
+          510
+        ],
+        [
+          1320,
+          510
+        ],
+        [
+          1320,
+          195
+        ],
+        [
+          2470,
+          195
+        ],
+        [
+          2470,
+          230
+        ]
+      ],
+      "label": [
+        2350,
+        178
+      ],
+      "kind": "dependency"
+    },
+    {
+      "source": "controller",
+      "target": "message",
+      "name": "lưu / đọc tin",
+      "points": [
+        [
+          1280,
+          550
+        ],
+        [
+          1345,
+          550
+        ],
+        [
+          1345,
+          160
+        ],
+        [
+          3090,
+          160
+        ],
+        [
+          3090,
+          230
+        ]
+      ],
+      "label": [
+        2900,
+        145
+      ],
+      "kind": "dependency"
+    },
+    {
+      "source": "controller",
+      "target": "category",
+      "name": "tra cứu danh mục",
+      "points": [
+        [
+          1280,
+          590
+        ],
+        [
+          1410,
+          590
+        ],
+        [
+          1410,
+          1070
+        ],
+        [
+          1600,
+          1070
+        ]
+      ],
+      "label": [
+        1460,
+        953
+      ],
+      "kind": "dependency"
+    },
+    {
+      "source": "controller",
+      "target": "product",
+      "name": "tra cứu catalog",
+      "points": [
+        [
+          1280,
+          630
+        ],
+        [
+          1435,
+          630
+        ],
+        [
+          1435,
+          900
+        ],
+        [
+          2470,
+          900
+        ],
+        [
+          2470,
+          1000
+        ]
+      ],
+      "label": [
+        2320,
+        879
+      ],
+      "kind": "dependency"
+    },
+    {
+      "source": "controller",
+      "target": "knowledge",
+      "name": "đọc DA_DUYET",
+      "points": [
+        [
+          1280,
+          670
+        ],
+        [
+          1460,
+          670
+        ],
+        [
+          1460,
+          930
+        ],
+        [
+          3090,
+          930
+        ],
+        [
+          3090,
+          1000
+        ]
+      ],
+      "label": [
+        2910,
+        912
+      ],
+      "kind": "dependency"
+    },
+    {
+      "source": "controller",
+      "target": "selection",
+      "name": "lưu gợi ý",
+      "points": [
+        [
+          1280,
+          710
+        ],
+        [
+          1350,
+          710
+        ],
+        [
+          1350,
+          1620
+        ],
+        [
+          2420,
+          1620
+        ],
+        [
+          2420,
+          1770
+        ]
+      ],
+      "label": [
+        2290,
+        1600
+      ],
+      "kind": "dependency"
+    },
+    {
+      "source": "controller",
+      "target": "source",
+      "name": "lưu nguồn",
+      "points": [
+        [
+          1280,
+          750
+        ],
+        [
+          1300,
+          750
+        ],
+        [
+          1300,
+          1650
+        ],
+        [
+          3090,
+          1650
+        ],
+        [
+          3090,
+          1770
+        ]
+      ],
+      "label": [
+        2970,
+        1630
+      ],
+      "kind": "dependency"
+    },
+    {
+      "source": "account",
+      "target": "session",
+      "name": "sở hữu",
+      "points": [
+        [
+          2060,
+          350
+        ],
+        [
+          2240,
+          350
+        ]
+      ],
+      "label": [
+        2150,
+        327
+      ],
+      "kind": "association",
+      "erd_id": "R17",
+      "fields": [
+        "MaTK"
+      ],
+      "source_mult": "0..1",
+      "target_mult": "0..*"
+    },
+    {
+      "source": "session",
+      "target": "message",
+      "name": "chứa tin nhắn",
+      "points": [
+        [
+          2700,
+          350
+        ],
+        [
+          2880,
+          350
+        ]
+      ],
+      "label": [
+        2790,
+        327
+      ],
+      "kind": "association",
+      "erd_id": "R19",
+      "fields": [
+        "MaPhien"
+      ],
+      "source_mult": "1",
+      "target_mult": "0..*"
+    },
+    {
+      "source": "account",
+      "target": "message",
+      "name": "người gửi",
+      "points": [
+        [
+          1830,
+          230
+        ],
+        [
+          1830,
+          125
+        ],
+        [
+          3130,
+          125
+        ],
+        [
+          3130,
+          230
+        ]
+      ],
+      "label": [
+        2510,
+        110
+      ],
+      "kind": "association",
+      "erd_id": "R18",
+      "fields": [
+        "MaTK"
+      ],
+      "source_mult": "0..1",
+      "target_mult": "0..*"
+    },
+    {
+      "source": "account",
+      "target": "knowledge",
+      "name": "duyệt kiến thức",
+      "points": [
+        [
+          1830,
+          509
+        ],
+        [
+          1830,
+          760
+        ],
+        [
+          3470,
+          760
+        ],
+        [
+          3470,
+          1290
+        ],
+        [
+          3380,
+          1290
+        ]
+      ],
+      "label": [
+        2700,
+        739
+      ],
+      "kind": "association",
+      "erd_id": "R20",
+      "fields": [
+        "NguoiDuyet"
+      ],
+      "source_mult": "0..1",
+      "target_mult": "0..*"
+    },
+    {
+      "source": "category",
+      "target": "category",
+      "name": "danh mục cha",
+      "points": [
+        [
+          1600,
+          1110
+        ],
+        [
+          1530,
+          1110
+        ],
+        [
+          1530,
+          1220
+        ],
+        [
+          1600,
+          1220
+        ]
+      ],
+      "label": [
+        1550,
+        1320
+      ],
+      "kind": "association",
+      "erd_id": "R01",
+      "fields": [
+        "MaDMCha"
+      ],
+      "source_mult": "0..1",
+      "target_mult": "0..*"
+    },
+    {
+      "source": "category",
+      "target": "product",
+      "name": "phân loại",
+      "points": [
+        [
+          2060,
+          1130
+        ],
+        [
+          2240,
+          1130
+        ]
+      ],
+      "label": [
+        2150,
+        1108
+      ],
+      "kind": "association",
+      "erd_id": "R02",
+      "fields": [
+        "MaDM"
+      ],
+      "source_mult": "1",
+      "target_mult": "0..*"
+    },
+    {
+      "source": "message",
+      "target": "selection",
+      "name": "đề xuất",
+      "points": [
+        [
+          2990,
+          684
+        ],
+        [
+          2990,
+          850
+        ],
+        [
+          2770,
+          850
+        ],
+        [
+          2770,
+          1695
+        ],
+        [
+          2590,
+          1695
+        ],
+        [
+          2590,
+          1770
+        ]
+      ],
+      "label": [
+        2770,
+        1530
+      ],
+      "kind": "association",
+      "erd_id": "R21",
+      "fields": [
+        "MaTN"
+      ],
+      "source_mult": "1",
+      "target_mult": "0..*"
+    },
+    {
+      "source": "product",
+      "target": "selection",
+      "name": "được gợi ý",
+      "points": [
+        [
+          2470,
+          1454
+        ],
+        [
+          2470,
+          1770
+        ]
+      ],
+      "label": [
+        2470,
+        1560
+      ],
+      "kind": "association",
+      "erd_id": "R22",
+      "fields": [
+        "MaSP"
+      ],
+      "source_mult": "1",
+      "target_mult": "0..*"
+    },
+    {
+      "source": "message",
+      "target": "source",
+      "name": "trích dẫn",
+      "points": [
+        [
+          3380,
+          480
+        ],
+        [
+          3515,
+          480
+        ],
+        [
+          3515,
+          1880
+        ],
+        [
+          3380,
+          1880
+        ]
+      ],
+      "label": [
+        3470,
+        1640
+      ],
+      "kind": "association",
+      "erd_id": "R23",
+      "fields": [
+        "MaTN"
+      ],
+      "source_mult": "1",
+      "target_mult": "0..*"
+    },
+    {
+      "source": "knowledge",
+      "target": "source",
+      "name": "tham chiếu",
+      "points": [
+        [
+          3130,
+          1404
+        ],
+        [
+          3130,
+          1770
+        ]
+      ],
+      "label": [
+        3130,
+        1560
+      ],
+      "kind": "association",
+      "erd_id": "R24",
+      "fields": [
+        "MaKT"
+      ],
+      "source_mult": "0..1",
+      "target_mult": "0..*"
+    }
+  ]
+}

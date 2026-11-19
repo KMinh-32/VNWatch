@@ -1,0 +1,1005 @@
+[
+  {
+    "file": ".env.docker.example",
+    "beforeHash": "02ebd9fba5fce774ea1dc05b7cabf29a455e6984b6e2aa350736b605c1e8503a",
+    "afterHash": "698cc5d6143a04a764dd1d98f11007cbedb68a50478a67094d8468d8a2ea88bb",
+    "comments": 1
+  },
+  {
+    "file": ".gitignore",
+    "beforeHash": "78c2b8c0feae876e94b26318f84d77d40932022915b033fbee777f2bb9bc9cad",
+    "afterHash": "ebe321d4a2980d180c471e88ede8f03ead9dcc80304edd8d43bca07d07950f08",
+    "comments": 1
+  },
+  {
+    "file": "compose.share.yaml",
+    "beforeHash": "067700bcda151e7011d0cdf56a19b9bd96b5131dd728ebcb49f8db085d5e4fd3",
+    "afterHash": "6a5b6eb620e3ad0fc554920ea377f57721e27a893f5a9e07a7e2746182f8dc07",
+    "comments": 9
+  },
+  {
+    "file": "compose.yaml",
+    "beforeHash": "149ecbece95d10232af255c4b280c437e082c448df55a46188c5a7f2b61c7ff2",
+    "afterHash": "ea316f982231b73afa2780e540c2469b75b0123f7420f7c4c3ec4a7840ffe8ac",
+    "comments": 56
+  },
+  {
+    "file": "CREATE-ADMIN.cmd",
+    "beforeHash": "07e67ed0d65a8218b0c4b05cd935579befba292c83497061c45cb9677ec86026",
+    "afterHash": "6847ec7c9d50856431686e4153c233dfaa7097eb8926743d69106f1fc1e8de4e",
+    "comments": 2
+  },
+  {
+    "file": "docker/admin-ui-api.cjs",
+    "beforeHash": "d8aeb651d5142c4efd894554984de6dbb3fb83b8330d1ceee6a0a2b565d24c63",
+    "afterHash": "4466690f275c32394379540a0edbb11436fb0c8216415e59a9eb3275671d9bbe",
+    "comments": 2
+  },
+  {
+    "file": "docker/create-admin.ps1",
+    "beforeHash": "8730fe88de0875b9e37b2e9d6a2091d1898c7acd48403ee3fd50ce65e33c30b4",
+    "afterHash": "0d6e79de26ae3f7236b47868919db9a52e78e20309a46ab6c7b66b3f66066d61",
+    "comments": 3
+  },
+  {
+    "file": "docker/export-local.cjs",
+    "beforeHash": "8f46c6cbdfb792203c65ac96e36198b4756022644c5b459ddc5238cf005cf956",
+    "afterHash": "2ec360d5663b16d55d6af63270fbaa9fdd87707441e89501dcf6795ead13abc2",
+    "comments": 1
+  },
+  {
+    "file": "docker/import-snapshot.ps1",
+    "beforeHash": "ef5f3eb9c7fb0db289d2e4be49b75293f0c1be68b12d6aa631cbf62c38744793",
+    "afterHash": "212c5ae53993f37d6bfbc15f9aeeca9853e9e0d80ac5cb977cbbff328b27a878",
+    "comments": 2
+  },
+  {
+    "file": "docker/setup.ps1",
+    "beforeHash": "30a5e498c744729ab42f8efa5ebf82fa89123170b759e88ee2f93659f271713c",
+    "afterHash": "fb41f95ea472d2b7f86fdaf98f56884867b00400882aa984ef84533a8d6f5c8a",
+    "comments": 3
+  },
+  {
+    "file": "docker/share-nginx.conf",
+    "beforeHash": "7e725ec1d840feafec09bf3ced082489f05eab712283cb07c7982b8cfc42467d",
+    "afterHash": "e23a22072778347f7e39fda275263f8ad2406236dc3bbe68a07e4d5f84bc9b8c",
+    "comments": 17
+  },
+  {
+    "file": "docker/share.ps1",
+    "beforeHash": "b6c9eda2181d5c54bc642ded9198b3ec57752e6cd6269e7902cc8853bc3a0095",
+    "afterHash": "d6947c76eb003e30b00229eb3128f65f370f2ee38b32b7bb3d2a68ce76541a82",
+    "comments": 2
+  },
+  {
+    "file": "docker/smoke-browser.cjs",
+    "beforeHash": "53ea7773a8a4623bf021835019615eee6ddaae9be59264c0da9e70d006ec89e7",
+    "afterHash": "c9614a3c51438490e0eb64611ede008a2e54e4ff4241bd4631dec289d754d439",
+    "comments": 1
+  },
+  {
+    "file": "docker/test-backend.cjs",
+    "beforeHash": "5eaed29439d648dcf3f187cce9871cab02be62c8e8be988d2efbdadbc2e197cb",
+    "afterHash": "17b6bf878df75c8c8b07093693bab4f09e7afc8897acfe105ea0af0d2e0bdcaa",
+    "comments": 1
+  },
+  {
+    "file": "docker/verify-manager-installed.cjs",
+    "beforeHash": "8125b0cb670eccc3a913f2ddf8948740a2079045ed2958d4cea3444bdcd6ebcc",
+    "afterHash": "00ff72af05858b02b6b831562fb37ac4287dd6b11f57953a458ced4ab38581b3",
+    "comments": 1
+  },
+  {
+    "file": "docker/verify-share.cjs",
+    "beforeHash": "94a374e1e10fe4bf7534879ca9010f2cdf367f5d1a9c5d6ef0644817572d362a",
+    "afterHash": "d6ae6e35403b07580931e8da867d47c3bbd4b1f7f1ca16aa489fa91558d6d64f",
+    "comments": 1
+  },
+  {
+    "file": "docker/verify-snapshot.cjs",
+    "beforeHash": "0f1a3526c4c1177ddf098feb9bf80664c0c5852ac87c8d46caac74a87d51b8d1",
+    "afterHash": "cf5cdc6e1a26b48948cfaa6c7a90dd29f1c3ee88651c00962ed36b86ae0902a8",
+    "comments": 1
+  },
+  {
+    "file": "OPEN-MANAGER.cmd",
+    "beforeHash": "98aaa69395644f748b17f4140f20c6b318073fe66c2a1c5118c0ce2f5a6ff959",
+    "afterHash": "e9d4b3787661f98af9a6e1b978b1e33cfecc4c0d89fbc2407fb50ba425816164",
+    "comments": 2
+  },
+  {
+    "file": "outputs/start-vnwatch.ps1",
+    "beforeHash": "af286e0808c61aa16e733287fb3d13d456078594bc95c2bf913bee029294840e",
+    "afterHash": "938a6ad91bdddd30d5df60763ab2e8859de4f5cf681a89c5f216b4f61727a6c0",
+    "comments": 6
+  },
+  {
+    "file": "outputs/vnwatch-agent/.dockerignore",
+    "beforeHash": "b13ccf1b468d5ed1190ef92e1229e4387972d756f1e36d3c3655bf8cdd87ccd9",
+    "afterHash": "d8e3761021eb19e8c583aea131aca81537c504c488a28b8a7b0920afce0f7039",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-agent/.env.example",
+    "beforeHash": "d37669e074d8e9fac53912b8bc3c2cef01c177fe92cabdeb1d8dbc77c62bd5eb",
+    "afterHash": "008442ff2a893a736ee861be4a36ebd900be8efd1b38bca5c9b68094ce4464fc",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-agent/.gitignore",
+    "beforeHash": "6ee56ccdd29baa0a4a3f76bdce751edbd8f9f0a4be2e763c9611ae7be13e2226",
+    "afterHash": "c7f8beb7784e243123adedd34ccb1c020d79d82917f820872642dfc856ba558e",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-agent/consultant.py",
+    "beforeHash": "5f152bf020eaa7113ef21688c71717fb9c5786d3170e0b3f3d6d890bbed8f196",
+    "afterHash": "0d00e6eb84b7fed48390031ea76b3de680ecbcacf1d0a1da21e5e7e21b74fb79",
+    "comments": 15
+  },
+  {
+    "file": "outputs/vnwatch-agent/contracts.py",
+    "beforeHash": "3a1e821eff0a84b2985b086f5eddea16129d1fdc9b4cc3583954286357ca351a",
+    "afterHash": "2c339a55cfe64e305106777a9af3e484806f9a7bf018e2a47d911a5c501fe280",
+    "comments": 65
+  },
+  {
+    "file": "outputs/vnwatch-agent/Dockerfile",
+    "beforeHash": "f1aebd3e1c59522af2d7f415553fa027f7ee27c813f3e4f5d4817dd77ca31aeb",
+    "afterHash": "f50a78fc58ad320922e64e882927f6e4565680d661c1424a8e641e69924dc78a",
+    "comments": 10
+  },
+  {
+    "file": "outputs/vnwatch-agent/main.py",
+    "beforeHash": "79e82da12fa4839a13fe1ba8646db9e5bf8ba702dc40ce3e11404dd1136fe927",
+    "afterHash": "efd6ac68a4b5e1c0880f2fbc1639d3c9b39810ab29ec269314a4568e1bde58c7",
+    "comments": 10
+  },
+  {
+    "file": "outputs/vnwatch-agent/requirements-dev.txt",
+    "beforeHash": "d8051f37f45da475d5b993671bf8c0e87d980a5bcd5ca9aa3e7e3ce99079e1d3",
+    "afterHash": "bdbd23e189e1175613f7b622b84e5080d63f9e68d898e737737cc5e1171f89f9",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-agent/requirements.lock.txt",
+    "beforeHash": "e68c59ca4d63d3411a97af72fa41d0a24bd29157bb3e40bf8392ff686015d73a",
+    "afterHash": "0c2ab86a8f1b2485104d6d2fec60144c6258604c6633aee9e46d8aabd4407b6a",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-agent/requirements.txt",
+    "beforeHash": "e8f465b886a1019a71ca810a098c5d87692a9a360861ff4883a1a9ffd425fac6",
+    "afterHash": "9c1a290ecef0a2c719d98df99de652d16432c212c9ddcf4d7cbbb5f19955d970",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-agent/setup.ps1",
+    "beforeHash": "69584f5850ee55a55fb333562bb5d170e399f25def31512ac7ea0efeb91fb4cc",
+    "afterHash": "1af74289be747976d505b45c8d4ba264fc430c9a9864106c6fbb4611945e45d3",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-agent/tests/test_consultant.py",
+    "beforeHash": "a607b574072396e6dca6f239c1acce04c22e38c874798926837d4536526d70f7",
+    "afterHash": "0b7752340ebd6a5ad4fc7fa4ee622dbb776a08670fbeb8b249b15adbf74ad8ed",
+    "comments": 19
+  },
+  {
+    "file": "outputs/vnwatch-backend/.dockerignore",
+    "beforeHash": "ceb8e7a96cfbd38bcddc3a068c5953b819f9db273fdabd6e4d6d603ccabc8617",
+    "afterHash": "8f18898edd00b60dc693045ac6bc8ede6f1dd4a753a2faef29266d4f75771618",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-backend/.env.example",
+    "beforeHash": "bdce3830ffe390bb4587bfae9c859f18295b6d2c1e5fed86a3ee42527a7c0a5b",
+    "afterHash": "b8ed30240fc211bc20506e23198d8b30973167ffaca4133e8e1df46db5bfecd3",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-backend/.gitignore",
+    "beforeHash": "c9b9f3dd619e845acef5c3155e6e80bbe1329a9441faee515e4df90bb10f984d",
+    "afterHash": "2e5b5ae3f12f3ef85549c615e09f3e65df03028a0dc6bebddf5148560db7fdf9",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-backend/compose.yaml",
+    "beforeHash": "129581fe9ea7ed36c7157c8632f6491bc2a87eb087fe9d734be2b1387e53f662",
+    "afterHash": "a7edc82bbabcea7e3a350ea6a4a6aa3636f08fdd634e8f958f5487be391ea720",
+    "comments": 13
+  },
+  {
+    "file": "outputs/vnwatch-backend/Dockerfile",
+    "beforeHash": "e45449e407632cd8e988f1627e38423aeff74e9211aec461ac70fdce9946a78e",
+    "afterHash": "2e9b24fbe66ba9415e333da43375df5c1911b58efcfc5c03291cd286d5a109ea",
+    "comments": 20
+  },
+  {
+    "file": "outputs/vnwatch-backend/eslint.config.mjs",
+    "beforeHash": "040f45b8091d4d54bfb846d4e883241b621a4639ca4c03530b9a1341a5787ee0",
+    "afterHash": "c16895e53c1a182dabe86f763b1296734916629a4f64da1e41b466bfd106086d",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-backend/prisma/schema.prisma",
+    "beforeHash": "06f93c71ba9c33107c4cc2aa64a9461808802004c05dec198a7833d9954bf202",
+    "afterHash": "97d00da7c8e19820dad79214ddc5a2db0d41313ae22e1c0ff574f5fb1c0e598b",
+    "comments": 247
+  },
+  {
+    "file": "outputs/vnwatch-backend/prisma.config.ts",
+    "beforeHash": "c58baab2531a7afbe64ac9050b8e60bea2182db6fd4b0b0df1c5b5ab55aa34df",
+    "afterHash": "e595da384c998f2ca5ac12e9282aa3e869e337463d38623eb29846d788740357",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-backend/requests/catalog.http",
+    "beforeHash": "d006e10a501b716a6b7782eee76c32bae8d5b02cb5b492cbdd6909cafe4f4574",
+    "afterHash": "97ad211f3dbdc4b1230ad49bfcab54c21140b87164d6b28133f2d5e771f739f7",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-backend/scripts/reset-dev.mjs",
+    "beforeHash": "8c697e98920837315671eda0e2016979883efe08ed3643003049c2e844a284a3",
+    "afterHash": "837641a1f8a8128807796ac163d723a2eb1bf21c707cdcd8ffecf0cc5bd81774",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-backend/scripts/start-local-postgres.ps1",
+    "beforeHash": "4043de365028c98e54fd03e4df38d206d3badf5b9f495b9c2ac638cdb37b3760",
+    "afterHash": "7af139bfb2eb5fc9ac573df80183e435252a20f3caa03452f1ba2ef7787bbfb0",
+    "comments": 3
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/app.module.ts",
+    "beforeHash": "beee34980a694f8f720795a58cfcacedf880cb39506bb1ddd5eeeba45fa6c2fe",
+    "afterHash": "d39a9e45eb85e5c22a7bb6d409dc279f40682e7b67c46beeb9eaa87ff18978c8",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/assistant/assistant.controller.ts",
+    "beforeHash": "99cdbc6b046f4587f212192963c01aefc335f8f520930f66a81b6e31ae3ceb58",
+    "afterHash": "2200d83fcc0e7e2b4dd051666671c6a44c0e1caf275e7b1a6e6770576d4c35a7",
+    "comments": 4
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/assistant/assistant.dto.ts",
+    "beforeHash": "440cf81e20d658bae1b27b5077c351f7c1128163e331b6bbbdf64ddf476b160c",
+    "afterHash": "2f33b55390ed9cf77bf469dbb4a7d60d7e68ce3674871f98907695dffa4c5e96",
+    "comments": 18
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/assistant/assistant.module.ts",
+    "beforeHash": "a58e31610171b6c793581d67dc208aaac7f67ed48f59d6e7b29106eb17a75c56",
+    "afterHash": "6a38bc1815cb4bc58527163dd38e0f8982039c396af952609c6ac8047df94138",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/assistant/assistant.service.ts",
+    "beforeHash": "a15f439417b0e0935611f4ddb3c161960cd394a55825e2c0b00a50e028310a27",
+    "afterHash": "f8bd115209feb97d29b15d1d47a54f62b2b449c5e8f842b74efbfb4221f50a28",
+    "comments": 16
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/assistant/knowledge.ts",
+    "beforeHash": "76e6d4b817b8fa6d532ffaeddf270b3332eb66906da281eda54cd1224a06cd50",
+    "afterHash": "f12e9d9f7f9bf215276f4529f02b593ad5a65af4ee6b622a4e2f008bde485c73",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/auth/auth-rate.guard.ts",
+    "beforeHash": "e46f380fa7138032830deb28c30d686543f43be7ea38c60edaf5ad0939e89e2a",
+    "afterHash": "9cb545557568525aee2bb6a0a2c02868449b2b6237adee4753cb19361792e223",
+    "comments": 10
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/auth/auth-transaction.ts",
+    "beforeHash": "0bb0b6f1dd42a099b2b0fefeeecbaa7d2b91eac04a9027839534a40192ded860",
+    "afterHash": "1ec4385863fc66671696dbd076e4581dc01902389287d199c7f355151723d6ca",
+    "comments": 5
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/auth/auth.constants.ts",
+    "beforeHash": "d4b21ac6e73f18ca76b182c47fd80f72bfcb7d9b24f48e3063e52f06d4721244",
+    "afterHash": "cd1ced823c82c6d024370a4dd22343bc83690b96a979a7d2ff414af9c6cb0605",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/auth/auth.controller.ts",
+    "beforeHash": "5476ec50b2f16734d16efcb9b706086cf93a3054761ed50d52af903a53b05824",
+    "afterHash": "088cae10ff5f7b6d44b18a59b93cbc733a7701438621e03c2807f7d9cc142148",
+    "comments": 13
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/auth/auth.decorators.ts",
+    "beforeHash": "285e5fce76ceaa13d0f4182a2e8023443fd09ee719b452bd04b570bf47679273",
+    "afterHash": "c2f2e49720613eb275678ca34526d1bca4dea88a4016b6ad9709c68abbf1a8df",
+    "comments": 4
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/auth/auth.dto.ts",
+    "beforeHash": "079f3113ea46bfd5609eb248c7dd812d3ec185f7adc6490634ce1237c494f4ad",
+    "afterHash": "74ebf9d5a0656093897e858e9c88b44394beecc8cb24cf959d0d00d2094e5a7b",
+    "comments": 27
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/auth/auth.module.ts",
+    "beforeHash": "95893c670b2d4ba4712e934d20bf6104b42a78c9d8c550d01be95efaece59190",
+    "afterHash": "c66c9788ce8ab03d7eeb6a930fda9d6f1b374ae8863c2b1f58785eec3c3df06b",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/auth/auth.service.ts",
+    "beforeHash": "05185858445ebf32b805af6fe3c1c7748ca426a23533780c24cc8a798c77735f",
+    "afterHash": "30ce9356197da67f44e6b609725add450e39c2d88200ddb4a01c60ebb55618b2",
+    "comments": 20
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/auth/auth.types.ts",
+    "beforeHash": "c923533de8110440d698fa0ce15e6caa01736cb22e65f915a695e2e92a40fb0e",
+    "afterHash": "f9e2532a3dd2998e08023b56bab6cbf575665251db299216318bb8947018bf07",
+    "comments": 6
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/auth/password.service.ts",
+    "beforeHash": "176aab65710a2b6a45292cbb405230780a8a47b1b378058af7b1e004f4da7747",
+    "afterHash": "987da077528b80952106397396dafa3834b0ecf4341704bae0339addac863462",
+    "comments": 9
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/auth/reset-delivery.ts",
+    "beforeHash": "38fe71dd7b6ca8cb5532b9899afde023c74551d909458ea482ae5992d7357535",
+    "afterHash": "e5d118b90194affad6ff829a538124f51e1400985bde759cf068de9508532e87",
+    "comments": 7
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/auth/session.guard.ts",
+    "beforeHash": "b3168ba4f113f1aa08054fbc8ad4411c0b5869bb24b6c739cc9139364af98de5",
+    "afterHash": "d5fd583aa95f624dbac4b153b92e364e9335be3f5398c102ad0ed3689354e2c8",
+    "comments": 7
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/auth/tokens.ts",
+    "beforeHash": "1f8ff20b6ab201445b857371d3dd344fd65e289b632668c3d9eb4e300a091c85",
+    "afterHash": "6f4cef6b4ee8f5bf9e2b9a946a65aa6bcc54a0e00b54e22b44946d3dc5c5e0e5",
+    "comments": 3
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/catalog/catalog.controller.ts",
+    "beforeHash": "0775cb94ab6ba480f0fb8fdfb70588b4b186d7f13f7bb74d80f027c95cd53c3f",
+    "afterHash": "8cda3cca901ee037141c5c807cbc5baa30115f4786d5b7ba3ba573718da4502a",
+    "comments": 5
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/catalog/catalog.module.ts",
+    "beforeHash": "9bc875c9158f767222a5a018d0e42ab95b69a10e4acbaa90c1fb79bec89eb453",
+    "afterHash": "ef4fca84fcf3025f7e5ffb7d0b5d706d0d5506d9b1418ace2fb71e2fd6efdc7a",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/catalog/catalog.repository.ts",
+    "beforeHash": "158bd8f0a0fc44b44bc3ced36b9d8a6dc83f8b676ea80ae2feec7985e3cf77ed",
+    "afterHash": "96730fcda63c4dbb52b0bfaf612e73036a2b9afd814efbef0682597aeca6d55b",
+    "comments": 8
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/catalog/catalog.service.ts",
+    "beforeHash": "f4d8042465270d4f83756f6e53d23633ea3f5362a3ff70595858661a7c2fb106",
+    "afterHash": "19e5466bcf4b711784ea40eaf772078d3163674fe5a14866d4c4bd158af2aff5",
+    "comments": 7
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/catalog/dto/list-products.dto.ts",
+    "beforeHash": "c0ebf446ea7aa47cb7558f6ffc6126d2d89fa6a3ab1d3f75aeea1cc1a68e36c5",
+    "afterHash": "81931ec523c16525e1f8de1a8e59c71f4ad3684aa2372ff8ad75ef90f5e24f59",
+    "comments": 15
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/catalog/dto/product-response.dto.ts",
+    "beforeHash": "e6299df36d9117e69e154b8cc640340739ca63f258cbc50d893dc342dd7dfec1",
+    "afterHash": "8f86619604d3b7a5e83eacb26aed7debaaaeb78b296c8e62f54c3de368e408c1",
+    "comments": 41
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/common/api-error.dto.ts",
+    "beforeHash": "496f6a479fd24bd8a2cb9bd93ecf1a257cb040ba450bc67a043a0a04e542b812",
+    "afterHash": "16f1b603657404305222c73ccaac5a8e007e4529ac1c3bce177bc3c2d731705c",
+    "comments": 7
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/common/api-exception.filter.ts",
+    "beforeHash": "22fc530dbbde3f6130ad66bee7226389fa89d85b7d7f95f69f3787bf8483420c",
+    "afterHash": "9f4babe15a5707975555a4b23cf253658267c2878fab9a60c98b437e3c7ecb99",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/config.ts",
+    "beforeHash": "9d7349f150056965755c85a6c9611db3abd485f5f7142bfd9a25f115eb918f98",
+    "afterHash": "5174f62fc15d4792c07e5d00583b1a38dac8fa77321c63060bdccfc9245234fd",
+    "comments": 3
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/configure-app.ts",
+    "beforeHash": "9b3bd29f56a581cdd52896850ea2b7c86a7d44999bde5dd068a5ca9e8d293eba",
+    "afterHash": "e9698d2fb87f3c32dd7f5e2c5c97ce7e95963b823fb9702e405667f8f3bbe17f",
+    "comments": 9
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/database/bootstrap-admin.ts",
+    "beforeHash": "c5d6554f6f3e6d05e0ba43d1e7500a5a42156cf126f679df8d8ab918c608d924",
+    "afterHash": "4c9bdc006824d80130e9644e167ed37171e477b7e733340bd198ac7bf1a6207a",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/database/create-admin.ts",
+    "beforeHash": "d525d19e121e2b5b4ba66b1067d38cd0cc54c6ab4d1823202c77daa8c1e75333",
+    "afterHash": "3f56712c9324bb6314ef58ab7dea38736c00a754c1391be28e9e500258222611",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/database/database.module.ts",
+    "beforeHash": "bdf5c233381016903d0fb8644bde7c1207f483b3c619f502d74aa2873046c858",
+    "afterHash": "8ff1b37c5fb719d769dc6836ceb622bec35c348096dc002d7291ba7aceb2cc2d",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/database/demo-data.ts",
+    "beforeHash": "15f332a21f8b1db0fc38810d022a958f0ed9e082f7eb699074a18f90f4a7562a",
+    "afterHash": "bcad9b263ddec2997b5ce7f8268eee6522b27e77968282697a0f5043464d4d5e",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/database/demo-target.ts",
+    "beforeHash": "a939ce1073109afdffec010e4b9780b7bd56a99bd61cbbae7898c5430b1e21a0",
+    "afterHash": "e4186a51f068c1450414cde5f69d3a495bca0b29251ae71fb8167af86a4deac6",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/database/first-admin.ts",
+    "beforeHash": "6867baf3f6148b33c04f3825e88bb5c2f7745e200bfaa453b8b7bb13ebbfcc4d",
+    "afterHash": "f01be98289ec4c9cd861bda26919f9d4b66404a97b8ab85e62f60f49de0a8908",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/database/prisma.service.ts",
+    "beforeHash": "58148254c4de0108755d611ab92dd47597fa905b1019959041df819d479256eb",
+    "afterHash": "e1232d27e3f16d22d9254444697a0968a89e6e05836a3821137f6a2567e5c431",
+    "comments": 5
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/database/reference-data.ts",
+    "beforeHash": "af9fe666fe7fb5fffc8da0be96bc6960453f04bfd87897c330347ead5c6d9a10",
+    "afterHash": "da978d34c066ba90b5a22d3c314d31063e2f7117c21c2c65750a1aaba6597b70",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/database/restock-demo.ts",
+    "beforeHash": "20757d507ed0c7cf80ed0bd3a878fde39f0530a3387d14f4ee3db4d6cd4641bd",
+    "afterHash": "13cfd20b69edeb561b01a7b145b0a2236cd25f32dfe441217e94ad8c5482d405",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/database/seed.ts",
+    "beforeHash": "3fbd0330ca900da2a294c9bf6a12c1f1e0bcd7e4cfc8daf371e2f710ce0acf24",
+    "afterHash": "1b7f7af87f685915f6b98ffcbad117b513cdfda64b678dabb0ce5f4d7be75480",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/export-openapi.ts",
+    "beforeHash": "0c777a94bb3233533fa07a6bd73c29fde035de24cc5316f193ff8c4189f864e4",
+    "afterHash": "3bfbc232bcdb7845038c90039170d44665d853b373ab0048c223902eee74d240",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/health/health.controller.ts",
+    "beforeHash": "4b726442ce57157402566f392af9c40811770457377bce69b66fcec32ee26132",
+    "afterHash": "c76d0df3642f7277661d56bb73f50a5f76207f5d0e30acce5bcf0cb1f79e47ad",
+    "comments": 7
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/main.ts",
+    "beforeHash": "ec7b3b316e0af25272de1c41531d8fc6161fc0fce69a904292bae3d71e4f985a",
+    "afterHash": "f82e1e5e792428ccf9664673f051f3c70ca347d281c0f49cc962fa57b6bf8538",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/openapi.ts",
+    "beforeHash": "1c1bdc2e609749c59851a4cda613257e7fe3f9d4a1e0f3132f3d64b9d32cb2c4",
+    "afterHash": "fda12405d5e6ef81967585fea5823ab2167e5643d5efd166288484e21840fa84",
+    "comments": 3
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/orders/admin-order.dto.ts",
+    "beforeHash": "87cceb981f6a645f3c46cf62ded5e8d986f9e97bb2ade1c0509861a476047d59",
+    "afterHash": "70cdd00552cc0148e1e8a3c3402b61185a69efc7ed2945b7da2fd730419a6e64",
+    "comments": 16
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/orders/order-response.dto.ts",
+    "beforeHash": "0075710c129e17ef6697f6db557cae01696d6baff22ee99c861d0f98a5677e6d",
+    "afterHash": "9c947adbb23fb5e8e5e7805ad4008aee154eec458bcf8353d46bb6ecd658ca56",
+    "comments": 46
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/orders/order.dto.ts",
+    "beforeHash": "3b9c2e8ae2a067abb516d8ffd14e9a43750083e377ae7dd260e4fcfa26f09252",
+    "afterHash": "4419bcc4fa6faad0314027c12f125ec4fb5c4b8c92266e06baac27495045ecbc",
+    "comments": 21
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/orders/orders.controller.ts",
+    "beforeHash": "8061297e6d284a99068e70ac2f0e0a3b9a2d9b7f2e4bd9f7641957fe200f9714",
+    "afterHash": "fdc70bfebd3528356593764b88692e77e3fc9e969cacc4379fe77731772c4a00",
+    "comments": 17
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/orders/orders.module.ts",
+    "beforeHash": "cb5d81b7dce4b928181647fa7ddfad91237cb4faf3b2d2a8d17044d81cb7d865",
+    "afterHash": "a33e1b3c32a1850c86d0e187f38fa581af1607e722be8e34b8dc9d6c3592abff",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/orders/orders.service.ts",
+    "beforeHash": "ddad94692d2b5a93b8e6dbf0b91ce96a99191521ee7272335633c156d340d26f",
+    "afterHash": "e25d5a2b9fb7fef6be48a89c766e8086f201d1e153b86cc040bb114442a4cd12",
+    "comments": 36
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/shop/shop.controller.ts",
+    "beforeHash": "a81cd72ada38966247206219a6827ade70264519298bc26d6b5ac2ce5ec61b54",
+    "afterHash": "691db073cf01521397f39137f6b7e04205fd4d2f89ca53cdd5ddf11fd5d96efa",
+    "comments": 34
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/shop/shop.dto.ts",
+    "beforeHash": "75aac564e28f8ec3a5a7a28d7c21d95ee1a9f95ff914e9b1b953ab7ef575c8b4",
+    "afterHash": "26c272d01794a1de835bfe06500a580faa0106aabc4c9fd81bedca30ce4725b0",
+    "comments": 75
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/shop/shop.module.ts",
+    "beforeHash": "35711eeedcadb52f4d0fba16eaaf43a93ee883e10e80f0b62b0815b9caae818f",
+    "afterHash": "52d7e546d745f9b954f5900da25b865c423aa6afdff6a317fb6b65601adbb490",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/shop/shop.service.ts",
+    "beforeHash": "e6411fb6d494892974c63828206c1f9a799febc9e8ee9cf298793dc912e7edd2",
+    "afterHash": "560a715b216a7f8387ec6303eb40aca4e9ad884d02eead70dea1f5dcf5e6db75",
+    "comments": 45
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/users/admin-user.dto.ts",
+    "beforeHash": "95c837f06d86e7ebe7bf51ec55a24eb308824b3016d1dafcc0ad42a22e2e8df5",
+    "afterHash": "25ab9dcb273d3596ff2769afb591dded88b162ecb8229b4ff7f6b9ead9cf0b91",
+    "comments": 10
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/users/user-mapping.ts",
+    "beforeHash": "2ca3dce517934547d282146dd18efea9226ebfdb25be6aa42785b2c2cd6599a8",
+    "afterHash": "9eaf0f595c7c2f5065c485a98c77554a0d5d61b1bbea396e6ec0b4650fcb1a14",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/users/user.dto.ts",
+    "beforeHash": "ad72c06ce391449443ca5f9fecb410782d48e5e040ad68b8ebacc5d81f69b3fe",
+    "afterHash": "e230eaf93f42755950f8add4573581720304e6b070ac1cf1851455644fc03377",
+    "comments": 26
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/users/users.controller.ts",
+    "beforeHash": "4d10f51b5a532da38fc04538249966254d861e358e256ce0330977b01ad51f01",
+    "afterHash": "e36d9bfabb8134afab1ed293f876cf455777d5ca03bd039eb080d2eb6baeb453",
+    "comments": 12
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/users/users.module.ts",
+    "beforeHash": "4294980013c88cda3ac18fa0bbb5672f2aa09d934b47546b5545236339d68201",
+    "afterHash": "fd3479ffc65cfd7a4378bd2b3c2de7b015ff47dc70c24907f19d333fcbe57273",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-backend/src/users/users.service.ts",
+    "beforeHash": "8b2dfd3ad89aaabc6009d4e838f11986afc9e0a4e5795dddaeaab20d749c5b7b",
+    "afterHash": "63fda570f5af0386c61dd704db92121a1712383fb5db4f0189eea2a1cbf78c58",
+    "comments": 15
+  },
+  {
+    "file": "outputs/vnwatch-backend/test/admin.integration.test.ts",
+    "beforeHash": "7bea8cb35a8b72b17421f22fb1047574cd89621a96ebaee987f015912f48ba48",
+    "afterHash": "6bcf76c546520e6ac5e27c0261e7c293d992d4e2093494e624cc761ffef80be9",
+    "comments": 8
+  },
+  {
+    "file": "outputs/vnwatch-backend/test/assistant.integration.test.ts",
+    "beforeHash": "ae4fe395b210c84288e5afa925b4c727e2417b45bfe6ce813850f853ebed7651",
+    "afterHash": "f6e7c179785acf072e9c2bc07d6ae0e82b9e07621d3c294240a948c642765510",
+    "comments": 8
+  },
+  {
+    "file": "outputs/vnwatch-backend/test/auth.integration.test.ts",
+    "beforeHash": "f902c65ff33e78fe609990f984b35165cf18215085dc204a216706e19936ccef",
+    "afterHash": "2ac7ba414e0faf36698255d8d1042f8f60720d25322582fbd18cc8d8e8de7f72",
+    "comments": 9
+  },
+  {
+    "file": "outputs/vnwatch-backend/test/catalog.integration.test.ts",
+    "beforeHash": "e474941166526481d98eae73396875f366b76a5749dc85c8076af91ffd1ebddb",
+    "afterHash": "47601cead5637abd8f5c254a1b75cd94a4c880ebf6a14d1b1d703362ccff9674",
+    "comments": 4
+  },
+  {
+    "file": "outputs/vnwatch-backend/test/demo-target.unit.test.ts",
+    "beforeHash": "3176a8a80faaeb16fb060fdbb4355a313214958e4bcaa09e5b885f05acdce0d9",
+    "afterHash": "7a8ce9afb49f1d28916e8829df7610f8092591141a179efcf53dda241456fe38",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-backend/test/health.unit.test.ts",
+    "beforeHash": "8ed333aa387ea132c9549d3bfba818fc0af2a05586afd03f45de0d55cfb884a5",
+    "afterHash": "1a419465d3dbadab8404f1c6a429132646ff74f65279f3aa4488cfac0d139f47",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-backend/test/helpers/auth-context.ts",
+    "beforeHash": "e3079f56b702077abd9a0b643e6cb9b644895f196c8d49bfdb276522c2023964",
+    "afterHash": "8f77439c9aec80134ae6c6ab98031b48fb9b4afd94001304d45adda6ce33175e",
+    "comments": 4
+  },
+  {
+    "file": "outputs/vnwatch-backend/test/orders.integration.test.ts",
+    "beforeHash": "0b9a57354d618398c23fd8c97f65fa8c043b4aa9f260a9665fcab9a1e1d8bb01",
+    "afterHash": "c87f033d5cdbc10179ebc4c457ef2f8f7da71ffcdea9f40b3a04b1fd427dfe9e",
+    "comments": 8
+  },
+  {
+    "file": "outputs/vnwatch-backend/test/qr-demo.integration.test.ts",
+    "beforeHash": "a80d054bf9117f69edb5d64aabacbae773d322b801a76d9d571c3e228125b152",
+    "afterHash": "863ea6bd8f778cd77443fc6da4b6f1e0e738027f36e1dadbc35b5b39a9b60b3b",
+    "comments": 7
+  },
+  {
+    "file": "outputs/vnwatch-backend/test/reference-catalog.integration.test.ts",
+    "beforeHash": "32cbf813e4dbdfc87a1afc32f936d58e481309b217c87383e9a439609c4d5d03",
+    "afterHash": "2241590cfa99c455570fdbf7005405e2286bbffdd85f252da304eabf62a6746d",
+    "comments": 4
+  },
+  {
+    "file": "outputs/vnwatch-backend/test/shop.integration.test.ts",
+    "beforeHash": "f9cd65399885be9164118190026a14e5ea7069f71e09759f92465ed5e2d0b089",
+    "afterHash": "9b8067eb18b87b5faa3579c2f8cdbca1624061f6834bb57ffdf4ddb3d522c7f3",
+    "comments": 5
+  },
+  {
+    "file": "outputs/vnwatch-frontend/.dockerignore",
+    "beforeHash": "0065c9faff92ca55019d65223c78e0731aa5d196d5ddb46ae5908b293201551b",
+    "afterHash": "1f33c3b9cba405b5a6605781eba3304b8e4dd07d8a947db963f9d25487cd9ca0",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-frontend/.gitignore",
+    "beforeHash": "a3f7a50dd3faac202d0ef1db54e99405db2cef397d2804cc87c2fc83473b9637",
+    "afterHash": "4a1c77913657f974f6d29cac04eac1ce52bfb14ea9585a223e45e9e512c3b2ce",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-frontend/desktop.html",
+    "beforeHash": "8df7174271d2c4e2aa12b4bf18c63c51aeb1c715bc61b55e64ee9eae6a8e74c2",
+    "afterHash": "2f1356e666af2e601bcf3a5a3de16f12aa609968eca8c31399ed074fb7a08080",
+    "comments": 5
+  },
+  {
+    "file": "outputs/vnwatch-frontend/Dockerfile",
+    "beforeHash": "5975271a48ce100fa6df7c118332af32655912d32a0d46bc1e97873931ee69b1",
+    "afterHash": "e1d0425f6012d2f595d0e83c5e8c6015647168519888383de9fafe7d7d708914",
+    "comments": 12
+  },
+  {
+    "file": "outputs/vnwatch-frontend/index.html",
+    "beforeHash": "423b6ed16f41e843cc076f05dd648a1d31b18e66d69a778f72e21030ef0a9ada",
+    "afterHash": "db87843d9ee5ca95459f54a60e1b94983c12a7be90eff638bc6678e9350fdd7a",
+    "comments": 5
+  },
+  {
+    "file": "outputs/vnwatch-frontend/nginx.conf",
+    "beforeHash": "4d05ccd74ef5882fe65b9cf60f76ba6a9cf51ada24080bf19925688f31db8d4d",
+    "afterHash": "6d684690ab7ceb8762f2f92c36c00743988d06eb7c059c66d085930131a48e22",
+    "comments": 13
+  },
+  {
+    "file": "outputs/vnwatch-frontend/playwright.config.ts",
+    "beforeHash": "53088b2988851cf47f8a8709927cfbaff4b5cbc4be04588e8b771bc177562b8f",
+    "afterHash": "6b50e63d25e9ed15d380bb9703e4cb4d0e8b1a7fadf9b68051f22071bb690346",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-frontend/src/Account.tsx",
+    "beforeHash": "f923fc0e1cdd89c8f8755dde653e41ba150447676fff15eb6ecf221a72fe3993",
+    "afterHash": "54d46d0a706af9541799f71229e71108a186a2f2e9127739627ed4184e1cd45d",
+    "comments": 34
+  },
+  {
+    "file": "outputs/vnwatch-frontend/src/admin.css",
+    "beforeHash": "1e79fe2f8241904e628a09cc2ec08b2559baa6ca6f030a174c77442ef6346bda",
+    "afterHash": "ea2e25fe8018487ac7c476c8af9fef3dc8ab2a134f84fb13a1cb312c46c9124c",
+    "comments": 61
+  },
+  {
+    "file": "outputs/vnwatch-frontend/src/AdminCreateOrder.tsx",
+    "beforeHash": "d39f07759817b35b93d8aa844aefbb627b45290c1b6e7bbab55704225c6fcd15",
+    "afterHash": "cc87c021c8fc81ec6853cbae909e10c9df33492bd550ec5d9f1c5310e29c1d23",
+    "comments": 36
+  },
+  {
+    "file": "outputs/vnwatch-frontend/src/adminNavigation.ts",
+    "beforeHash": "559db33867df98424f7c58bad0a6bec81cd735682b4aef2692536b54efc6abb6",
+    "afterHash": "cc6c88f4bf386e4778f9efa19f651c01e75b19378724c133f2685bbf847ec6fe",
+    "comments": 3
+  },
+  {
+    "file": "outputs/vnwatch-frontend/src/AdminOrderTools.tsx",
+    "beforeHash": "6c2efdcfdadd3101945f3db99580d84a005ba12fae09c516cc1e3ffc671330d4",
+    "afterHash": "931c10fcd418d318071bfd6a50743116a0cbc67e8ae0fa6ed98f1673404196a9",
+    "comments": 6
+  },
+  {
+    "file": "outputs/vnwatch-frontend/src/AdminPortal.tsx",
+    "beforeHash": "c0f4cc4a043aa0ffe5fce0b02fb3a4858505a81ea89b937b960cc4cdcee2543e",
+    "afterHash": "29d03fd3ee6b9dd058c147a4b3cea15048efe76ad4e40d48407c3cd4da6ce610",
+    "comments": 17
+  },
+  {
+    "file": "outputs/vnwatch-frontend/src/AdminUsers.tsx",
+    "beforeHash": "c2e2b5a4b6ac7bda1a54163361d52990397ac84578d3c05582f74e30240a4aa1",
+    "afterHash": "85b71566c42c693066d6eee2441a964c0592cfcd451a26009c075b98bf33f990",
+    "comments": 15
+  },
+  {
+    "file": "outputs/vnwatch-frontend/src/api.ts",
+    "beforeHash": "63b112c0ff48c880928439463de0717ad4e73178b16e5e1faaf904da3bb895f5",
+    "afterHash": "eae111bb905cfd15b2a680a8a8d68f3e446959f842c3b92c070814bdca113678",
+    "comments": 13
+  },
+  {
+    "file": "outputs/vnwatch-frontend/src/App.tsx",
+    "beforeHash": "c64298910d7bbd68a070f7a6fd7bcc18f1bdb670f2802830aedbbf00d8143165",
+    "afterHash": "f6c47703e90a867019e1b24732ee659eb5acde8b9b9a925dbb9216b8d48cf398",
+    "comments": 54
+  },
+  {
+    "file": "outputs/vnwatch-frontend/src/Assistant.tsx",
+    "beforeHash": "c1249f48ef1a370d764d6b5aed26682171c72b527497a04b54799ad9fa0484b3",
+    "afterHash": "4b3a6616c9c59bf7bdd68332f7924a912b23a0a44a5983112330c2564953d5d8",
+    "comments": 23
+  },
+  {
+    "file": "outputs/vnwatch-frontend/src/components.tsx",
+    "beforeHash": "da24f3662f8c2decb1bfcf1899f344ca4d5df6aeaeb4854e4024a1d9fa247840",
+    "afterHash": "51975b0b59480b8da9d58e4096b9b9d03c9ce32e7857e985ffdc6494b648211e",
+    "comments": 20
+  },
+  {
+    "file": "outputs/vnwatch-frontend/src/desktop-bridge.d.ts",
+    "beforeHash": "1db6f58cbb6a9c3c7a7fca7f34871f036c508ac9e3a67e61a6f9c0e318061ba9",
+    "afterHash": "60df6e84fb9f84370d0e3740140d05e06394e09df58f5ae0428083f5d50cda44",
+    "comments": 12
+  },
+  {
+    "file": "outputs/vnwatch-frontend/src/desktop.tsx",
+    "beforeHash": "edfdc5e6886e9b6d4584dccda1fb4b341e3f701c8688564d9a6c9a591f0ff268",
+    "afterHash": "2f0e52616e3f385dcd695cb5c8b8be4d976511a519e8e8a1a7000ff042b85e5a",
+    "comments": 5
+  },
+  {
+    "file": "outputs/vnwatch-frontend/src/main.tsx",
+    "beforeHash": "10a6d3727eac46fe0369b846f6e68e9ad3a55140cb80bc22132640f4b3492e1f",
+    "afterHash": "b2d245ec3415d60492c5bf4362706c7efbba32de88a96c2f590b5f5a31c9f6a2",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-frontend/src/Management.tsx",
+    "beforeHash": "678afc182215c6fd0c21bb6658602b2f697097f911488f36d61c912876dde204",
+    "afterHash": "42074d971a65c44e8bb4681b22e98a0baf862eb15a2cad42c7f6a48b2a869ebf",
+    "comments": 88
+  },
+  {
+    "file": "outputs/vnwatch-frontend/src/Orders.tsx",
+    "beforeHash": "229a0aa2d6a61b3b9fa0bc291b7b9219bec954d49f9cf3f0248aaac53fb18488",
+    "afterHash": "7c0c79b0056ffd4a0f6589fea085a88d3069b6ef5fadb5fc87033da92bf5ba3d",
+    "comments": 64
+  },
+  {
+    "file": "outputs/vnwatch-frontend/src/Product.tsx",
+    "beforeHash": "95a527f7b706067da74385745ae681ab164b6d006b65beefe0595b9107e72447",
+    "afterHash": "e0ca52ea2e05dd24893c6231fa6ce092c729ad01a9523563e22d22d7f390574b",
+    "comments": 19
+  },
+  {
+    "file": "outputs/vnwatch-frontend/src/QrDemoPayment.tsx",
+    "beforeHash": "13728b7a145a659ffede12a4596f5f61e2aa36689db863dd75bc68af4f8b7a02",
+    "afterHash": "4ae70d320f33d57ea7f8b0178b98dd6fe9a7307cbee6fef91da0ab49b5fe97d8",
+    "comments": 12
+  },
+  {
+    "file": "outputs/vnwatch-frontend/src/Shopping.tsx",
+    "beforeHash": "4016bf2546a8e93ca55c5e251162a057249fd1bbba2d53eb535a0ab7e34ebf01",
+    "afterHash": "b4fc1b23f9317560dd9f7129e06b0bdd0b0c30e0bfc6365e8895044f1eec9d28",
+    "comments": 51
+  },
+  {
+    "file": "outputs/vnwatch-frontend/src/styles.css",
+    "beforeHash": "353a3556532589e3a18d8f451468ad16da133e77c87ff86361ba7877b968e3aa",
+    "afterHash": "9205a5de7d0b3c65ec36b39fce080f9fd899a3f0447c44d83b438f420588193b",
+    "comments": 130
+  },
+  {
+    "file": "outputs/vnwatch-frontend/src/types.ts",
+    "beforeHash": "47b88bfdafad2462c42be1e5da00c778b6e95a3fd842de0e52506fb63e33fc46",
+    "afterHash": "d4ecf831ad2de82b71cae24519f2c249f7d518e73ff0d0ea52bdaba2a93dcb81",
+    "comments": 127
+  },
+  {
+    "file": "outputs/vnwatch-frontend/tests/admin-portal.spec.ts",
+    "beforeHash": "bcbf79962cb6749e77cefe858e8c663a3e2319a935aa5ca3b15bda5a40ba813e",
+    "afterHash": "95154dc85f4cef1d86ae4c910bd86f909cce767eec7552024bec0381dfae96ae",
+    "comments": 3
+  },
+  {
+    "file": "outputs/vnwatch-frontend/tests/assistant.spec.ts",
+    "beforeHash": "e1cc735de855ab1b81e877b96be2fd347439000a3c7279c805132f9ad3b5b3f8",
+    "afterHash": "c039c4fac8b3651d6d45f926d7ca336d4d2045f50a6d30fc28cfa5c04152b58d",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-frontend/tests/management.spec.ts",
+    "beforeHash": "6ba6784be7d1918dc4e06df228470e4654ae131ecf533a3029a7d466f98cfcee",
+    "afterHash": "e8e771a371de71a863fe51c4e87259a303d45398aeab840f1499395eaac926a3",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-frontend/tests/orders.spec.ts",
+    "beforeHash": "3df8247d8f6db242daae527893512abd492b4abfdfcdd27fd468db688f6d4967",
+    "afterHash": "277efdac2e76ef3acdf03820ff1d834a844b9b6340fc605802f2cad207232cb9",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-frontend/tests/qr-demo.spec.ts",
+    "beforeHash": "9122956d2b5a89202432542a1dbef9a5c147f13aebe5fcfaa14fb314dffa005b",
+    "afterHash": "347075715c1a7a87259b45e2fc470990ced925b03fcd6859ccaab833828b15ad",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-frontend/tests/reference-catalog.spec.ts",
+    "beforeHash": "8a11b8b8212f8d425677e63a983bbf43e155a6a577d2e449e999ad50b7bbacfd",
+    "afterHash": "a6703b7ccf0f70445f6060c1e92567bfd8b9fca0cd46fd90b86dfa50d97b2c97",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-frontend/tests/shopping.spec.ts",
+    "beforeHash": "65573c627fd62052ca73eaf8af77349d363a5b54ab693ebe4e07c03681ce9ecd",
+    "afterHash": "a8b11df09216929f3ef941101c8bce2da9d899943a3aaa0bdbeaa9383abc2980",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-frontend/tests/storefront.spec.ts",
+    "beforeHash": "743ea92134b2b3388c7168d9f2058d3bb09ad3a66ac5c3ec0665efbc3215a23f",
+    "afterHash": "95fc824eafb07c7a969538a4ef5e468f7932ec1b2e85b8f3f1217f2c7b2ef870",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-frontend/vite.config.ts",
+    "beforeHash": "3ce4a8a65fcf8738408533ed6e5c7b8694e59b6f625d517dafd5119b14c922e4",
+    "afterHash": "663ba3dfc94d0bd1013183c6ca2204f70e86f30cae394ed3fbcfe5f8fffe51a0",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-manager/.gitignore",
+    "beforeHash": "430da917259b58c751ac27a3183acfa7245f9ca93ac38ddaf7c349bb3f541567",
+    "afterHash": "4037df4a96e8f0e6282e8f83363cfa688ab2b26f2e2817d24eff0dc499c529dc",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-manager/build/create-icon.ps1",
+    "beforeHash": "a312dccb552675947ef4d97f7285480de3c4948a330a271f445f560136dc8148",
+    "afterHash": "91c7662991d311eebebf2423437e491983cf33ca2a3c42cbe19428d342ec23af",
+    "comments": 2
+  },
+  {
+    "file": "outputs/vnwatch-manager/src/bridge.ts",
+    "beforeHash": "acbd1a8d466c4bfd4e2e3e529240b6c8c005100f414ad40f5ffc252c6775a1f4",
+    "afterHash": "75d724cbe3972cce06d8070264842e40129aca2ea307abcab0d9bf20c161f5fa",
+    "comments": 17
+  },
+  {
+    "file": "outputs/vnwatch-manager/src/main.ts",
+    "beforeHash": "c2767677b3a4463f398fd2083f57fbaca05bf67a9ca74d2732ee3329a919f5fa",
+    "afterHash": "38769a5e3d847af80cf08991454a33d4efd3ca91fe216fc7a43715112a6ea045",
+    "comments": 19
+  },
+  {
+    "file": "outputs/vnwatch-manager/src/preload.ts",
+    "beforeHash": "26bbdeecf366ec8ff12cdc42b5ec0f07ee25f8da741d8ad9a1bff84b65aa2852",
+    "afterHash": "cbe01be1489aa4972ab8c9029a0735ccfd3e86f85f17a680ad10b19dde95310f",
+    "comments": 1
+  },
+  {
+    "file": "outputs/vnwatch-manager/tests/bridge.test.cjs",
+    "beforeHash": "b2b3bee68abea4c17e095f00b9cc293a87470b4088e2058613d42338e5badb3b",
+    "afterHash": "027e03abe3b336c1a97fe6e0886a2f229cb971b1c6e15e840dd5893e93d23d9f",
+    "comments": 2
+  },
+  {
+    "file": "SHARE-WEBSITE.cmd",
+    "beforeHash": "0a40838ad778d8dfcbc132ccb7bad51e4368c34ee4d4ac2b8faf80fa5e44885f",
+    "afterHash": "618d317cd266efa6e4f441a89745b9608d5858839d046a1b1b42dc2537f89c0c",
+    "comments": 2
+  },
+  {
+    "file": "START-DOCKER.cmd",
+    "beforeHash": "6b3aa34736b82a40a5d21c69278131f4a519355ca940c15b831a6c5bff4b05f0",
+    "afterHash": "dcb989eff288ef6d2aebbbc56495d0461f670aaccc2602400dbd8a17a1bd9816",
+    "comments": 2
+  },
+  {
+    "file": "START-VNWATCH.cmd",
+    "beforeHash": "466b21ad52d7e644679a212946c7de391a63a45c9bfad7d1dbf9efea351bcbf3",
+    "afterHash": "46cd0fa5a30934dc0f236acd9fe1ffc4e1c5cf917faae76c735db898e27ce0e3",
+    "comments": 2
+  },
+  {
+    "file": "STOP-SHARING.cmd",
+    "beforeHash": "4d4debc1c8940fa6a3d8f9139b6d97f25580563f5a4fbf3d19167e0f080a6887",
+    "afterHash": "10157513a107c00f1b6f8eec12ec4afcf352760f17a7bef6839baf7b45d80c78",
+    "comments": 2
+  },
+  {
+    "file": "docs/learning/migrations/202610010001_catalog.sql",
+    "afterHash": "65b8781732848eef9dda99840e9d8c1cab68e68981faf85a73afb280c4afbdb3",
+    "comments": 9,
+    "originalMigration": "outputs/vnwatch-backend/prisma/migrations/202610010001_catalog/migration.sql",
+    "migrationHash": "d3e5cb8fd7a553830073dd35041e22b2bdd4e784918b86f7f2dfd44db7238281"
+  },
+  {
+    "file": "docs/learning/migrations/202610010002_auth_users.sql",
+    "afterHash": "6f9e7d02bc4bf6363918582d09b6759487ab49734f2702fa0a7d2400cf8a7bf4",
+    "comments": 16,
+    "originalMigration": "outputs/vnwatch-backend/prisma/migrations/202610010002_auth_users/migration.sql",
+    "migrationHash": "ff034de1e47f386d38fc44057b181f39854ff4cc109ea1794e7c87d6b97f5d7e"
+  },
+  {
+    "file": "docs/learning/migrations/202610010003_cod_orders.sql",
+    "afterHash": "487c6dcbec95ed7d287ff6092b90e0d2835c856298b309c2c8bb97bab43ae219",
+    "comments": 12,
+    "originalMigration": "outputs/vnwatch-backend/prisma/migrations/202610010003_cod_orders/migration.sql",
+    "migrationHash": "3db264d65bc5914ea610537fe35478e3b31de0a3a9d9f161d8e480a7be65ed55"
+  },
+  {
+    "file": "docs/learning/migrations/202610020004_reference_catalog.sql",
+    "afterHash": "77e42662b83f1e4529006bbff8a17ca7e0611b02abb70ab24eadbe3efdadd292",
+    "comments": 5,
+    "originalMigration": "outputs/vnwatch-backend/prisma/migrations/202610020004_reference_catalog/migration.sql",
+    "migrationHash": "6582311da4cb218ed9770db8b5b2303e4a46d93c341b977ec3c6b927b801497e"
+  },
+  {
+    "file": "docs/learning/migrations/20261003000000_shopping_management.sql",
+    "afterHash": "c1cebdbc1b06b0e294e2bd20c4b5d942753e30dd1912c955f4ea992984eedfe3",
+    "comments": 38,
+    "originalMigration": "outputs/vnwatch-backend/prisma/migrations/20261003000000_shopping_management/migration.sql",
+    "migrationHash": "2513601dd3f8ce45425f880c2f0fd5eedff5d4e0a2b18bb1542fd7b04326c820"
+  },
+  {
+    "file": "docs/learning/migrations/20261004000000_qr_demo.sql",
+    "afterHash": "75fa348825266519e5a114119e2adf6773efcef879189ef8d6938c5bb5fa852a",
+    "comments": 5,
+    "originalMigration": "outputs/vnwatch-backend/prisma/migrations/20261004000000_qr_demo/migration.sql",
+    "migrationHash": "d98e079e0f95d2038495b16edb29d202829245c635a328e8aec9a100fd976c98"
+  },
+  {
+    "file": "docs/learning/migrations/20261009000000_admin_order_archive.sql",
+    "afterHash": "0fdbb8bdf9f542c795741d2636770aa2e39c6ca8f5433bd79e71e3181defefb9",
+    "comments": 4,
+    "originalMigration": "outputs/vnwatch-backend/prisma/migrations/20261009000000_admin_order_archive/migration.sql",
+    "migrationHash": "9f724a032675a120e3e595fe8905516c7e2a900d1da937543fcdccf452f1433c"
+  }
+]

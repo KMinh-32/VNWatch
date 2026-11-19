@@ -1,0 +1,574 @@
+{
+  "classes": [
+    {
+      "id": "form",
+      "name": "ChatbotForm",
+      "role": "boundary",
+      "x": 230,
+      "y": 280,
+      "w": 400,
+      "attributes": [
+        "cuaSoChat",
+        "oNhapCauHoi",
+        "dsChuDeHoTro"
+      ],
+      "methods": [
+        "hienThiLoiChao()",
+        "nhapCauHoi()",
+        "guiTinNhan()",
+        "hienThiTraLoi()",
+        "hienThiSanPhamGoiY()",
+        "hienThiNguonTraLoi()",
+        "dongCuaSo()"
+      ],
+      "h": 354
+    },
+    {
+      "id": "controller",
+      "name": "ChatbotController",
+      "role": "control",
+      "x": 800,
+      "y": 280,
+      "w": 480,
+      "attributes": [
+        "maPhien",
+        "maTK?",
+        "nguCanhHoiThoai",
+        "yDinh",
+        "tieuChi",
+        "ketQuaTuVan"
+      ],
+      "methods": [
+        "moPhienChat()",
+        "kiemTraChuPhien()",
+        "guiTinNhan()",
+        "layLichSuHoiThoai()",
+        "timSanPhamPhuHop()",
+        "layKienThucDaDuyet()",
+        "goiHeThongAI()",
+        "kiemTraKetQuaVaNguon()",
+        "luuKetQuaTuVan()",
+        "dongPhienChat()"
+      ],
+      "h": 504
+    },
+    {
+      "id": "account",
+      "name": "TaiKhoan",
+      "role": "entity",
+      "table": "taikhoan",
+      "x": 1470,
+      "y": 150,
+      "w": 460,
+      "attributes": [
+        "maTK {PK}",
+        "hoTen",
+        "email",
+        "vaiTro",
+        "trangThai"
+      ],
+      "methods": [
+        "layThongTinKhach()",
+        "kiemTraTrangThaiTaiKhoan()"
+      ],
+      "fields": [
+        "MaTK",
+        "HoTen",
+        "Email",
+        "VaiTro",
+        "TrangThai"
+      ],
+      "h": 279
+    },
+    {
+      "id": "session",
+      "name": "PhienChat",
+      "role": "entity",
+      "table": "phienchat",
+      "x": 2080,
+      "y": 150,
+      "w": 460,
+      "attributes": [
+        "maPhien {PK}",
+        "maTK? {FK}",
+        "tieuDe?",
+        "trangThai",
+        "ngayTao",
+        "ngayCapNhat"
+      ],
+      "methods": [
+        "taoPhien()",
+        "layPhien()",
+        "kiemTraChuPhien()",
+        "capNhatThoiGian()",
+        "dongPhien()"
+      ],
+      "fields": [
+        "MaPhien",
+        "MaTK",
+        "TieuDe",
+        "TrangThai",
+        "NgayTao",
+        "NgayCapNhat"
+      ],
+      "h": 379
+    },
+    {
+      "id": "message",
+      "name": "TinNhanChat",
+      "role": "entity",
+      "table": "tinnhanchat",
+      "x": 2690,
+      "y": 150,
+      "w": 500,
+      "attributes": [
+        "maTN {PK}",
+        "maPhien {FK}",
+        "maTK? {FK}",
+        "nguoiGui",
+        "noiDung",
+        "yDinh?",
+        "cheDo?",
+        "tenMoHinh?",
+        "trangThai",
+        "thoiGian"
+      ],
+      "methods": [
+        "luuTinKhach()",
+        "layLichSuTruoc()",
+        "luuTinAI()",
+        "layLichSuPhien()"
+      ],
+      "fields": [
+        "MaTN",
+        "MaPhien",
+        "MaTK",
+        "NguoiGui",
+        "NoiDung",
+        "YDinh",
+        "CheDo",
+        "TenMoHinh",
+        "TrangThai",
+        "ThoiGian"
+      ],
+      "h": 454
+    },
+    {
+      "id": "category",
+      "name": "DanhMuc",
+      "role": "entity",
+      "table": "danhmuc",
+      "x": 1470,
+      "y": 800,
+      "w": 460,
+      "attributes": [
+        "maDM {PK}",
+        "tenDM",
+        "maDMCha? {FK}",
+        "thuTuHienThi",
+        "moTa"
+      ],
+      "methods": [
+        "layDanhMuc()",
+        "layDanhMucLienQuan()"
+      ],
+      "fields": [
+        "MaDM",
+        "TenDM",
+        "MaDMCha",
+        "ThuTuHienThi",
+        "MoTa"
+      ],
+      "h": 279
+    },
+    {
+      "id": "product",
+      "name": "SanPham",
+      "role": "entity",
+      "table": "sanpham",
+      "x": 2080,
+      "y": 800,
+      "w": 460,
+      "attributes": [
+        "maSP {PK}",
+        "maDM {FK}",
+        "tenSP",
+        "thuongHieu",
+        "kieuMay",
+        "chatLieuDay",
+        "giaBan",
+        "soLuongTon",
+        "hinhAnh",
+        "thongSoChiTiet",
+        "trangThai"
+      ],
+      "methods": [
+        "timSanPhamLienQuan()",
+        "layThongTinSanPham()",
+        "kiemTraConHang()"
+      ],
+      "fields": [
+        "MaSP",
+        "MaDM",
+        "TenSP",
+        "ThuongHieu",
+        "KieuMay",
+        "ChatLieuDay",
+        "GiaBan",
+        "SoLuongTon",
+        "HinhAnh",
+        "ThongSoChiTiet",
+        "TrangThai"
+      ],
+      "h": 454
+    },
+    {
+      "id": "knowledge",
+      "name": "KienThucChatbot",
+      "role": "entity",
+      "table": "kienthucchatbot",
+      "x": 2690,
+      "y": 800,
+      "w": 500,
+      "attributes": [
+        "maKT {PK}",
+        "loai",
+        "chuDe",
+        "tieuDe",
+        "noiDung",
+        "urlNguon?",
+        "trangThai",
+        "nguoiDuyet? {FK}",
+        "ngayDuyet?",
+        "ngayCapNhat"
+      ],
+      "methods": [
+        "layKienThucDaDuyet()",
+        "timTheoChuDe()"
+      ],
+      "fields": [
+        "MaKT",
+        "Loai",
+        "ChuDe",
+        "TieuDe",
+        "NoiDung",
+        "URLNguon",
+        "TrangThai",
+        "NguoiDuyet",
+        "NgayDuyet",
+        "NgayCapNhat"
+      ],
+      "h": 404
+    },
+    {
+      "id": "selection",
+      "name": "SanPhamGoiY",
+      "role": "entity",
+      "table": "sanphamgoiy",
+      "x": 2080,
+      "y": 1450,
+      "w": 460,
+      "attributes": [
+        "maTN {PK,FK}",
+        "maSP {PK,FK}",
+        "thuTu",
+        "lyDo?"
+      ],
+      "methods": [
+        "luuDanhSachGoiY()",
+        "layDanhSachGoiY()"
+      ],
+      "fields": [
+        "MaTN",
+        "MaSP",
+        "ThuTu",
+        "LyDo"
+      ],
+      "h": 254
+    },
+    {
+      "id": "source",
+      "name": "NguonTraLoi",
+      "role": "entity",
+      "table": "nguontraloi",
+      "x": 2690,
+      "y": 1450,
+      "w": 500,
+      "attributes": [
+        "maNguon {PK}",
+        "maTN {FK}",
+        "maKT? {FK}",
+        "tieuDeNguon",
+        "urlNguon?",
+        "noiDungTrichDan?",
+        "thoiDiemSuDung"
+      ],
+      "methods": [
+        "luuNguonVaBanChup()",
+        "layNguonTheoTinNhan()"
+      ],
+      "fields": [
+        "MaNguon",
+        "MaTN",
+        "MaKT",
+        "TieuDeNguon",
+        "URLNguon",
+        "NoiDungTrichDan",
+        "ThoiDiemSuDung"
+      ],
+      "h": 329
+    }
+  ],
+  "associations": [
+    {
+      "source": "customer",
+      "target": "form",
+      "points": [
+        [
+          119,
+          430
+        ],
+        [
+          175,
+          430
+        ],
+        [
+          175,
+          450
+        ],
+        [
+          230,
+          450
+        ]
+      ]
+    },
+    {
+      "source": "form",
+      "target": "controller",
+      "points": [
+        [
+          630,
+          450
+        ],
+        [
+          800,
+          450
+        ]
+      ]
+    },
+    {
+      "source": "controller",
+      "target": "ai",
+      "points": [
+        [
+          1040,
+          784
+        ],
+        [
+          1040,
+          1007
+        ]
+      ]
+    },
+    {
+      "source": "controller",
+      "target": "account",
+      "points": [
+        [
+          1280,
+          350
+        ],
+        [
+          1360,
+          350
+        ],
+        [
+          1360,
+          300
+        ],
+        [
+          1470,
+          300
+        ]
+      ]
+    },
+    {
+      "source": "controller",
+      "target": "session",
+      "points": [
+        [
+          1280,
+          390
+        ],
+        [
+          1330,
+          390
+        ],
+        [
+          1330,
+          120
+        ],
+        [
+          2310,
+          120
+        ],
+        [
+          2310,
+          150
+        ]
+      ]
+    },
+    {
+      "source": "controller",
+      "target": "message",
+      "points": [
+        [
+          1280,
+          430
+        ],
+        [
+          1350,
+          430
+        ],
+        [
+          1350,
+          95
+        ],
+        [
+          2940,
+          95
+        ],
+        [
+          2940,
+          150
+        ]
+      ]
+    },
+    {
+      "source": "controller",
+      "target": "category",
+      "points": [
+        [
+          1280,
+          470
+        ],
+        [
+          1380,
+          470
+        ],
+        [
+          1380,
+          900
+        ],
+        [
+          1470,
+          900
+        ]
+      ]
+    },
+    {
+      "source": "controller",
+      "target": "product",
+      "points": [
+        [
+          1280,
+          510
+        ],
+        [
+          1400,
+          510
+        ],
+        [
+          1400,
+          710
+        ],
+        [
+          2310,
+          710
+        ],
+        [
+          2310,
+          800
+        ]
+      ]
+    },
+    {
+      "source": "controller",
+      "target": "knowledge",
+      "points": [
+        [
+          1280,
+          550
+        ],
+        [
+          1420,
+          550
+        ],
+        [
+          1420,
+          680
+        ],
+        [
+          2940,
+          680
+        ],
+        [
+          2940,
+          800
+        ]
+      ]
+    },
+    {
+      "source": "controller",
+      "target": "selection",
+      "points": [
+        [
+          1280,
+          590
+        ],
+        [
+          1340,
+          590
+        ],
+        [
+          1340,
+          1370
+        ],
+        [
+          2310,
+          1370
+        ],
+        [
+          2310,
+          1450
+        ]
+      ]
+    },
+    {
+      "source": "controller",
+      "target": "source",
+      "points": [
+        [
+          1280,
+          630
+        ],
+        [
+          1310,
+          630
+        ],
+        [
+          1310,
+          1400
+        ],
+        [
+          2940,
+          1400
+        ],
+        [
+          2940,
+          1450
+        ]
+      ]
+    }
+  ]
+}

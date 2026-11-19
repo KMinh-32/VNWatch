@@ -1,0 +1,70 @@
+erDiagram
+    taikhoan o|--o{ phienchat : "so huu"
+    phienchat ||--o{ tinnhanchat : "chua"
+    taikhoan o|--o{ tinnhanchat : "gui khi dang nhap"
+    tinnhanchat ||--o{ sanphamgoiy : "de xuat"
+    sanpham ||--o{ sanphamgoiy : "duoc goi y"
+    tinnhanchat ||--o{ nguontraloi : "trich dan"
+    kienthucchatbot o|--o{ nguontraloi : "tham chieu neu co"
+    taikhoan o|--o{ kienthucchatbot : "duyet"
+
+    taikhoan {
+        INT MaTK PK
+        VARCHAR HoTen
+        VARCHAR Email
+    }
+    sanpham {
+        VARCHAR MaSP PK
+        VARCHAR TenSP
+        VARCHAR ThuongHieu
+        DECIMAL GiaBan
+        INT SoLuongTon
+        VARCHAR TrangThai
+    }
+    phienchat {
+        VARCHAR MaPhien PK "UUID, 36 ky tu"
+        INT MaTK FK "NULL khi khach chua dang nhap"
+        VARCHAR TieuDe "NULL duoc phep"
+        VARCHAR TrangThai "MO | DONG"
+        DATETIME NgayTao
+        DATETIME NgayCapNhat
+    }
+    tinnhanchat {
+        INT MaTN PK
+        VARCHAR MaPhien FK
+        INT MaTK FK "Nguoi gui; NULL cho AI hoac khach vang lai"
+        VARCHAR NguoiGui "KHACH | TRO_LY | HE_THONG"
+        TEXT NoiDung
+        VARCHAR YDinh "NULL duoc phep"
+        VARCHAR CheDo "OPENAI | DU_PHONG; NULL cho tin khach"
+        VARCHAR TenMoHinh "NULL duoc phep"
+        VARCHAR TrangThai "DANG_XU_LY | HOAN_TAT | LOI"
+        DATETIME ThoiGian
+    }
+    sanphamgoiy {
+        INT MaTN PK,FK
+        VARCHAR MaSP PK,FK
+        INT ThuTu "UNIQUE MaTN + ThuTu; lon hon 0"
+        VARCHAR LyDo "NULL duoc phep"
+    }
+    kienthucchatbot {
+        INT MaKT PK
+        VARCHAR Loai "THUONG_HIEU | CHINH_SACH | HUONG_DAN"
+        VARCHAR ChuDe
+        VARCHAR TieuDe
+        TEXT NoiDung
+        VARCHAR URLNguon "NULL cho noi dung noi bo"
+        VARCHAR TrangThai "NHAP | DA_DUYET | NGUNG_SU_DUNG"
+        INT NguoiDuyet FK "NULL khi chua duyet"
+        DATETIME NgayDuyet "NULL khi chua duyet"
+        DATETIME NgayCapNhat
+    }
+    nguontraloi {
+        INT MaNguon PK
+        INT MaTN FK
+        INT MaKT FK "NULL neu nguon la trang san pham"
+        VARCHAR TieuDeNguon
+        VARCHAR URLNguon "NULL cho chinh sach noi bo"
+        TEXT NoiDungTrichDan "Anh chup noi dung tai luc tra loi"
+        DATETIME ThoiDiemSuDung
+    }

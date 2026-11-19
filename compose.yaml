@@ -1,0 +1,236 @@
+# HỌC VNWATCH — compose.yaml
+# Lắp ghép PostgreSQL, init migration/seed, agent, backend và Nginx; chỉ cửa hàng được publish trên loopback.
+name: vnwatch-docker
+
+x-backend-environment: &backend-environment
+  NODE_ENV: development
+  VNWATCH_DOCKER_DEMO: "true"
+  HOST: 0.0.0.0
+  PORT: "3000"
+  DATABASE_URL: postgresql://vnwatch:${POSTGRES_PASSWORD:?Run docker/setup.ps1 first}@db:5432/vnwatch_dev?schema=public
+  ASSISTANT_SERVICE_URL: http://agent:8000
+  ASSISTANT_SERVICE_TOKEN: ${ASSISTANT_SERVICE_TOKEN:?Run docker/setup.ps1 first}
+  RESET_MAIL_DIR: /app/work/mail-outbox
+
+# Các service của bộ compose; mỗi service dùng image và cấu hình riêng.
+services:
+  # PostgreSQL giữ dữ liệu nghiệp vụ trong named volume.
+  db:
+    image: postgres:17-alpine@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24
+    # Cấu hình runtime, nội suy từ .env.docker; không ghi secret vào git.
+    environment:
+      POSTGRES_USER: vnwatch
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run docker/setup.ps1 first}
+      POSTGRES_DB: vnwatch_dev
+    # Lưu dữ liệu ngoài vòng đời container; không xóa volume khi chỉ muốn dừng ứng dụng.
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    # Lệnh kiểm tra readiness của service để compose biết lúc có thể sử dụng.
+    healthcheck:
+      # Service kiểm thử riêng dùng schema/fixture độc lập.
+      test: ["CMD-SHELL", "pg_isready -U vnwatch -d vnwatch_dev"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+    # Chính sách tự khởi động lại container.
+    restart: unless-stopped
+
+  # Chạy migration/seed sau DB khỏe, hoàn tất rồi backend mới bắt đầu.
+  init:
+    image: vnwatch-backend-tools:local
+    # Chỉ định context và stage để Docker tạo image từ mã nguồn.
+    build:
+      context: ./outputs/vnwatch-backend
+      target: tools
+    # Cấu hình runtime, nội suy từ .env.docker; không ghi secret vào git.
+    environment: *backend-environment
+    command: ["sh", "-ec", "npm run db:migrate && node dist/database/seed.js"]
+    # Điều kiện thứ tự sẵn sàng; health/completed quyết định lúc service bắt đầu.
+    depends_on:
+      # PostgreSQL giữ dữ liệu nghiệp vụ trong named volume.
+      db:
+        condition: service_healthy
+    # Chính sách tự khởi động lại container.
+    restart: "no"
+
+  # FastAPI trợ lý nội bộ; key/token lấy từ môi trường, không đưa vào React.
+  agent:
+    image: vnwatch-agent:local
+    # Chỉ định context và stage để Docker tạo image từ mã nguồn.
+    build: ./outputs/vnwatch-agent
+    # Cấu hình runtime, nội suy từ .env.docker; không ghi secret vào git.
+    environment:
+      ASSISTANT_SERVICE_TOKEN: ${ASSISTANT_SERVICE_TOKEN:?Run docker/setup.ps1 first}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-5.4-mini}
+    # Lệnh kiểm tra readiness của service để compose biết lúc có thể sử dụng.
+    healthcheck:
+      # Service kiểm thử riêng dùng schema/fixture độc lập.
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          'import urllib.request; urllib.request.urlopen("http://127.0.0.1:8000/health", timeout=3)',
+        ]
+      interval: 5s
+      timeout: 4s
+      retries: 20
+      start_period: 15s
+    # Chính sách tự khởi động lại container.
+    restart: unless-stopped
+
+  # NestJS phục vụ API trong mạng Docker.
+  backend:
+    image: vnwatch-backend:local
+    # Chỉ định context và stage để Docker tạo image từ mã nguồn.
+    build:
+      context: ./outputs/vnwatch-backend
+      target: runtime
+    # Cấu hình runtime, nội suy từ .env.docker; không ghi secret vào git.
+    environment: *backend-environment
+    # Lưu dữ liệu ngoài vòng đời container; không xóa volume khi chỉ muốn dừng ứng dụng.
+    volumes:
+      - reset_mail:/app/work/mail-outbox
+    # Điều kiện thứ tự sẵn sàng; health/completed quyết định lúc service bắt đầu.
+    depends_on:
+      # Chạy migration/seed sau DB khỏe, hoàn tất rồi backend mới bắt đầu.
+      init:
+        condition: service_completed_successfully
+      # FastAPI trợ lý nội bộ; key/token lấy từ môi trường, không đưa vào React.
+      agent:
+        condition: service_healthy
+    # Lệnh kiểm tra readiness của service để compose biết lúc có thể sử dụng.
+    healthcheck:
+      # Service kiểm thử riêng dùng schema/fixture độc lập.
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          'fetch("http://127.0.0.1:3000/api/v1/health/ready").then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))',
+        ]
+      interval: 5s
+      timeout: 4s
+      retries: 20
+      start_period: 15s
+    # Chạy migration/seed sau DB khỏe, hoàn tất rồi backend mới bắt đầu.
+    init: true
+    # Chính sách tự khởi động lại container.
+    restart: unless-stopped
+
+  # Dịch vụ giao diện React, cổng 8080 trong mạng Docker.
+  frontend:
+    image: vnwatch-frontend:local
+    # Chỉ định context và stage để Docker tạo image từ mã nguồn.
+    build: ./outputs/vnwatch-frontend
+    # Lệnh kiểm tra readiness của service để compose biết lúc có thể sử dụng.
+    healthcheck:
+      # Service kiểm thử riêng dùng schema/fixture độc lập.
+      test:
+        [
+          "CMD",
+          "wget",
+          "-q",
+          "-O",
+          "/dev/null",
+          "http://127.0.0.1:8080/healthz",
+        ]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    # Chính sách tự khởi động lại container.
+    restart: unless-stopped
+
+  # Gateway công khai duy nhất, định tuyến React và REST API theo URL.
+  gateway:
+    image: nginx:stable-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+    volumes:
+      - ./docker/gateway.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - "127.0.0.1:${WEB_PORT:-5180}:8080"
+    depends_on:
+      frontend:
+        condition: service_healthy
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/healthz"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  admin-bootstrap:
+    profiles: ["admin"]
+    image: vnwatch-backend:local
+    # Cấu hình runtime, nội suy từ .env.docker; không ghi secret vào git.
+    environment: *backend-environment
+    command: ["node", "dist/database/create-admin.js"]
+    stdin_open: true
+    # Điều kiện thứ tự sẵn sàng; health/completed quyết định lúc service bắt đầu.
+    depends_on:
+      # PostgreSQL giữ dữ liệu nghiệp vụ trong named volume.
+      db:
+        condition: service_healthy
+
+  test-backend:
+    profiles: ["test"]
+    image: vnwatch-backend-tools:local
+    network_mode: service:db
+    # Cấu hình runtime, nội suy từ .env.docker; không ghi secret vào git.
+    environment:
+      <<: *backend-environment
+      DATABASE_URL: postgresql://vnwatch:${POSTGRES_PASSWORD:?Run docker/setup.ps1 first}@127.0.0.1:5432/vnwatch_dev?schema=public
+    # Lưu dữ liệu ngoài vòng đời container; không xóa volume khi chỉ muốn dừng ứng dụng.
+    volumes:
+      - ./outputs/vnwatch-backend/test:/app/test:ro
+      - ./outputs/vnwatch-backend/tsconfig.test.json:/app/tsconfig.test.json:ro
+      - ./docker/test-backend.cjs:/app/test-backend.cjs:ro
+    command: ["node", "/app/test-backend.cjs"]
+    # Điều kiện thứ tự sẵn sàng; health/completed quyết định lúc service bắt đầu.
+    depends_on:
+      # PostgreSQL giữ dữ liệu nghiệp vụ trong named volume.
+      db:
+        condition: service_healthy
+
+  test-admin-ui:
+    profiles: ["test"]
+    image: vnwatch-backend-tools:local
+    # Cấu hình runtime, nội suy từ .env.docker; không ghi secret vào git.
+    environment: *backend-environment
+    # Ánh xạ cổng host:container; 127.0.0.1 giới hạn truy cập trên máy này.
+    ports:
+      - "127.0.0.1:5301:3005"
+    # Lưu dữ liệu ngoài vòng đời container; không xóa volume khi chỉ muốn dừng ứng dụng.
+    volumes:
+      - ./outputs/vnwatch-backend/test:/app/test:ro
+      - ./outputs/vnwatch-backend/tsconfig.test.json:/app/tsconfig.test.json:ro
+      - ./docker/admin-ui-api.cjs:/app/admin-ui-api.cjs:ro
+    command: ["node", "/app/admin-ui-api.cjs"]
+    # Điều kiện thứ tự sẵn sàng; health/completed quyết định lúc service bắt đầu.
+    depends_on:
+      # PostgreSQL giữ dữ liệu nghiệp vụ trong named volume.
+      db:
+        condition: service_healthy
+    # Chạy migration/seed sau DB khỏe, hoàn tất rồi backend mới bắt đầu.
+    init: true
+    # Chính sách tự khởi động lại container.
+    restart: "no"
+
+  test-agent:
+    profiles: ["test"]
+    image: vnwatch-agent:local
+    # Cấu hình runtime, nội suy từ .env.docker; không ghi secret vào git.
+    environment:
+      OPENAI_API_KEY: ""
+      ASSISTANT_SERVICE_TOKEN: docker-test-service-token-with-32-characters
+    # Lưu dữ liệu ngoài vòng đời container; không xóa volume khi chỉ muốn dừng ứng dụng.
+    volumes:
+      - ./outputs/vnwatch-agent/tests:/app/tests:ro
+    command: ["python", "-m", "pytest", "-q", "-p", "no:cacheprovider", "tests"]
+
+# Lưu dữ liệu ngoài vòng đời container; không xóa volume khi chỉ muốn dừng ứng dụng.
+volumes:
+  postgres_data:
+  reset_mail:

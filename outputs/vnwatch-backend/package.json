@@ -1,0 +1,58 @@
+{
+  "name": "vnwatch-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "VNWatch backend portfolio: verified catalog slice",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=24.15 <25"
+  },
+  "scripts": {
+    "build": "prisma generate && tsc -p tsconfig.build.json",
+    "start": "node dist/main.js",
+    "start:dev": "nest start --watch",
+    "typecheck": "prisma generate && tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate deploy",
+    "db:seed": "npm run build && node dist/database/seed.js",
+    "db:restock:demo": "npm run build && node dist/database/restock-demo.js",
+    "db:bootstrap-admin": "npm run build && node dist/database/bootstrap-admin.js",
+    "db:reset:dev": "node scripts/reset-dev.mjs",
+    "test": "prisma generate && tsc -p tsconfig.test.json && node --test --test-concurrency=1 .test-build/test/*.test.js",
+    "openapi:export": "npm run build && node dist/export-openapi.js"
+  },
+  "dependencies": {
+    "@nestjs/common": "12.1.2",
+    "@nestjs/core": "12.1.2",
+    "@nestjs/platform-express": "12.1.2",
+    "@nestjs/swagger": "12.0.2",
+    "@prisma/adapter-pg": "7.10.0",
+    "@prisma/client": "7.10.0",
+    "class-transformer": "0.5.1",
+    "class-validator": "0.14.2",
+    "dotenv": "^17.2.3",
+    "helmet": "^8.1.0",
+    "pg": "^8.16.3",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "qrcode-terminal": "file:vendor/qrcode-terminal"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.0",
+    "@nestjs/cli": "12.0.8",
+    "@nestjs/testing": "12.1.2",
+    "@types/express": "^5.0.5",
+    "@types/node": "^24.10.0",
+    "@types/pg": "^8.15.6",
+    "@types/supertest": "^6.0.3",
+    "eslint": "^10.0.0",
+    "prettier": "^3.7.4",
+    "prisma": "7.10.0",
+    "supertest": "^7.1.4",
+    "typescript": "5.9.3",
+    "typescript-eslint": "^8.48.0"
+  }
+}

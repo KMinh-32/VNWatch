@@ -1,0 +1,48 @@
+sequenceDiagram
+    actor customer as Khách hàng
+    participant form as ChatbotForm
+    participant controller as ChatbotController
+    participant account as TaiKhoan
+    participant session as PhienChat
+    participant message as TinNhanChat
+    participant product as SanPham
+    participant selection as SanPhamGoiY
+    participant source as NguonTraLoi
+    Note over customer,source: Khách chưa đăng nhập được tư vấn: MaTK = NULL. MaTK không lấy từ nội dung do trình duyệt gửi.<br/>Phiên khách dùng token do backend ký, gắn với MaPhien; MaPhien đơn lẻ không chứng minh quyền sở hữu.
+    customer->>form: 1. Mở cửa sổ<br/>chatbot
+    form->>controller: 2. moPhienChat<br/>(MaPhien?)
+    opt Có ngữ cảnh đăng nhập
+    controller->>account: 3. layThongTinKhach(MaTK từ ngữ cảnh)
+    account-->>controller: 4. Thông tin tối thiểu và trạng thái<br/>tài khoản
+    end
+    break Thông tin xác thực không hợp lệ hoặc tài khoản bị khóa
+    controller-->>form: 5. Yêu cầu xác thực lại;<br/>không tải lịch sử
+    form-->>customer: 6. Hiển thị thông báo
+    end
+    alt Chưa có MaPhien
+    controller->>session: 7. taoPhien(MaTK hoặc NULL)
+    session-->>controller: 8. Phiên mới: MaPhien, trạng thái mở
+    Note over controller,session: Backend cấp thông tin truy cập phiên khách; lịch sử của phiên mới là danh sách rỗng.
+    else Có MaPhien cần tiếp tục
+    controller->>session: 9. layPhien(MaPhien)
+    session-->>controller: 10. phien hoặc không tồn tại
+    end
+    controller->>controller: 11. kiemTraQuyenPhien(phien, ngữ cảnh xác thực / token khách)
+    break Phiên không tồn tại, không thuộc khách hoặc đã đóng
+    controller-->>form: 12. Từ chối truy cập phiên
+    form-->>customer: 13. Thông báo; cho phép<br/>mở phiên mới
+    end
+    opt Tiếp tục phiên đã có: tải lịch sử và dữ liệu hiển thị
+    controller->>message: 14. layLichSuPhien(MaPhien)
+    message-->>controller: 15. Tin nhắn theo thời gian; dsMaTN của các trả lời
+    controller->>selection: 16. layDanhSachGoiY(dsMaTN)
+    selection-->>controller: 17. Các liên kết MaTN–MaSP, thứ tự và lý do
+    controller->>source: 18. layNguonTheoTinNhan(dsMaTN)
+    source-->>controller: 19. Nguồn và bản chụp nội dung đã dùng
+    opt Lịch sử có sản phẩm gợi ý
+    controller->>product: 20. layThongTinSanPham(dsMaSP)
+    product-->>controller: 21. Thông tin công khai hiện tại; báo sản phẩm đã ngừng bán nếu có
+    end
+    end
+    controller-->>form: 22. MaPhien, lịch sử,<br/>gợi ý và nguồn
+    form-->>customer: 23. Hiển thị lời chào<br/>hoặc hội thoại cũ

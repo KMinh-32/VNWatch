@@ -1,0 +1,5 @@
+# HỌC VNWATCH — outputs/vnwatch-agent/requirements-dev.txt
+# Dependency bổ sung để chạy pytest và kiểm thử HTTP/agent.
+-r requirements.txt
+pytest==9.1.1
+httpx==0.28.1

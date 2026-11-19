@@ -1,0 +1,17 @@
+{
+  "source_erd_sha256": "edb08d731b4437a6ea051b2cbb7e38f4d48e7945e22e6d79a1682302246b699b",
+  "entities": 8,
+  "erd_relationships": 10,
+  "controller_entity_usage_links": 8,
+  "combined_drawio_pages": 5,
+  "sequence_message_counts": {
+    "VNWatch-ChatbotAI-Sequence-01-MoPhien": 23,
+    "VNWatch-ChatbotAI-Sequence-02-TuVan": 33,
+    "VNWatch-ChatbotAI-Sequence-03-LuuKetQua": 15
+  },
+  "all_breaks_end_interaction": true,
+  "drawio_ids_and_references_valid": true,
+  "entity_operations_match_vopc": true,
+  "render_overflow": 0,
+  "png_dimensions_verified": true
+}

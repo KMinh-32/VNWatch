@@ -1,0 +1,155 @@
+classDiagram
+    direction LR
+    class KhachHang {
+        <<actor>>
+    }
+    class HeThongAI {
+        <<actor>>
+    }
+    class ChatbotForm {
+        <<boundary>>
+        +cuaSoChat
+        +oNhapCauHoi
+        +dsChuDeHoTro
+        +hienThiLoiChao()
+        +nhapCauHoi()
+        +guiTinNhan()
+        +hienThiTraLoi()
+        +hienThiSanPhamGoiY()
+        +hienThiNguonTraLoi()
+        +dongCuaSo()
+    }
+    class ChatbotController {
+        <<control>>
+        +maPhien
+        +maTK
+        +nguCanhHoiThoai
+        +yDinh
+        +tieuChi
+        +ketQuaTuVan
+        +moPhienChat()
+        +kiemTraChuPhien()
+        +guiTinNhan()
+        +layLichSuHoiThoai()
+        +timSanPhamPhuHop()
+        +layKienThucDaDuyet()
+        +goiHeThongAI()
+        +kiemTraKetQuaVaNguon()
+        +luuKetQuaTuVan()
+        +dongPhienChat()
+    }
+    class TaiKhoan {
+        <<entity>>
+        +maTK
+        +hoTen
+        +email
+        +vaiTro
+        +trangThai
+        +layThongTinKhach()
+        +kiemTraTrangThaiTaiKhoan()
+    }
+    class PhienChat {
+        <<entity>>
+        +maPhien
+        +maTK
+        +tieuDe
+        +trangThai
+        +ngayTao
+        +ngayCapNhat
+        +taoPhien()
+        +layPhien()
+        +kiemTraChuPhien()
+        +capNhatThoiGian()
+        +dongPhien()
+    }
+    class TinNhanChat {
+        <<entity>>
+        +maTN
+        +maPhien
+        +maTK
+        +nguoiGui
+        +noiDung
+        +yDinh
+        +cheDo
+        +tenMoHinh
+        +trangThai
+        +thoiGian
+        +luuTinKhach()
+        +layLichSuTruoc()
+        +luuTinAI()
+        +layLichSuPhien()
+    }
+    class DanhMuc {
+        <<entity>>
+        +maDM
+        +tenDM
+        +maDMCha
+        +thuTuHienThi
+        +moTa
+        +layDanhMuc()
+        +layDanhMucLienQuan()
+    }
+    class SanPham {
+        <<entity>>
+        +maSP
+        +maDM
+        +tenSP
+        +thuongHieu
+        +kieuMay
+        +chatLieuDay
+        +giaBan
+        +soLuongTon
+        +hinhAnh
+        +thongSoChiTiet
+        +trangThai
+        +timSanPhamLienQuan()
+        +layThongTinSanPham()
+        +kiemTraConHang()
+    }
+    class KienThucChatbot {
+        <<entity>>
+        +maKT
+        +loai
+        +chuDe
+        +tieuDe
+        +noiDung
+        +urlNguon
+        +trangThai
+        +nguoiDuyet
+        +ngayDuyet
+        +ngayCapNhat
+        +layKienThucDaDuyet()
+        +timTheoChuDe()
+    }
+    class SanPhamGoiY {
+        <<entity>>
+        +maTN
+        +maSP
+        +thuTu
+        +lyDo
+        +luuDanhSachGoiY()
+        +layDanhSachGoiY()
+    }
+    class NguonTraLoi {
+        <<entity>>
+        +maNguon
+        +maTN
+        +maKT
+        +tieuDeNguon
+        +urlNguon
+        +noiDungTrichDan
+        +thoiDiemSuDung
+        +luuNguonVaBanChup()
+        +layNguonTheoTinNhan()
+    }
+    KhachHang -- ChatbotForm
+    ChatbotForm -- ChatbotController
+    ChatbotController -- HeThongAI
+    ChatbotController -- TaiKhoan
+    ChatbotController -- PhienChat
+    ChatbotController -- TinNhanChat
+    ChatbotController -- DanhMuc
+    ChatbotController -- SanPham
+    ChatbotController -- KienThucChatbot
+    ChatbotController -- SanPhamGoiY
+    ChatbotController -- NguonTraLoi

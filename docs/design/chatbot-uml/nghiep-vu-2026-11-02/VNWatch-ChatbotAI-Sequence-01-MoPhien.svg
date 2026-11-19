@@ -1,0 +1,207 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2900" height="3055" viewBox="0 0 2900 3055" role="img" aria-labelledby="title">
+<title id="title">SEQUENCE 01 — MỞ CHATBOT / TIẾP TỤC PHIÊN</title>
+<rect width="2900" height="3055" fill="white"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<text x="28" y="40.0" font-size="25" font-weight="700" text-anchor="start" fill="#172b43">SEQUENCE 01 — MỞ CHATBOT / TIẾP TỤC PHIÊN</text>
+<text x="28" y="74.0" font-size="16" font-weight="400" text-anchor="start" fill="#52677d">sd MoPhienChat · xác định khách từ ngữ cảnh backend; chỉ tải hội thoại sau khi kiểm tra quyền</text>
+<circle cx="130" cy="130" r="13" fill="white" stroke="#64748b" stroke-width="1.6"/>
+<polyline points="130,143 130,182" fill="none" stroke="#94a3b8" stroke-width="1.6" />
+<polyline points="103,159 157,159" fill="none" stroke="#94a3b8" stroke-width="1.6" />
+<polyline points="130,182 103,211" fill="none" stroke="#94a3b8" stroke-width="1.6" />
+<polyline points="130,182 157,211" fill="none" stroke="#94a3b8" stroke-width="1.6" />
+<text x="130" y="241.0" font-size="19" font-weight="700" text-anchor="middle" fill="#172b43">Khách hàng</text>
+<text x="130" y="266.0" font-size="12" font-weight="400" text-anchor="middle" fill="#64748b">«actor»</text>
+<polyline points="130,286 130,2905" fill="none" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="7 5"/>
+<circle cx="460" cy="158" r="27" fill="#dbeafe" stroke="#64748b" stroke-width="1.6"/>
+<polyline points="419,135 419,181" fill="none" stroke="#94a3b8" stroke-width="1.6" />
+<polyline points="419,158 433,158" fill="none" stroke="#94a3b8" stroke-width="1.6" />
+<text x="460" y="241.0" font-size="19" font-weight="700" text-anchor="middle" fill="#172b43">ChatbotForm</text>
+<text x="460" y="266.0" font-size="12" font-weight="400" text-anchor="middle" fill="#64748b">«boundary»</text>
+<polyline points="460,286 460,2905" fill="none" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="7 5"/>
+<circle cx="790" cy="158" r="27" fill="#d5e8d4" stroke="#64748b" stroke-width="1.6"/>
+<polyline points="810,137 794,123 776,130" fill="none" stroke="#94a3b8" stroke-width="1.6" />
+<polyline points="786,120 776,130 788,134" fill="none" stroke="#94a3b8" stroke-width="1.6" />
+<text x="790" y="241.0" font-size="19" font-weight="700" text-anchor="middle" fill="#172b43">ChatbotController</text>
+<text x="790" y="266.0" font-size="12" font-weight="400" text-anchor="middle" fill="#64748b">«control»</text>
+<polyline points="790,286 790,2905" fill="none" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="7 5"/>
+<circle cx="1120" cy="158" r="27" fill="#fff2cc" stroke="#64748b" stroke-width="1.6"/>
+<polyline points="1090,189 1150,189" fill="none" stroke="#94a3b8" stroke-width="1.6" />
+<text x="1120" y="241.0" font-size="19" font-weight="700" text-anchor="middle" fill="#172b43">TaiKhoan</text>
+<text x="1120" y="266.0" font-size="12" font-weight="400" text-anchor="middle" fill="#64748b">«entity» · taikhoan</text>
+<polyline points="1120,286 1120,2905" fill="none" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="7 5"/>
+<circle cx="1450" cy="158" r="27" fill="#fff2cc" stroke="#64748b" stroke-width="1.6"/>
+<polyline points="1420,189 1480,189" fill="none" stroke="#94a3b8" stroke-width="1.6" />
+<text x="1450" y="241.0" font-size="19" font-weight="700" text-anchor="middle" fill="#172b43">PhienChat</text>
+<text x="1450" y="266.0" font-size="12" font-weight="400" text-anchor="middle" fill="#64748b">«entity» · phienchat</text>
+<polyline points="1450,286 1450,2905" fill="none" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="7 5"/>
+<circle cx="1780" cy="158" r="27" fill="#fff2cc" stroke="#64748b" stroke-width="1.6"/>
+<polyline points="1750,189 1810,189" fill="none" stroke="#94a3b8" stroke-width="1.6" />
+<text x="1780" y="241.0" font-size="19" font-weight="700" text-anchor="middle" fill="#172b43">TinNhanChat</text>
+<text x="1780" y="266.0" font-size="12" font-weight="400" text-anchor="middle" fill="#64748b">«entity» · tinnhanchat</text>
+<polyline points="1780,286 1780,2905" fill="none" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="7 5"/>
+<circle cx="2110" cy="158" r="27" fill="#fff2cc" stroke="#64748b" stroke-width="1.6"/>
+<polyline points="2080,189 2140,189" fill="none" stroke="#94a3b8" stroke-width="1.6" />
+<text x="2110" y="241.0" font-size="19" font-weight="700" text-anchor="middle" fill="#172b43">SanPham</text>
+<text x="2110" y="266.0" font-size="12" font-weight="400" text-anchor="middle" fill="#64748b">«entity» · sanpham</text>
+<polyline points="2110,286 2110,2905" fill="none" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="7 5"/>
+<circle cx="2440" cy="158" r="27" fill="#fff2cc" stroke="#64748b" stroke-width="1.6"/>
+<polyline points="2410,189 2470,189" fill="none" stroke="#94a3b8" stroke-width="1.6" />
+<text x="2440" y="241.0" font-size="19" font-weight="700" text-anchor="middle" fill="#172b43">SanPhamGoiY</text>
+<text x="2440" y="266.0" font-size="12" font-weight="400" text-anchor="middle" fill="#64748b">«entity» · sanphamgoiy</text>
+<polyline points="2440,286 2440,2905" fill="none" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="7 5"/>
+<circle cx="2770" cy="158" r="27" fill="#fff2cc" stroke="#64748b" stroke-width="1.6"/>
+<polyline points="2740,189 2800,189" fill="none" stroke="#94a3b8" stroke-width="1.6" />
+<text x="2770" y="241.0" font-size="19" font-weight="700" text-anchor="middle" fill="#172b43">NguonTraLoi</text>
+<text x="2770" y="266.0" font-size="12" font-weight="400" text-anchor="middle" fill="#64748b">«entity» · nguontraloi</text>
+<polyline points="2770,286 2770,2905" fill="none" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="7 5"/>
+<rect x="20" y="580" width="2860" height="204" fill="none" stroke="#7589a0" stroke-width="1.4"/>
+<rect x="20" y="580" width="80" height="29" fill="#edf3f8" stroke="#7589a0" stroke-width="1.4"/>
+<rect x="20" y="818" width="2860" height="204" fill="none" stroke="#b14a55" stroke-width="1.4"/>
+<rect x="20" y="818" width="80" height="29" fill="#fff1f2" stroke="#b14a55" stroke-width="1.4"/>
+<rect x="20" y="1056" width="2860" height="499" fill="none" stroke="#7589a0" stroke-width="1.4"/>
+<rect x="20" y="1056" width="80" height="29" fill="#edf3f8" stroke="#7589a0" stroke-width="1.4"/>
+<polyline points="20,1349 2880,1349" fill="none" stroke="#7589a0" stroke-width="1.6" stroke-dasharray="7 5"/>
+<rect x="20" y="1689" width="2860" height="204" fill="none" stroke="#b14a55" stroke-width="1.4"/>
+<rect x="20" y="1689" width="80" height="29" fill="#fff1f2" stroke="#b14a55" stroke-width="1.4"/>
+<rect x="20" y="1927" width="2860" height="754" fill="none" stroke="#7589a0" stroke-width="1.4"/>
+<rect x="20" y="1927" width="80" height="29" fill="#edf3f8" stroke="#7589a0" stroke-width="1.4"/>
+<rect x="29" y="2447" width="2842" height="204" fill="none" stroke="#7589a0" stroke-width="1.4"/>
+<rect x="29" y="2447" width="80" height="29" fill="#edf3f8" stroke="#7589a0" stroke-width="1.4"/>
+<rect x="784" y="320" width="12" height="2585" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.4"/>
+<rect x="1114" y="656" width="12" height="83" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<rect x="454" y="448" width="12" height="529" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<rect x="1444" y="1132" width="12" height="83" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<rect x="1444" y="1427" width="12" height="83" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<rect x="1774" y="2003" width="12" height="83" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<rect x="2434" y="2159" width="12" height="83" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<rect x="2764" y="2315" width="12" height="83" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<rect x="2104" y="2523" width="12" height="83" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="60" y="601.0" font-size="15" font-weight="700" text-anchor="middle" fill="#7589a0">opt</text>
+<rect x="113" y="585" width="254.25" height="26.25" fill="white"/>
+<text x="116" y="602.0" font-size="15" font-weight="400" text-anchor="start" fill="#7589a0">[Có ngữ cảnh đăng nhập]</text>
+<text x="60" y="839.0" font-size="15" font-weight="700" text-anchor="middle" fill="#b14a55">break</text>
+<rect x="113" y="823" width="576.0" height="26.25" fill="white"/>
+<text x="116" y="840.0" font-size="15" font-weight="400" text-anchor="start" fill="#b14a55">[Thông tin xác thực không hợp lệ hoặc tài khoản bị khóa]</text>
+<text x="60" y="1077.0" font-size="15" font-weight="700" text-anchor="middle" fill="#7589a0">alt</text>
+<rect x="113" y="1061" width="195.75" height="26.25" fill="white"/>
+<text x="116" y="1078.0" font-size="15" font-weight="400" text-anchor="start" fill="#7589a0">[Chưa có MaPhien]</text>
+<rect x="33" y="1358" width="273.75" height="26.25" fill="white"/>
+<text x="36" y="1375.0" font-size="15" font-weight="400" text-anchor="start" fill="#7589a0">[Có MaPhien cần tiếp tục]</text>
+<text x="60" y="1710.0" font-size="15" font-weight="700" text-anchor="middle" fill="#b14a55">break</text>
+<rect x="113" y="1694" width="546.75" height="26.25" fill="white"/>
+<text x="116" y="1711.0" font-size="15" font-weight="400" text-anchor="start" fill="#b14a55">[Phiên không tồn tại, không thuộc khách hoặc đã đóng]</text>
+<text x="60" y="1948.0" font-size="15" font-weight="700" text-anchor="middle" fill="#7589a0">opt</text>
+<rect x="113" y="1932" width="566.25" height="26.25" fill="white"/>
+<text x="116" y="1949.0" font-size="15" font-weight="400" text-anchor="start" fill="#7589a0">[Tiếp tục phiên đã có: tải lịch sử và dữ liệu hiển thị]</text>
+<text x="69" y="2468.0" font-size="15" font-weight="700" text-anchor="middle" fill="#7589a0">opt</text>
+<rect x="122" y="2452" width="293.25" height="26.25" fill="white"/>
+<text x="125" y="2469.0" font-size="15" font-weight="400" text-anchor="start" fill="#7589a0">[Lịch sử có sản phẩm gợi ý]</text>
+<rect x="24" y="327" width="2852" height="74" fill="#fffbeb" stroke="#c4ae69" stroke-width="1.4"/>
+<text x="39" y="353.0" font-size="15" font-weight="400" text-anchor="start" fill="#172b43">Khách chưa đăng nhập được tư vấn: MaTK = NULL. MaTK không lấy từ nội dung do trình duyệt gửi.</text>
+<text x="39" y="378.0" font-size="15" font-weight="400" text-anchor="start" fill="#172b43">Phiên khách dùng token do backend ký, gắn với MaPhien; MaPhien đơn lẻ không chứng minh quyền sở hữu.</text>
+<polyline points="136,448 454,448" fill="none" stroke="#22354b" stroke-width="1.6" />
+<polygon points="443.0,453.0 454,448 443.0,443.0" fill="#22354b" stroke="#22354b" stroke-width="1.6"/>
+<rect x="141.0" y="396.75" width="308" height="46.5" fill="white"/>
+<text x="295.0" y="413.75" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">1. Mở cửa sổ</text>
+<text x="295.0" y="434.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">chatbot</text>
+<polyline points="466,526 784,526" fill="none" stroke="#22354b" stroke-width="1.6" />
+<polygon points="773.0,531.0 784,526 773.0,521.0" fill="#22354b" stroke="#22354b" stroke-width="1.6"/>
+<rect x="471.0" y="474.75" width="308" height="46.5" fill="white"/>
+<text x="625.0" y="491.75" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">2. moPhienChat</text>
+<text x="625.0" y="512.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">(MaPhien?)</text>
+<polyline points="796,656 1114,656" fill="none" stroke="#22354b" stroke-width="1.6" />
+<polygon points="1103.0,661.0 1114,656 1103.0,651.0" fill="#22354b" stroke="#22354b" stroke-width="1.6"/>
+<rect x="801.0" y="625.0" width="308" height="26.25" fill="white"/>
+<text x="955.0" y="642.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">3. layThongTinKhach(MaTK từ ngữ cảnh)</text>
+<polyline points="1114,734 796,734" fill="none" stroke="#22354b" stroke-width="1.6" stroke-dasharray="7 5"/>
+<polyline points="807.0,729.0 796,734 807.0,739.0" fill="none" stroke="#22354b" stroke-width="1.6"/>
+<rect x="801.0" y="682.75" width="308" height="46.5" fill="white"/>
+<text x="955.0" y="699.75" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">4. Thông tin tối thiểu và trạng thái</text>
+<text x="955.0" y="720.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">tài khoản</text>
+<polyline points="784,894 466,894" fill="none" stroke="#22354b" stroke-width="1.6" stroke-dasharray="7 5"/>
+<polyline points="477.0,889.0 466,894 477.0,899.0" fill="none" stroke="#22354b" stroke-width="1.6"/>
+<rect x="471.0" y="842.75" width="308" height="46.5" fill="white"/>
+<text x="625.0" y="859.75" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">5. Yêu cầu xác thực lại;</text>
+<text x="625.0" y="880.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">không tải lịch sử</text>
+<polyline points="454,972 136,972" fill="none" stroke="#22354b" stroke-width="1.6" stroke-dasharray="7 5"/>
+<polyline points="147.0,967.0 136,972 147.0,977.0" fill="none" stroke="#22354b" stroke-width="1.6"/>
+<rect x="141.0" y="941.0" width="308" height="26.25" fill="white"/>
+<text x="295.0" y="958.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">6. Hiển thị thông báo</text>
+<polyline points="796,1132 1444,1132" fill="none" stroke="#22354b" stroke-width="1.6" />
+<polygon points="1433.0,1137.0 1444,1132 1433.0,1127.0" fill="#22354b" stroke="#22354b" stroke-width="1.6"/>
+<rect x="801.0" y="1101.0" width="638" height="26.25" fill="white"/>
+<text x="1120.0" y="1118.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">7. taoPhien(MaTK hoặc NULL)</text>
+<polyline points="1444,1210 796,1210" fill="none" stroke="#22354b" stroke-width="1.6" stroke-dasharray="7 5"/>
+<polyline points="807.0,1205.0 796,1210 807.0,1215.0" fill="none" stroke="#22354b" stroke-width="1.6"/>
+<rect x="801.0" y="1179.0" width="638" height="26.25" fill="white"/>
+<text x="1120.0" y="1196.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">8. Phiên mới: MaPhien, trạng thái mở</text>
+<rect x="675" y="1273" width="890" height="49" fill="#fffbeb" stroke="#c4ae69" stroke-width="1.4"/>
+<text x="690" y="1299.0" font-size="15" font-weight="400" text-anchor="start" fill="#172b43">Backend cấp thông tin truy cập phiên khách; lịch sử của phiên mới là danh sách rỗng.</text>
+<polyline points="796,1427 1444,1427" fill="none" stroke="#22354b" stroke-width="1.6" />
+<polygon points="1433.0,1432.0 1444,1427 1433.0,1422.0" fill="#22354b" stroke="#22354b" stroke-width="1.6"/>
+<rect x="801.0" y="1396.0" width="638" height="26.25" fill="white"/>
+<text x="1120.0" y="1413.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">9. layPhien(MaPhien)</text>
+<polyline points="1444,1505 796,1505" fill="none" stroke="#22354b" stroke-width="1.6" stroke-dasharray="7 5"/>
+<polyline points="807.0,1500.0 796,1505 807.0,1510.0" fill="none" stroke="#22354b" stroke-width="1.6"/>
+<rect x="801.0" y="1474.0" width="638" height="26.25" fill="white"/>
+<text x="1120.0" y="1491.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">10. phien hoặc không tồn tại</text>
+<polyline points="796,1613 885,1613 885,1643 796,1643" fill="none" stroke="#22354b" stroke-width="1.6" />
+<polygon points="807.0,1638.0 796,1643 807.0,1648.0" fill="#22354b" stroke="#22354b" stroke-width="1.6"/>
+<rect x="899" y="1588" width="597.6999999999999" height="26.25" fill="white"/>
+<text x="902" y="1605.0" font-size="15" font-weight="400" text-anchor="start" fill="#172b43">11. kiemTraQuyenPhien(phien, ngữ cảnh xác thực / token khách)</text>
+<polyline points="784,1765 466,1765" fill="none" stroke="#22354b" stroke-width="1.6" stroke-dasharray="7 5"/>
+<polyline points="477.0,1760.0 466,1765 477.0,1770.0" fill="none" stroke="#22354b" stroke-width="1.6"/>
+<rect x="471.0" y="1734.0" width="308" height="26.25" fill="white"/>
+<text x="625.0" y="1751.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">12. Từ chối truy cập phiên</text>
+<polyline points="454,1843 136,1843" fill="none" stroke="#22354b" stroke-width="1.6" stroke-dasharray="7 5"/>
+<polyline points="147.0,1838.0 136,1843 147.0,1848.0" fill="none" stroke="#22354b" stroke-width="1.6"/>
+<rect x="141.0" y="1791.75" width="308" height="46.5" fill="white"/>
+<text x="295.0" y="1808.75" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">13. Thông báo; cho phép</text>
+<text x="295.0" y="1829.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">mở phiên mới</text>
+<polyline points="796,2003 1774,2003" fill="none" stroke="#22354b" stroke-width="1.6" />
+<polygon points="1763.0,2008.0 1774,2003 1763.0,1998.0" fill="#22354b" stroke="#22354b" stroke-width="1.6"/>
+<rect x="801.0" y="1972.0" width="968" height="26.25" fill="white"/>
+<text x="1285.0" y="1989.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">14. layLichSuPhien(MaPhien)</text>
+<polyline points="1774,2081 796,2081" fill="none" stroke="#22354b" stroke-width="1.6" stroke-dasharray="7 5"/>
+<polyline points="807.0,2076.0 796,2081 807.0,2086.0" fill="none" stroke="#22354b" stroke-width="1.6"/>
+<rect x="801.0" y="2050.0" width="968" height="26.25" fill="white"/>
+<text x="1285.0" y="2067.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">15. Tin nhắn theo thời gian; dsMaTN của các trả lời</text>
+<polyline points="796,2159 2434,2159" fill="none" stroke="#22354b" stroke-width="1.6" />
+<polygon points="2423.0,2164.0 2434,2159 2423.0,2154.0" fill="#22354b" stroke="#22354b" stroke-width="1.6"/>
+<rect x="801.0" y="2128.0" width="1628" height="26.25" fill="white"/>
+<text x="1615.0" y="2145.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">16. layDanhSachGoiY(dsMaTN)</text>
+<polyline points="2434,2237 796,2237" fill="none" stroke="#22354b" stroke-width="1.6" stroke-dasharray="7 5"/>
+<polyline points="807.0,2232.0 796,2237 807.0,2242.0" fill="none" stroke="#22354b" stroke-width="1.6"/>
+<rect x="801.0" y="2206.0" width="1628" height="26.25" fill="white"/>
+<text x="1615.0" y="2223.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">17. Các liên kết MaTN–MaSP, thứ tự và lý do</text>
+<polyline points="796,2315 2764,2315" fill="none" stroke="#22354b" stroke-width="1.6" />
+<polygon points="2753.0,2320.0 2764,2315 2753.0,2310.0" fill="#22354b" stroke="#22354b" stroke-width="1.6"/>
+<rect x="801.0" y="2284.0" width="1958" height="26.25" fill="white"/>
+<text x="1780.0" y="2301.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">18. layNguonTheoTinNhan(dsMaTN)</text>
+<polyline points="2764,2393 796,2393" fill="none" stroke="#22354b" stroke-width="1.6" stroke-dasharray="7 5"/>
+<polyline points="807.0,2388.0 796,2393 807.0,2398.0" fill="none" stroke="#22354b" stroke-width="1.6"/>
+<rect x="801.0" y="2362.0" width="1958" height="26.25" fill="white"/>
+<text x="1780.0" y="2379.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">19. Nguồn và bản chụp nội dung đã dùng</text>
+<polyline points="796,2523 2104,2523" fill="none" stroke="#22354b" stroke-width="1.6" />
+<polygon points="2093.0,2528.0 2104,2523 2093.0,2518.0" fill="#22354b" stroke="#22354b" stroke-width="1.6"/>
+<rect x="801.0" y="2492.0" width="1298" height="26.25" fill="white"/>
+<text x="1450.0" y="2509.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">20. layThongTinSanPham(dsMaSP)</text>
+<polyline points="2104,2601 796,2601" fill="none" stroke="#22354b" stroke-width="1.6" stroke-dasharray="7 5"/>
+<polyline points="807.0,2596.0 796,2601 807.0,2606.0" fill="none" stroke="#22354b" stroke-width="1.6"/>
+<rect x="801.0" y="2570.0" width="1298" height="26.25" fill="white"/>
+<text x="1450.0" y="2587.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">21. Thông tin công khai hiện tại; báo sản phẩm đã ngừng bán nếu có</text>
+<polyline points="784,2739 466,2739" fill="none" stroke="#22354b" stroke-width="1.6" stroke-dasharray="7 5"/>
+<polyline points="477.0,2734.0 466,2739 477.0,2744.0" fill="none" stroke="#22354b" stroke-width="1.6"/>
+<rect x="471.0" y="2687.75" width="308" height="46.5" fill="white"/>
+<text x="625.0" y="2704.75" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">22. MaPhien, lịch sử,</text>
+<text x="625.0" y="2725.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">gợi ý và nguồn</text>
+<polyline points="454,2817 136,2817" fill="none" stroke="#22354b" stroke-width="1.6" stroke-dasharray="7 5"/>
+<polyline points="147.0,2812.0 136,2817 147.0,2822.0" fill="none" stroke="#22354b" stroke-width="1.6"/>
+<rect x="141.0" y="2765.75" width="308" height="46.5" fill="white"/>
+<text x="295.0" y="2782.75" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">23. Hiển thị lời chào</text>
+<text x="295.0" y="2803.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">hoặc hội thoại cũ</text>
+<rect x="22" y="2925" width="2856" height="110" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
+<text x="38" y="2951.0" font-size="14" font-weight="400" text-anchor="start" fill="#475569">Entity trên sơ đồ là lớp phân tích ánh xạ bảng ERD; các phương thức được thực hiện qua tầng truy cập dữ liệu.</text>
+<text x="38" y="2981.0" font-size="14" font-weight="400" text-anchor="start" fill="#475569">Lỗi truy vấn: kết thúc thao tác và báo không tải được hội thoại; không trả dữ liệu một phần như kết quả thành công.</text>
+<text x="38" y="3011.0" font-size="14" font-weight="400" text-anchor="start" fill="#475569">Đóng cửa sổ chỉ ẩn giao diện; việc kết thúc PhienChat là thao tác riêng. Tiếp tục hỏi đáp ở Sequence 02.</text>
+</g></svg>

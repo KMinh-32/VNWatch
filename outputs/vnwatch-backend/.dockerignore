@@ -1,0 +1,15 @@
+# HỌC VNWATCH — outputs/vnwatch-backend/.dockerignore
+# Các đường dẫn không gửi vào Docker build context: dependency, secret và output không nên đi vào image.
+node_modules
+dist
+.test-build
+.env
+.env.*
+.git
+work
+coverage
+docs
+test
+src/generated
+*.zip
+*.log

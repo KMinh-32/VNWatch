@@ -1,0 +1,107 @@
+classDiagram
+    direction LR
+    class GiaoDienChat {
+        <<boundary>>
+        +guiTinNhan(message, MaPhien)
+        +hienThiCauTraLoi(reply)
+        +hienThiSanPhamVaNguon()
+    }
+    class DieuKhienChat {
+        <<control>>
+        +kiemTraYeuCauVaQuyenPhien()
+        +moHoacLayPhienChat()
+        +layLichSuVaNguCanhDaDuyet()
+        +luuTinKhachVaTinAIChoXuLy()
+        +kiemTraKetQuaAgent()
+        +luuKetQuaTrongTransaction()
+    }
+    class BoTuVanAI {
+        <<control>>
+        +lapKeHoachTuVan()
+        +phanTichBangQuyTac()
+        +dungTraLoiTuNguCanh()
+    }
+    class CongOpenAI {
+        <<boundary>>
+        +taoKeHoachChiDoc()
+    }
+    class TaiKhoan {
+        <<entity>>
+        +int MaTK
+        +string HoTen
+        +string VaiTro
+    }
+    class PhienChat {
+        <<entity>>
+        +UUID MaPhien
+        +int MaTK
+        +string TrangThai
+        +datetime NgayCapNhat
+    }
+    class TinNhanChat {
+        <<entity>>
+        +int MaTN
+        +UUID MaPhien
+        +int MaTK
+        +string NguoiGui
+        +text NoiDung
+        +string YDinh
+        +string CheDo
+        +string TenMoHinh
+        +string TrangThai
+    }
+    class DanhMuc {
+        <<entity>>
+        +int MaDM
+        +string TenDM
+    }
+    class SanPham {
+        <<entity>>
+        +string MaSP
+        +int MaDM
+        +string TenSP
+        +string ThuongHieu
+        +decimal GiaBan
+        +int SoLuongTon
+    }
+    class SanPhamGoiY {
+        <<entity>>
+        +int MaTN
+        +string MaSP
+        +int ThuTu
+        +string LyDo
+    }
+    class KienThucChatbot {
+        <<entity>>
+        +int MaKT
+        +string Loai
+        +string ChuDe
+        +text NoiDung
+        +string TrangThai
+        +int NguoiDuyet
+    }
+    class NguonTraLoi {
+        <<entity>>
+        +int MaNguon
+        +int MaTN
+        +int MaKT
+        +string URLNguon
+        +text NoiDungTrichDan
+    }
+    GiaoDienChat ..> DieuKhienChat : gui cau hoi
+    DieuKhienChat ..> BoTuVanAI : HTTP noi bo
+    BoTuVanAI ..> CongOpenAI : Plan chi doc
+    DieuKhienChat ..> PhienChat : mo va kiem tra
+    DieuKhienChat ..> TinNhanChat : luu va doc
+    DieuKhienChat ..> SanPham : tra cuu catalog
+    DieuKhienChat ..> KienThucChatbot : doc DA_DUYET
+    DieuKhienChat ..> SanPhamGoiY : luu
+    DieuKhienChat ..> NguonTraLoi : luu nguon
+    TaiKhoan "0..1" -- "0..*" PhienChat : chu phien
+    TaiKhoan "0..1" -- "0..*" TinNhanChat : nguoi gui
+    PhienChat "1" -- "0..*" TinNhanChat : chua
+    DanhMuc "1" -- "0..*" SanPham : phan loai
+    SanPham "1" -- "0..*" SanPhamGoiY : duoc goi y
+    TinNhanChat "1" -- "0..*" SanPhamGoiY : goi y
+    TinNhanChat "1" -- "0..*" NguonTraLoi : trich dan
+    KienThucChatbot "0..1" -- "0..*" NguonTraLoi : tham chieu

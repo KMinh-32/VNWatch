@@ -1,0 +1,51 @@
+# HỌC VNWATCH — outputs/vnwatch-backend/compose.yaml
+# Compose PostgreSQL dành cho phát triển backend; khác bộ compose đầy đủ ở gốc dự án.
+name: vnwatch
+# Các service của bộ compose; mỗi service dùng image và cấu hình riêng.
+services:
+  # PostgreSQL giữ dữ liệu nghiệp vụ trong named volume.
+  db:
+    image: postgres:17.11-alpine
+    # Cấu hình runtime, nội suy từ .env.docker; không ghi secret vào git.
+    environment:
+      POSTGRES_USER: vnwatch
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: vnwatch_dev
+      TZ: UTC
+    # Ánh xạ cổng host:container; 127.0.0.1 giới hạn truy cập trên máy này.
+    ports:
+      - '127.0.0.1:54329:5432'
+    # Lưu dữ liệu ngoài vòng đời container; không xóa volume khi chỉ muốn dừng ứng dụng.
+    volumes:
+      - vnwatch_data:/var/lib/postgresql/data
+    # Lệnh kiểm tra readiness của service để compose biết lúc có thể sử dụng.
+    healthcheck:
+      # Service kiểm thử riêng dùng schema/fixture độc lập.
+      test: ['CMD-SHELL', 'pg_isready -U vnwatch -d vnwatch_dev']
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  db-test:
+    image: postgres:17.11-alpine
+    profiles: ['test']
+    # Cấu hình runtime, nội suy từ .env.docker; không ghi secret vào git.
+    environment:
+      POSTGRES_USER: vnwatch
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: vnwatch_test
+      TZ: UTC
+    # Ánh xạ cổng host:container; 127.0.0.1 giới hạn truy cập trên máy này.
+    ports:
+      - '127.0.0.1:54330:5432'
+    tmpfs:
+      - /var/lib/postgresql/data
+    # Lệnh kiểm tra readiness của service để compose biết lúc có thể sử dụng.
+    healthcheck:
+      # Service kiểm thử riêng dùng schema/fixture độc lập.
+      test: ['CMD-SHELL', 'pg_isready -U vnwatch -d vnwatch_test']
+      interval: 3s
+      timeout: 3s
+      retries: 20
+# Lưu dữ liệu ngoài vòng đời container; không xóa volume khi chỉ muốn dừng ứng dụng.
+volumes:
+  vnwatch_data:

@@ -1,0 +1,37 @@
+sequenceDiagram
+    participant controller as ChatbotController
+    participant session as PhienChat
+    participant message as TinNhanChat
+    participant selection as SanPhamGoiY
+    participant source as NguonTraLoi
+    Note over controller,source: Đầu vào: MaPhien đã kiểm tra quyền, ketQua đã đối chiếu với catalog / kiến thức được duyệt.<br/>Tin khách đã được lưu ở Sequence 02. Transaction dưới đây chỉ bao gồm tin AI, gợi ý, nguồn và cập nhật phiên.
+    controller->>controller: 1. batDauGiaoDich() — BEGIN
+    controller->>message: 2. luuTinAI(MaPhien, NguoiGui=AI, MaTK=NULL, ketQua, TrangThai=HOAN_TAT)
+    message-->>controller: 3. MaTNAI mới hoặc lỗi ghi
+    break Ghi tin AI thất bại
+    controller->>controller: 4. rollbackGiaoDich(); trả lỗi lưu cho interaction gọi
+    end
+    opt Có sản phẩm gợi ý
+    controller->>selection: 5. luuDanhSachGoiY(MaTNAI, [(MaSP, ThuTu, LyDo)])
+    selection-->>controller: 6. Kết quả ghi SanPhamGoiY hoặc lỗi
+    end
+    break Ghi sản phẩm gợi ý thất bại
+    controller->>controller: 7. rollbackGiaoDich(); trả lỗi lưu cho interaction gọi
+    end
+    opt Có nguồn trả lời
+    controller->>source: 8. luuNguonVaBanChup(MaTNAI, [(MaKT?, TieuDeNguon, URLNguon?, NoiDungTrichDan?, ThoiDiemSuDung)])
+    source-->>controller: 9. Kết quả ghi nguồn và bản chụp hoặc lỗi
+    end
+    break Ghi nguồn trả lời thất bại
+    controller->>controller: 10. rollbackGiaoDich(); trả lỗi lưu cho interaction gọi
+    end
+    controller->>session: 11. capNhatThoiGian(MaPhien)
+    session-->>controller: 12. Kết quả cập nhật NgayCapNhat hoặc lỗi
+    break Cập nhật phiên thất bại
+    controller->>controller: 13. rollbackGiaoDich(); trả lỗi lưu cho interaction gọi
+    end
+    controller->>controller: 14. commitGiaoDich() — COMMIT
+    break Database báo COMMIT thất bại
+    controller->>controller: 15. rollbackGiaoDich(); trả lỗi lưu cho interaction gọi
+    end
+    Note over controller,source: Trả thành công và MaTNAI cho interaction gọi; Sequence 02 mới trả kết quả về giao diện.

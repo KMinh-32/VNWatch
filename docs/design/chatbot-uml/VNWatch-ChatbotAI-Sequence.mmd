@@ -1,0 +1,48 @@
+sequenceDiagram
+    actor KH as Khách hàng
+    participant UI as GiaoDienChat (React)
+    participant C as AssistantController (NestJS)
+    participant S as AssistantService (NestJS)
+    participant DB as PostgreSQL / Prisma
+    participant A as BoTuVanAI (FastAPI)
+    participant O as OpenAI
+    KH->>UI: Nhập câu hỏi
+    UI->>C: POST /api/v1/assistant/chat {message, MaPhien?} + cookie
+    C->>C: Kiểm tra DTO, rate limit; lấy danh tính
+    C->>S: chat(message, MaPhien?, nguoiGoi)
+    S->>DB: Tìm / tạo phienchat và kiểm tra quyền truy cập
+    DB-->>S: Phiên mới / hợp lệ hoặc từ chối
+    break Không có quyền truy cập phiên
+        S-->>C: Từ chối truy cập
+        C-->>UI: HTTP 403
+        UI-->>KH: Thông báo không có quyền
+    end
+    S->>DB: T1: INSERT KHACH (HOAN_TAT) + TRO_LY (DANG_XU_LY)
+    DB-->>S: MaPhien, MaTNKhach, MaTNAI
+    S->>DB: Đọc lịch sử, sanpham, danhmuc, kienthucchatbot=DA_DUYET
+    DB-->>S: Lịch sử + catalog + kiến thức
+    S->>A: POST /internal/chat (câu hỏi + ngữ cảnh)
+    alt FastAPI khả dụng, phản hồi và kiểm tra hợp lệ
+        alt Có cấu hình OpenAI và nhận Plan hợp lệ
+            A->>O: Phân tích câu hỏi thành Plan chỉ đọc
+            O-->>A: Plan (ý định, bộ lọc, ID)
+        else Chưa có API key / lỗi OpenAI / Plan không hợp lệ
+            A->>A: Phân tích bằng quy tắc; CheDo=DU_PHONG
+        end
+        A->>A: Đối chiếu Plan, dựng trả lời từ ngữ cảnh
+        Note over A: Thiếu dữ liệu: hỏi rõ thêm hoặc nói chưa có
+        A-->>S: Reply + MaSP + nguồn + YDinh, CheDo, TenMoHinh?
+        S->>S: Kiểm tra ID và nguồn thuộc dữ liệu đã cung cấp
+        S->>DB: T2: hoàn tất tin AI, lưu gợi ý + nguồn, cập nhật phiên
+        DB-->>S: COMMIT thành công
+        S-->>C: ChatReply đã lưu
+        C-->>UI: HTTP 200 (MaPhien, MaTN, câu trả lời, sản phẩm, nguồn, CheDo)
+        UI-->>KH: Hiển thị kết quả
+    else FastAPI lỗi / timeout hoặc phản hồi không hợp lệ
+        S->>DB: Cập nhật tin AI: TrangThai=LOI
+        DB-->>S: Đã cập nhật
+        S-->>C: Lỗi dịch vụ
+        C-->>UI: HTTP 503
+        UI-->>KH: Hiển thị lỗi / nút thử lại
+    end
+    Note over S,DB: T1/T2 ngắn; không giữ transaction lúc gọi AI. T2 lỗi phải rollback và trả lỗi lưu dữ liệu.

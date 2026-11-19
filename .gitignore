@@ -1,0 +1,44 @@
+# HỌC VNWATCH — .gitignore
+# Các file Git bỏ qua như dependency, log, build và secret cục bộ; không đồng nghĩa file bị xóa khỏi máy.
+.env.docker
+docker/backups/
+docker/verification/
+
+# Bản mã nguồn gửi lên GitHub: giữ dependencies/build và dữ liệu riêng ở máy.
+node_modules/
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.cache/
+dist/
+.test-build/
+coverage/
+test-results/
+playwright-report/
+*.pyc
+*.tsbuildinfo
+*.log
+.env
+.env.*
+!.env.example
+!.env.*.example
+/apps/
+/work/
+/relocation-*.json
+/docs/chat-archive/
+/database/*
+!/database/schema.sql
+!/database/README.md
+*.rar
+*.zip
+*.7z
+*.dump
+*.backup
+*.sqlite
+*.sqlite3
+*.pem
+*.key
+*.pfx
+/SHARE-LINK.txt

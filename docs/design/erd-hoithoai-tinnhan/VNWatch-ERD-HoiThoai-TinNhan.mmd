@@ -1,0 +1,164 @@
+erDiagram
+    danhmuc o|--o{ danhmuc : "R01 MaDMCha"
+    danhmuc ||--o{ sanpham : "R02 MaDM"
+    sanpham ||--o{ hinhanhsanpham : "R03 MaSP"
+    sanpham ||--o{ danhgiasanpham : "R04 MaSP"
+    sanpham ||--o{ giohang : "R05 MaSP"
+    sanpham ||--o{ chitietdonhang : "R06 MaSP"
+    donhang ||--o{ chitietdonhang : "R07 MaDH"
+    chitietdonhang ||--o{ baohanh : "R08 MaDH, MaSP"
+    magiamgia o|--o{ donhang : "R09 MaCode"
+    donhang ||--o{ thanhtoan : "R10 MaDH"
+    donhang ||--o{ lichsudonhang : "R11 MaDH"
+    taikhoan ||--o{ donhang : "R12 MaTK"
+    taikhoan o|--o{ donhang : "R13 MaNguoiXuLy"
+    taikhoan ||--o{ giohang : "R14 MaTK"
+    taikhoan ||--o{ danhgiasanpham : "R15 MaTK"
+    taikhoan o|--o{ lichsudonhang : "R16 MaTKXuLy"
+    taikhoan o|--o{ HoiThoai : "R17 MaTK"
+    HoiThoai ||--o{ TinNhan : "R18 MaHoiThoai"
+    danhmuc {
+        INT MaDM PK
+        VARCHAR TenDM
+        INT MaDMCha FK
+        INT ThuTuHienThi
+        VARCHAR MoTa
+    }
+    sanpham {
+        VARCHAR MaSP PK
+        VARCHAR TenSP
+        VARCHAR ThuongHieu
+        INT MaDM FK
+        VARCHAR KieuMay
+        VARCHAR ChatLieuDay
+        DECIMAL GiaGoc
+        DECIMAL GiaBan
+        INT SoLuongTon
+        VARCHAR HinhAnh
+        JSON ThongSoChiTiet
+        VARCHAR TrangThai
+    }
+    donhang {
+        VARCHAR MaDH PK
+        INT MaTK FK
+        VARCHAR HoTenNhan
+        VARCHAR SoDienThoaiNhan
+        VARCHAR DiaChiNhan
+        VARCHAR GhiChu
+        VARCHAR MaCode FK
+        DECIMAL TamTinh
+        DECIMAL TienGiam
+        DECIMAL TongThanhToan
+        VARCHAR TrangThai
+        DATETIME NgayDat
+        INT MaNguoiXuLy FK
+        DATETIME NgayCapNhat
+    }
+    magiamgia {
+        VARCHAR MaCode PK
+        VARCHAR LoaiGiam
+        DECIMAL GiaTriGiam
+        DECIMAL GiaTriToiThieu
+        DATETIME NgayBatDau
+        DATETIME NgayHetHan
+        INT SoLuotToiDa
+        INT SoLuotDaDung
+        VARCHAR TrangThai
+    }
+    taikhoan {
+        INT MaTK PK
+        VARCHAR HoTen
+        VARCHAR Email
+        VARCHAR SoDienThoai
+        VARCHAR MatKhauHash
+        VARCHAR DiaChiMacDinh
+        VARCHAR VaiTro
+        VARCHAR NhomKhachHang
+        DECIMAL TongChiTieu
+        VARCHAR TrangThai
+        INT SoLanSaiLienTiep
+        DATETIME KhoaDen
+        VARCHAR NhaCungCapOAuth
+        VARCHAR OAuthId
+        DATETIME NgayTao
+    }
+    hinhanhsanpham {
+        INT MaHA PK
+        VARCHAR MaSP FK
+        VARCHAR DuongDan
+        INT ThuTu
+        JSON DacTrungAnh
+    }
+    giohang {
+        INT MaTK PK,FK
+        VARCHAR MaSP PK,FK
+        INT SoLuong
+        DATETIME NgayCapNhat
+    }
+    chitietdonhang {
+        VARCHAR MaDH PK,FK
+        VARCHAR MaSP PK,FK
+        INT SoLuong
+        DECIMAL DonGia
+        DECIMAL ThanhTien
+    }
+    thanhtoan {
+        INT MaTT PK
+        VARCHAR MaDH FK
+        VARCHAR PhuongThuc
+        DECIMAL SoTien
+        VARCHAR TrangThai
+        VARCHAR MaGiaoDich
+        DATETIME ThoiGianThanhToan
+        DATETIME NgayTao
+    }
+    danhgiasanpham {
+        INT MaDG PK
+        INT MaTK FK
+        VARCHAR MaSP FK
+        TINYINT SoSao
+        TEXT NoiDung
+        DATETIME NgayTao
+        VARCHAR TrangThai
+    }
+    baohanh {
+        INT MaBH PK
+        VARCHAR MaPhieu
+        VARCHAR MaDH FK
+        VARCHAR MaSP FK
+        SMALLINT SoThuTu
+        VARCHAR SoSeri
+        DATE NgayBatDau
+        DATE NgayHetHan
+        VARCHAR TrangThai
+        VARCHAR GhiChu
+        DATETIME NgayTao
+    }
+    lichsudonhang {
+        INT MaLS PK
+        VARCHAR MaDH FK
+        VARCHAR TrangThaiCu
+        VARCHAR TrangThaiMoi
+        INT MaTKXuLy FK
+        DATETIME ThoiGian
+        VARCHAR GhiChu
+    }
+    HoiThoai {
+        VARCHAR MaHoiThoai PK
+        INT MaTK FK
+        VARCHAR TieuDe
+        VARCHAR TrangThai
+        DATETIME NgayTao
+        DATETIME NgayCapNhat
+    }
+    TinNhan {
+        INT MaTinNhan PK
+        VARCHAR MaHoiThoai FK
+        VARCHAR NguoiGui
+        TEXT NoiDung
+        VARCHAR YDinh
+        VARCHAR CheDo
+        VARCHAR TenMoHinh
+        VARCHAR TrangThai
+        DATETIME ThoiGian
+    }

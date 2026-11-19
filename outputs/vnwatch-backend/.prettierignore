@@ -1,0 +1,9 @@
+node_modules
+dist
+.test-build
+src/generated
+package-lock.json
+docs/openapi.json
+prisma/migrations
+.env
+vendor

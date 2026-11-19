@@ -1,0 +1,12 @@
+# HỌC VNWATCH — outputs/vnwatch-backend/.gitignore
+# Các file Git bỏ qua như dependency, log, build và secret cục bộ; không đồng nghĩa file bị xóa khỏi máy.
+node_modules/
+dist/
+.test-build/
+src/generated/
+.env
+.env.*
+!.env.example
+*.log
+coverage/
+work/

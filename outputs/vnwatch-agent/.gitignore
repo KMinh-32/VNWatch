@@ -1,0 +1,7 @@
+# HỌC VNWATCH — outputs/vnwatch-agent/.gitignore
+# Các file Git bỏ qua như dependency, log, build và secret cục bộ; không đồng nghĩa file bị xóa khỏi máy.
+.venv/
+.env
+__pycache__/
+.pytest_cache/
+*.pyc

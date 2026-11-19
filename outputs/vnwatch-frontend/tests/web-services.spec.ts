@@ -1,0 +1,30 @@
+import {expect,test} from '@playwright/test';
+
+test('gateway routes REST, OpenAPI, storefront, assets and private routes', async ({page,request})=>{
+ const health=await request.get('/healthz');
+ expect(health.status()).toBe(200);
+ expect((await health.json()).service).toBe('gateway');
+ const index=await request.get('/api/v1');
+ expect(index.status()).toBe(200);
+ const services=await index.json();
+ expect(services.name).toBe('VNWatch Web Services');
+ expect(services.links.catalog).toBe('/api/v1/products');
+ const schema=await request.get('/docs-json');
+ expect(schema.status()).toBe(200);
+ const document=await schema.json();
+ expect(document.info.version).toBe('0.4.0');
+ expect(document.paths['/api/v1/products']).toBeTruthy();
+ expect(document.paths['/api/v1/assistant/chat']).toBeTruthy();
+ expect((await request.get('/api/v1/health/ready')).status()).toBe(200);
+ expect((await request.get('/api/v1/orders')).status()).toBe(401);
+ expect((await request.get('/internal/openapi.json')).status()).toBe(404);
+ const result=await request.get('/api/v1/products?dataKind=REFERENCE&limit=1');
+ const product=(await result.json()).data[0];
+ const image=await request.get(product.imageUrls[0]);
+ expect(image.headers()['content-type']).toMatch(/^image\//);
+ await page.goto(`/products/${product.id}`);
+ await expect(page.getByRole('heading',{level:1,name:product.name,exact:true})).toBeVisible();
+ await page.goto('/docs');
+  await expect(page.locator('.swagger-ui').first()).toBeVisible();
+  await expect(page.locator('.swagger-ui .info .title')).toContainText('VNWatch Web Services API');
+});

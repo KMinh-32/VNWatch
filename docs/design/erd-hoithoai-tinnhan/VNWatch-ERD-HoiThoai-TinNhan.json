@@ -1,0 +1,1308 @@
+{
+  "width": 3270,
+  "height": 1930,
+  "tables": [
+    {
+      "id": "danhmuc",
+      "x": 70,
+      "y": 180,
+      "w": 430,
+      "h": 204,
+      "rows": [
+        [
+          "PK",
+          "MaDM",
+          "INT"
+        ],
+        [
+          "",
+          "TenDM",
+          "VARCHAR(100)"
+        ],
+        [
+          "FK",
+          "MaDMCha",
+          "INT NULL"
+        ],
+        [
+          "",
+          "ThuTuHienThi",
+          "INT"
+        ],
+        [
+          "",
+          "MoTa",
+          "VARCHAR(255)"
+        ]
+      ],
+      "kind": "GỐC",
+      "color": "#dae8fc"
+    },
+    {
+      "id": "sanpham",
+      "x": 610,
+      "y": 180,
+      "w": 430,
+      "h": 400,
+      "rows": [
+        [
+          "PK",
+          "MaSP",
+          "VARCHAR(20)"
+        ],
+        [
+          "",
+          "TenSP",
+          "VARCHAR(200)"
+        ],
+        [
+          "",
+          "ThuongHieu",
+          "VARCHAR(100)"
+        ],
+        [
+          "FK",
+          "MaDM",
+          "INT"
+        ],
+        [
+          "",
+          "KieuMay",
+          "VARCHAR(50)"
+        ],
+        [
+          "",
+          "ChatLieuDay",
+          "VARCHAR(50)"
+        ],
+        [
+          "",
+          "GiaGoc",
+          "DECIMAL(15,0)"
+        ],
+        [
+          "",
+          "GiaBan",
+          "DECIMAL(15,0)"
+        ],
+        [
+          "",
+          "SoLuongTon",
+          "INT"
+        ],
+        [
+          "",
+          "HinhAnh",
+          "VARCHAR(255)"
+        ],
+        [
+          "",
+          "ThongSoChiTiet",
+          "JSON"
+        ],
+        [
+          "",
+          "TrangThai",
+          "VARCHAR(20)"
+        ]
+      ],
+      "kind": "GỐC",
+      "color": "#dae8fc"
+    },
+    {
+      "id": "donhang",
+      "x": 1150,
+      "y": 180,
+      "w": 430,
+      "h": 456,
+      "rows": [
+        [
+          "PK",
+          "MaDH",
+          "VARCHAR(20)"
+        ],
+        [
+          "FK",
+          "MaTK",
+          "INT"
+        ],
+        [
+          "",
+          "HoTenNhan",
+          "VARCHAR(100)"
+        ],
+        [
+          "",
+          "SoDienThoaiNhan",
+          "VARCHAR(15)"
+        ],
+        [
+          "",
+          "DiaChiNhan",
+          "VARCHAR(255)"
+        ],
+        [
+          "",
+          "GhiChu",
+          "VARCHAR(255)"
+        ],
+        [
+          "FK",
+          "MaCode",
+          "VARCHAR(30) NULL"
+        ],
+        [
+          "",
+          "TamTinh",
+          "DECIMAL(15,0)"
+        ],
+        [
+          "",
+          "TienGiam",
+          "DECIMAL(15,0)"
+        ],
+        [
+          "",
+          "TongThanhToan",
+          "DECIMAL(15,0)"
+        ],
+        [
+          "",
+          "TrangThai",
+          "VARCHAR(20)"
+        ],
+        [
+          "",
+          "NgayDat",
+          "DATETIME"
+        ],
+        [
+          "FK",
+          "MaNguoiXuLy",
+          "INT NULL"
+        ],
+        [
+          "",
+          "NgayCapNhat",
+          "DATETIME"
+        ]
+      ],
+      "kind": "GỐC",
+      "color": "#dae8fc"
+    },
+    {
+      "id": "magiamgia",
+      "x": 1690,
+      "y": 180,
+      "w": 430,
+      "h": 316,
+      "rows": [
+        [
+          "PK",
+          "MaCode",
+          "VARCHAR(30)"
+        ],
+        [
+          "",
+          "LoaiGiam",
+          "VARCHAR(10)"
+        ],
+        [
+          "",
+          "GiaTriGiam",
+          "DECIMAL(15,2)"
+        ],
+        [
+          "",
+          "GiaTriToiThieu",
+          "DECIMAL(15,0)"
+        ],
+        [
+          "",
+          "NgayBatDau",
+          "DATETIME"
+        ],
+        [
+          "",
+          "NgayHetHan",
+          "DATETIME"
+        ],
+        [
+          "",
+          "SoLuotToiDa",
+          "INT"
+        ],
+        [
+          "",
+          "SoLuotDaDung",
+          "INT"
+        ],
+        [
+          "",
+          "TrangThai",
+          "VARCHAR(20)"
+        ]
+      ],
+      "kind": "GỐC",
+      "color": "#dae8fc"
+    },
+    {
+      "id": "taikhoan",
+      "x": 2230,
+      "y": 180,
+      "w": 430,
+      "h": 484,
+      "rows": [
+        [
+          "PK",
+          "MaTK",
+          "INT"
+        ],
+        [
+          "",
+          "HoTen",
+          "VARCHAR(100)"
+        ],
+        [
+          "",
+          "Email",
+          "VARCHAR(100)"
+        ],
+        [
+          "",
+          "SoDienThoai",
+          "VARCHAR(15)"
+        ],
+        [
+          "",
+          "MatKhauHash",
+          "VARCHAR(255)"
+        ],
+        [
+          "",
+          "DiaChiMacDinh",
+          "VARCHAR(255)"
+        ],
+        [
+          "",
+          "VaiTro",
+          "VARCHAR(20)"
+        ],
+        [
+          "",
+          "NhomKhachHang",
+          "VARCHAR(20)"
+        ],
+        [
+          "",
+          "TongChiTieu",
+          "DECIMAL(15,0)"
+        ],
+        [
+          "",
+          "TrangThai",
+          "VARCHAR(20)"
+        ],
+        [
+          "",
+          "SoLanSaiLienTiep",
+          "INT"
+        ],
+        [
+          "",
+          "KhoaDen",
+          "DATETIME"
+        ],
+        [
+          "",
+          "NhaCungCapOAuth",
+          "VARCHAR(20)"
+        ],
+        [
+          "",
+          "OAuthId",
+          "VARCHAR(100)"
+        ],
+        [
+          "",
+          "NgayTao",
+          "DATETIME"
+        ]
+      ],
+      "kind": "GỐC",
+      "color": "#dae8fc"
+    },
+    {
+      "id": "hinhanhsanpham",
+      "x": 70,
+      "y": 830,
+      "w": 430,
+      "h": 204,
+      "rows": [
+        [
+          "PK",
+          "MaHA",
+          "INT"
+        ],
+        [
+          "FK",
+          "MaSP",
+          "VARCHAR(20)"
+        ],
+        [
+          "",
+          "DuongDan",
+          "VARCHAR(255)"
+        ],
+        [
+          "",
+          "ThuTu",
+          "INT"
+        ],
+        [
+          "",
+          "DacTrungAnh",
+          "JSON"
+        ]
+      ],
+      "kind": "GỐC",
+      "color": "#dae8fc"
+    },
+    {
+      "id": "giohang",
+      "x": 610,
+      "y": 830,
+      "w": 430,
+      "h": 176,
+      "rows": [
+        [
+          "PK,FK",
+          "MaTK",
+          "INT"
+        ],
+        [
+          "PK,FK",
+          "MaSP",
+          "VARCHAR(20)"
+        ],
+        [
+          "",
+          "SoLuong",
+          "INT"
+        ],
+        [
+          "",
+          "NgayCapNhat",
+          "DATETIME"
+        ]
+      ],
+      "kind": "GỐC",
+      "color": "#dae8fc"
+    },
+    {
+      "id": "chitietdonhang",
+      "x": 1150,
+      "y": 830,
+      "w": 430,
+      "h": 204,
+      "rows": [
+        [
+          "PK,FK",
+          "MaDH",
+          "VARCHAR(20)"
+        ],
+        [
+          "PK,FK",
+          "MaSP",
+          "VARCHAR(20)"
+        ],
+        [
+          "",
+          "SoLuong",
+          "INT"
+        ],
+        [
+          "",
+          "DonGia",
+          "DECIMAL(15,0)"
+        ],
+        [
+          "",
+          "ThanhTien",
+          "DECIMAL(15,0)"
+        ]
+      ],
+      "kind": "GỐC",
+      "color": "#dae8fc"
+    },
+    {
+      "id": "thanhtoan",
+      "x": 1690,
+      "y": 830,
+      "w": 430,
+      "h": 288,
+      "rows": [
+        [
+          "PK",
+          "MaTT",
+          "INT"
+        ],
+        [
+          "FK",
+          "MaDH",
+          "VARCHAR(20)"
+        ],
+        [
+          "",
+          "PhuongThuc",
+          "VARCHAR(10)"
+        ],
+        [
+          "",
+          "SoTien",
+          "DECIMAL(15,0)"
+        ],
+        [
+          "",
+          "TrangThai",
+          "VARCHAR(20)"
+        ],
+        [
+          "",
+          "MaGiaoDich",
+          "VARCHAR(100)"
+        ],
+        [
+          "",
+          "ThoiGianThanhToan",
+          "DATETIME"
+        ],
+        [
+          "",
+          "NgayTao",
+          "DATETIME"
+        ]
+      ],
+      "kind": "GỐC",
+      "color": "#dae8fc"
+    },
+    {
+      "id": "danhgiasanpham",
+      "x": 70,
+      "y": 1420,
+      "w": 430,
+      "h": 260,
+      "rows": [
+        [
+          "PK",
+          "MaDG",
+          "INT"
+        ],
+        [
+          "FK",
+          "MaTK",
+          "INT"
+        ],
+        [
+          "FK",
+          "MaSP",
+          "VARCHAR(20)"
+        ],
+        [
+          "",
+          "SoSao",
+          "TINYINT"
+        ],
+        [
+          "",
+          "NoiDung",
+          "TEXT"
+        ],
+        [
+          "",
+          "NgayTao",
+          "DATETIME"
+        ],
+        [
+          "",
+          "TrangThai",
+          "VARCHAR(20)"
+        ]
+      ],
+      "kind": "GỐC",
+      "color": "#dae8fc"
+    },
+    {
+      "id": "baohanh",
+      "x": 610,
+      "y": 1420,
+      "w": 430,
+      "h": 372,
+      "rows": [
+        [
+          "PK",
+          "MaBH",
+          "INT"
+        ],
+        [
+          "",
+          "MaPhieu",
+          "VARCHAR(20)"
+        ],
+        [
+          "FK",
+          "MaDH",
+          "VARCHAR(20)"
+        ],
+        [
+          "FK",
+          "MaSP",
+          "VARCHAR(20)"
+        ],
+        [
+          "",
+          "SoThuTu",
+          "SMALLINT"
+        ],
+        [
+          "",
+          "SoSeri",
+          "VARCHAR(50)"
+        ],
+        [
+          "",
+          "NgayBatDau",
+          "DATE"
+        ],
+        [
+          "",
+          "NgayHetHan",
+          "DATE"
+        ],
+        [
+          "",
+          "TrangThai",
+          "VARCHAR(20)"
+        ],
+        [
+          "",
+          "GhiChu",
+          "VARCHAR(255)"
+        ],
+        [
+          "",
+          "NgayTao",
+          "DATETIME"
+        ]
+      ],
+      "kind": "GỐC",
+      "color": "#dae8fc"
+    },
+    {
+      "id": "lichsudonhang",
+      "x": 1150,
+      "y": 1420,
+      "w": 430,
+      "h": 260,
+      "rows": [
+        [
+          "PK",
+          "MaLS",
+          "INT"
+        ],
+        [
+          "FK",
+          "MaDH",
+          "VARCHAR(20)"
+        ],
+        [
+          "",
+          "TrangThaiCu",
+          "VARCHAR(20)"
+        ],
+        [
+          "",
+          "TrangThaiMoi",
+          "VARCHAR(20)"
+        ],
+        [
+          "FK",
+          "MaTKXuLy",
+          "INT NULL"
+        ],
+        [
+          "",
+          "ThoiGian",
+          "DATETIME"
+        ],
+        [
+          "",
+          "GhiChu",
+          "VARCHAR(255)"
+        ]
+      ],
+      "kind": "GỐC",
+      "color": "#dae8fc"
+    },
+    {
+      "id": "HoiThoai",
+      "x": 2770,
+      "y": 180,
+      "w": 430,
+      "h": 232,
+      "rows": [
+        [
+          "PK",
+          "MaHoiThoai",
+          "VARCHAR(36)"
+        ],
+        [
+          "FK",
+          "MaTK",
+          "INT NULL"
+        ],
+        [
+          "",
+          "TieuDe",
+          "VARCHAR(150) NULL"
+        ],
+        [
+          "",
+          "TrangThai",
+          "VARCHAR(20)"
+        ],
+        [
+          "",
+          "NgayTao",
+          "DATETIME"
+        ],
+        [
+          "",
+          "NgayCapNhat",
+          "DATETIME"
+        ]
+      ],
+      "kind": "MỚI",
+      "color": "#d5e8d4"
+    },
+    {
+      "id": "TinNhan",
+      "x": 2770,
+      "y": 830,
+      "w": 430,
+      "h": 316,
+      "rows": [
+        [
+          "PK",
+          "MaTinNhan",
+          "INT"
+        ],
+        [
+          "FK",
+          "MaHoiThoai",
+          "VARCHAR(36)"
+        ],
+        [
+          "",
+          "NguoiGui",
+          "VARCHAR(15)"
+        ],
+        [
+          "",
+          "NoiDung",
+          "TEXT"
+        ],
+        [
+          "",
+          "YDinh",
+          "VARCHAR(30) NULL"
+        ],
+        [
+          "",
+          "CheDo",
+          "VARCHAR(20) NULL"
+        ],
+        [
+          "",
+          "TenMoHinh",
+          "VARCHAR(100) NULL"
+        ],
+        [
+          "",
+          "TrangThai",
+          "VARCHAR(20)"
+        ],
+        [
+          "",
+          "ThoiGian",
+          "DATETIME"
+        ]
+      ],
+      "kind": "CẬP NHẬT",
+      "color": "#ffe6cc"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "R01",
+      "source": "danhmuc",
+      "target": "danhmuc",
+      "fields": [
+        "MaDMCha"
+      ],
+      "label": "Danh mục cha",
+      "points": [
+        [
+          70,
+          255
+        ],
+        [
+          30,
+          255
+        ],
+        [
+          30,
+          335
+        ],
+        [
+          70,
+          335
+        ]
+      ],
+      "lx": 143,
+      "ly": 418,
+      "start": "0..1",
+      "end": "0..N",
+      "color": "#64748b"
+    },
+    {
+      "id": "R02",
+      "source": "danhmuc",
+      "target": "sanpham",
+      "fields": [
+        "MaDM"
+      ],
+      "label": "Danh mục",
+      "points": [
+        [
+          500,
+          270
+        ],
+        [
+          610,
+          270
+        ]
+      ],
+      "lx": 555,
+      "ly": 250,
+      "start": "1",
+      "end": "0..N",
+      "color": "#64748b"
+    },
+    {
+      "id": "R03",
+      "source": "sanpham",
+      "target": "hinhanhsanpham",
+      "fields": [
+        "MaSP"
+      ],
+      "label": "Hình ảnh",
+      "points": [
+        [
+          610,
+          400
+        ],
+        [
+          570,
+          400
+        ],
+        [
+          570,
+          935
+        ],
+        [
+          500,
+          935
+        ]
+      ],
+      "lx": 549,
+      "ly": 655,
+      "start": "1",
+      "end": "0..N",
+      "color": "#64748b"
+    },
+    {
+      "id": "R04",
+      "source": "sanpham",
+      "target": "danhgiasanpham",
+      "fields": [
+        "MaSP"
+      ],
+      "label": "Đánh giá SP",
+      "points": [
+        [
+          610,
+          480
+        ],
+        [
+          535,
+          480
+        ],
+        [
+          535,
+          1550
+        ],
+        [
+          500,
+          1550
+        ]
+      ],
+      "lx": 550,
+      "ly": 1250,
+      "start": "1",
+      "end": "0..N",
+      "color": "#64748b"
+    },
+    {
+      "id": "R05",
+      "source": "sanpham",
+      "target": "giohang",
+      "fields": [
+        "MaSP"
+      ],
+      "label": "Sản phẩm",
+      "points": [
+        [
+          825,
+          580
+        ],
+        [
+          825,
+          830
+        ]
+      ],
+      "lx": 825,
+      "ly": 774,
+      "start": "1",
+      "end": "0..N",
+      "color": "#64748b"
+    },
+    {
+      "id": "R06",
+      "source": "sanpham",
+      "target": "chitietdonhang",
+      "fields": [
+        "MaSP"
+      ],
+      "label": "Mặt hàng",
+      "points": [
+        [
+          1040,
+          450
+        ],
+        [
+          1080,
+          450
+        ],
+        [
+          1080,
+          945
+        ],
+        [
+          1150,
+          945
+        ]
+      ],
+      "lx": 1095,
+      "ly": 690,
+      "start": "1",
+      "end": "0..N",
+      "color": "#64748b"
+    },
+    {
+      "id": "R07",
+      "source": "donhang",
+      "target": "chitietdonhang",
+      "fields": [
+        "MaDH"
+      ],
+      "label": "Chi tiết",
+      "points": [
+        [
+          1365,
+          636
+        ],
+        [
+          1365,
+          830
+        ]
+      ],
+      "lx": 1365,
+      "ly": 790,
+      "start": "1",
+      "end": "0..N",
+      "color": "#64748b"
+    },
+    {
+      "id": "R08",
+      "source": "chitietdonhang",
+      "target": "baohanh",
+      "fields": [
+        "MaDH",
+        "MaSP"
+      ],
+      "label": "Bảo hành (khóa ghép)",
+      "points": [
+        [
+          1150,
+          1000
+        ],
+        [
+          1110,
+          1000
+        ],
+        [
+          1110,
+          1300
+        ],
+        [
+          825,
+          1300
+        ],
+        [
+          825,
+          1420
+        ]
+      ],
+      "lx": 960,
+      "ly": 1281,
+      "start": "1",
+      "end": "0..N",
+      "color": "#64748b"
+    },
+    {
+      "id": "R09",
+      "source": "magiamgia",
+      "target": "donhang",
+      "fields": [
+        "MaCode"
+      ],
+      "label": "Áp dụng mã",
+      "points": [
+        [
+          1690,
+          310
+        ],
+        [
+          1580,
+          310
+        ]
+      ],
+      "lx": 1635,
+      "ly": 287,
+      "start": "0..1",
+      "end": "0..N",
+      "color": "#64748b"
+    },
+    {
+      "id": "R10",
+      "source": "donhang",
+      "target": "thanhtoan",
+      "fields": [
+        "MaDH"
+      ],
+      "label": "Thanh toán",
+      "points": [
+        [
+          1580,
+          530
+        ],
+        [
+          1630,
+          530
+        ],
+        [
+          1630,
+          950
+        ],
+        [
+          1690,
+          950
+        ]
+      ],
+      "lx": 1629,
+      "ly": 750,
+      "start": "1",
+      "end": "0..N",
+      "color": "#64748b"
+    },
+    {
+      "id": "R11",
+      "source": "donhang",
+      "target": "lichsudonhang",
+      "fields": [
+        "MaDH"
+      ],
+      "label": "Lịch sử",
+      "points": [
+        [
+          1580,
+          595
+        ],
+        [
+          1660,
+          595
+        ],
+        [
+          1660,
+          1360
+        ],
+        [
+          1365,
+          1360
+        ],
+        [
+          1365,
+          1420
+        ]
+      ],
+      "lx": 1400,
+      "ly": 1385,
+      "start": "1",
+      "end": "0..N",
+      "color": "#64748b"
+    },
+    {
+      "id": "R12",
+      "source": "taikhoan",
+      "target": "donhang",
+      "fields": [
+        "MaTK"
+      ],
+      "label": "Người đặt",
+      "points": [
+        [
+          2230,
+          580
+        ],
+        [
+          2185,
+          580
+        ],
+        [
+          2185,
+          690
+        ],
+        [
+          1605,
+          690
+        ],
+        [
+          1605,
+          560
+        ],
+        [
+          1580,
+          560
+        ]
+      ],
+      "lx": 1900,
+      "ly": 675,
+      "start": "1",
+      "end": "0..N",
+      "color": "#64748b"
+    },
+    {
+      "id": "R13",
+      "source": "taikhoan",
+      "target": "donhang",
+      "fields": [
+        "MaNguoiXuLy"
+      ],
+      "label": "Người xử lý",
+      "points": [
+        [
+          2445,
+          180
+        ],
+        [
+          2445,
+          130
+        ],
+        [
+          1365,
+          130
+        ],
+        [
+          1365,
+          180
+        ]
+      ],
+      "lx": 1910,
+      "ly": 116,
+      "start": "0..1",
+      "end": "0..N",
+      "color": "#64748b"
+    },
+    {
+      "id": "R14",
+      "source": "taikhoan",
+      "target": "giohang",
+      "fields": [
+        "MaTK"
+      ],
+      "label": "Giỏ của khách",
+      "points": [
+        [
+          2335,
+          664
+        ],
+        [
+          2335,
+          735
+        ],
+        [
+          900,
+          735
+        ],
+        [
+          900,
+          830
+        ]
+      ],
+      "lx": 1840,
+      "ly": 732,
+      "start": "1",
+      "end": "0..N",
+      "color": "#64748b"
+    },
+    {
+      "id": "R15",
+      "source": "taikhoan",
+      "target": "danhgiasanpham",
+      "fields": [
+        "MaTK"
+      ],
+      "label": "Khách đánh giá",
+      "points": [
+        [
+          2230,
+          630
+        ],
+        [
+          2205,
+          630
+        ],
+        [
+          2205,
+          710
+        ],
+        [
+          15,
+          710
+        ],
+        [
+          15,
+          1510
+        ],
+        [
+          70,
+          1510
+        ]
+      ],
+      "lx": 152,
+      "ly": 692,
+      "start": "1",
+      "end": "0..N",
+      "color": "#64748b"
+    },
+    {
+      "id": "R16",
+      "source": "taikhoan",
+      "target": "lichsudonhang",
+      "fields": [
+        "MaTKXuLy"
+      ],
+      "label": "Nhân viên xử lý",
+      "points": [
+        [
+          2550,
+          664
+        ],
+        [
+          2550,
+          760
+        ],
+        [
+          2165,
+          760
+        ],
+        [
+          2165,
+          1330
+        ],
+        [
+          1520,
+          1330
+        ],
+        [
+          1520,
+          1420
+        ]
+      ],
+      "lx": 1900,
+      "ly": 1310,
+      "start": "0..1",
+      "end": "0..N",
+      "color": "#64748b"
+    },
+    {
+      "id": "R17",
+      "source": "taikhoan",
+      "target": "HoiThoai",
+      "fields": [
+        "MaTK"
+      ],
+      "label": "Chủ hội thoại",
+      "points": [
+        [
+          2660,
+          290
+        ],
+        [
+          2770,
+          290
+        ]
+      ],
+      "lx": 2715,
+      "ly": 260,
+      "start": "0..1",
+      "end": "0..N",
+      "color": "#16806a"
+    },
+    {
+      "id": "R18",
+      "source": "HoiThoai",
+      "target": "TinNhan",
+      "fields": [
+        "MaHoiThoai"
+      ],
+      "label": "Chứa tin nhắn",
+      "points": [
+        [
+          2985,
+          412
+        ],
+        [
+          2985,
+          830
+        ]
+      ],
+      "lx": 2985,
+      "ly": 620,
+      "start": "1",
+      "end": "0..N",
+      "color": "#16806a"
+    }
+  ]
+}

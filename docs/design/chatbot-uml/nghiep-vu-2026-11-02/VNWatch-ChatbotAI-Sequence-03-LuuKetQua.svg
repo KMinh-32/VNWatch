@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2020" height="2647" viewBox="0 0 2020 2647" role="img" aria-labelledby="title">
+<title id="title">SEQUENCE 03 — LƯU KẾT QUẢ TƯ VẤN NHẤT QUÁN</title>
+<rect width="2020" height="2647" fill="white"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<text x="28" y="40.0" font-size="25" font-weight="700" text-anchor="start" fill="#172b43">SEQUENCE 03 — LƯU KẾT QUẢ TƯ VẤN NHẤT QUÁN</text>
+<text x="28" y="74.0" font-size="16" font-weight="400" text-anchor="start" fill="#52677d">sd LuuKetQuaTuVan · được gọi từ ref của Sequence 02 · dùng chung transaction context cho các thao tác ghi</text>
+<circle cx="130" cy="158" r="27" fill="#d5e8d4" stroke="#64748b" stroke-width="1.6"/>
+<polyline points="150,137 134,123 116,130" fill="none" stroke="#94a3b8" stroke-width="1.6" />
+<polyline points="126,120 116,130 128,134" fill="none" stroke="#94a3b8" stroke-width="1.6" />
+<text x="130" y="241.0" font-size="19" font-weight="700" text-anchor="middle" fill="#172b43">ChatbotController</text>
+<text x="130" y="266.0" font-size="12" font-weight="400" text-anchor="middle" fill="#64748b">«control»</text>
+<polyline points="130,286 130,2437" fill="none" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="7 5"/>
+<circle cx="570" cy="158" r="27" fill="#fff2cc" stroke="#64748b" stroke-width="1.6"/>
+<polyline points="540,189 600,189" fill="none" stroke="#94a3b8" stroke-width="1.6" />
+<text x="570" y="241.0" font-size="19" font-weight="700" text-anchor="middle" fill="#172b43">PhienChat</text>
+<text x="570" y="266.0" font-size="12" font-weight="400" text-anchor="middle" fill="#64748b">«entity» · phienchat</text>
+<polyline points="570,286 570,2437" fill="none" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="7 5"/>
+<circle cx="1010" cy="158" r="27" fill="#fff2cc" stroke="#64748b" stroke-width="1.6"/>
+<polyline points="980,189 1040,189" fill="none" stroke="#94a3b8" stroke-width="1.6" />
+<text x="1010" y="241.0" font-size="19" font-weight="700" text-anchor="middle" fill="#172b43">TinNhanChat</text>
+<text x="1010" y="266.0" font-size="12" font-weight="400" text-anchor="middle" fill="#64748b">«entity» · tinnhanchat</text>
+<polyline points="1010,286 1010,2437" fill="none" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="7 5"/>
+<circle cx="1450" cy="158" r="27" fill="#fff2cc" stroke="#64748b" stroke-width="1.6"/>
+<polyline points="1420,189 1480,189" fill="none" stroke="#94a3b8" stroke-width="1.6" />
+<text x="1450" y="241.0" font-size="19" font-weight="700" text-anchor="middle" fill="#172b43">SanPhamGoiY</text>
+<text x="1450" y="266.0" font-size="12" font-weight="400" text-anchor="middle" fill="#64748b">«entity» · sanphamgoiy</text>
+<polyline points="1450,286 1450,2437" fill="none" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="7 5"/>
+<circle cx="1890" cy="158" r="27" fill="#fff2cc" stroke="#64748b" stroke-width="1.6"/>
+<polyline points="1860,189 1920,189" fill="none" stroke="#94a3b8" stroke-width="1.6" />
+<text x="1890" y="241.0" font-size="19" font-weight="700" text-anchor="middle" fill="#172b43">NguonTraLoi</text>
+<text x="1890" y="266.0" font-size="12" font-weight="400" text-anchor="middle" fill="#64748b">«entity» · nguontraloi</text>
+<polyline points="1890,286 1890,2437" fill="none" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="7 5"/>
+<rect x="20" y="680" width="1980" height="148" fill="none" stroke="#b14a55" stroke-width="1.4"/>
+<rect x="20" y="680" width="80" height="29" fill="#fff1f2" stroke="#b14a55" stroke-width="1.4"/>
+<rect x="20" y="862" width="1980" height="204" fill="none" stroke="#7589a0" stroke-width="1.4"/>
+<rect x="20" y="862" width="80" height="29" fill="#edf3f8" stroke="#7589a0" stroke-width="1.4"/>
+<rect x="20" y="1100" width="1980" height="148" fill="none" stroke="#b14a55" stroke-width="1.4"/>
+<rect x="20" y="1100" width="80" height="29" fill="#fff1f2" stroke="#b14a55" stroke-width="1.4"/>
+<rect x="20" y="1282" width="1980" height="204" fill="none" stroke="#7589a0" stroke-width="1.4"/>
+<rect x="20" y="1282" width="80" height="29" fill="#edf3f8" stroke="#7589a0" stroke-width="1.4"/>
+<rect x="20" y="1520" width="1980" height="148" fill="none" stroke="#b14a55" stroke-width="1.4"/>
+<rect x="20" y="1520" width="80" height="29" fill="#fff1f2" stroke="#b14a55" stroke-width="1.4"/>
+<rect x="20" y="1858" width="1980" height="148" fill="none" stroke="#b14a55" stroke-width="1.4"/>
+<rect x="20" y="1858" width="80" height="29" fill="#fff1f2" stroke="#b14a55" stroke-width="1.4"/>
+<rect x="20" y="2140" width="1980" height="148" fill="none" stroke="#b14a55" stroke-width="1.4"/>
+<rect x="20" y="2140" width="80" height="29" fill="#fff1f2" stroke="#b14a55" stroke-width="1.4"/>
+<rect x="124" y="320" width="12" height="2117" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.4"/>
+<rect x="1004" y="548" width="12" height="83" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<rect x="1444" y="938" width="12" height="83" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<rect x="1884" y="1358" width="12" height="83" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<rect x="564" y="1726" width="12" height="83" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+<text x="60" y="701.0" font-size="15" font-weight="700" text-anchor="middle" fill="#b14a55">break</text>
+<rect x="113" y="685" width="234.75" height="26.25" fill="white"/>
+<text x="116" y="702.0" font-size="15" font-weight="400" text-anchor="start" fill="#b14a55">[Ghi tin AI thất bại]</text>
+<text x="60" y="883.0" font-size="15" font-weight="700" text-anchor="middle" fill="#7589a0">opt</text>
+<rect x="113" y="867" width="215.25" height="26.25" fill="white"/>
+<text x="116" y="884.0" font-size="15" font-weight="400" text-anchor="start" fill="#7589a0">[Có sản phẩm gợi ý]</text>
+<text x="60" y="1121.0" font-size="15" font-weight="700" text-anchor="middle" fill="#b14a55">break</text>
+<rect x="113" y="1105" width="312.75" height="26.25" fill="white"/>
+<text x="116" y="1122.0" font-size="15" font-weight="400" text-anchor="start" fill="#b14a55">[Ghi sản phẩm gợi ý thất bại]</text>
+<text x="60" y="1303.0" font-size="15" font-weight="700" text-anchor="middle" fill="#7589a0">opt</text>
+<rect x="113" y="1287" width="205.5" height="26.25" fill="white"/>
+<text x="116" y="1304.0" font-size="15" font-weight="400" text-anchor="start" fill="#7589a0">[Có nguồn trả lời]</text>
+<text x="60" y="1541.0" font-size="15" font-weight="700" text-anchor="middle" fill="#b14a55">break</text>
+<rect x="113" y="1525" width="303.0" height="26.25" fill="white"/>
+<text x="116" y="1542.0" font-size="15" font-weight="400" text-anchor="start" fill="#b14a55">[Ghi nguồn trả lời thất bại]</text>
+<text x="60" y="1879.0" font-size="15" font-weight="700" text-anchor="middle" fill="#b14a55">break</text>
+<rect x="113" y="1863" width="273.75" height="26.25" fill="white"/>
+<text x="116" y="1880.0" font-size="15" font-weight="400" text-anchor="start" fill="#b14a55">[Cập nhật phiên thất bại]</text>
+<text x="60" y="2161.0" font-size="15" font-weight="700" text-anchor="middle" fill="#b14a55">break</text>
+<rect x="113" y="2145" width="322.5" height="26.25" fill="white"/>
+<text x="116" y="2162.0" font-size="15" font-weight="400" text-anchor="start" fill="#b14a55">[Database báo COMMIT thất bại]</text>
+<rect x="24" y="327" width="1972" height="74" fill="#fffbeb" stroke="#c4ae69" stroke-width="1.4"/>
+<text x="39" y="353.0" font-size="15" font-weight="400" text-anchor="start" fill="#172b43">Đầu vào: MaPhien đã kiểm tra quyền, ketQua đã đối chiếu với catalog / kiến thức được duyệt.</text>
+<text x="39" y="378.0" font-size="15" font-weight="400" text-anchor="start" fill="#172b43">Tin khách đã được lưu ở Sequence 02. Transaction dưới đây chỉ bao gồm tin AI, gợi ý, nguồn và cập nhật phiên.</text>
+<polyline points="136,448 225,448 225,478 136,478" fill="none" stroke="#22354b" stroke-width="1.6" />
+<polygon points="147.0,473.0 136,478 147.0,483.0" fill="#22354b" stroke="#22354b" stroke-width="1.6"/>
+<rect x="239" y="423" width="506" height="26.25" fill="white"/>
+<text x="242" y="440.0" font-size="15" font-weight="400" text-anchor="start" fill="#172b43">1. batDauGiaoDich() — BEGIN</text>
+<polyline points="136,548 1004,548" fill="none" stroke="#22354b" stroke-width="1.6" />
+<polygon points="993.0,553.0 1004,548 993.0,543.0" fill="#22354b" stroke="#22354b" stroke-width="1.6"/>
+<rect x="141.0" y="517.0" width="858" height="26.25" fill="white"/>
+<text x="570.0" y="534.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">2. luuTinAI(MaPhien, NguoiGui=AI, MaTK=NULL, ketQua, TrangThai=HOAN_TAT)</text>
+<polyline points="1004,626 136,626" fill="none" stroke="#22354b" stroke-width="1.6" stroke-dasharray="7 5"/>
+<polyline points="147.0,621.0 136,626 147.0,631.0" fill="none" stroke="#22354b" stroke-width="1.6"/>
+<rect x="141.0" y="595.0" width="858" height="26.25" fill="white"/>
+<text x="570.0" y="612.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">3. MaTNAI mới hoặc lỗi ghi</text>
+<polyline points="136,756 225,756 225,786 136,786" fill="none" stroke="#22354b" stroke-width="1.6" />
+<polygon points="147.0,781.0 136,786 147.0,791.0" fill="#22354b" stroke="#22354b" stroke-width="1.6"/>
+<rect x="239" y="731" width="529.8" height="26.25" fill="white"/>
+<text x="242" y="748.0" font-size="15" font-weight="400" text-anchor="start" fill="#172b43">4. rollbackGiaoDich(); trả lỗi lưu cho interaction gọi</text>
+<polyline points="136,938 1444,938" fill="none" stroke="#22354b" stroke-width="1.6" />
+<polygon points="1433.0,943.0 1444,938 1433.0,933.0" fill="#22354b" stroke="#22354b" stroke-width="1.6"/>
+<rect x="141.0" y="907.0" width="1298" height="26.25" fill="white"/>
+<text x="790.0" y="924.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">5. luuDanhSachGoiY(MaTNAI, [(MaSP, ThuTu, LyDo)])</text>
+<polyline points="1444,1016 136,1016" fill="none" stroke="#22354b" stroke-width="1.6" stroke-dasharray="7 5"/>
+<polyline points="147.0,1011.0 136,1016 147.0,1021.0" fill="none" stroke="#22354b" stroke-width="1.6"/>
+<rect x="141.0" y="985.0" width="1298" height="26.25" fill="white"/>
+<text x="790.0" y="1002.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">6. Kết quả ghi SanPhamGoiY hoặc lỗi</text>
+<polyline points="136,1176 225,1176 225,1206 136,1206" fill="none" stroke="#22354b" stroke-width="1.6" />
+<polygon points="147.0,1201.0 136,1206 147.0,1211.0" fill="#22354b" stroke="#22354b" stroke-width="1.6"/>
+<rect x="239" y="1151" width="529.8" height="26.25" fill="white"/>
+<text x="242" y="1168.0" font-size="15" font-weight="400" text-anchor="start" fill="#172b43">7. rollbackGiaoDich(); trả lỗi lưu cho interaction gọi</text>
+<polyline points="136,1358 1884,1358" fill="none" stroke="#22354b" stroke-width="1.6" />
+<polygon points="1873.0,1363.0 1884,1358 1873.0,1353.0" fill="#22354b" stroke="#22354b" stroke-width="1.6"/>
+<rect x="141.0" y="1327.0" width="1738" height="26.25" fill="white"/>
+<text x="1010.0" y="1344.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">8. luuNguonVaBanChup(MaTNAI, [(MaKT?, TieuDeNguon, URLNguon?, NoiDungTrichDan?, ThoiDiemSuDung)])</text>
+<polyline points="1884,1436 136,1436" fill="none" stroke="#22354b" stroke-width="1.6" stroke-dasharray="7 5"/>
+<polyline points="147.0,1431.0 136,1436 147.0,1441.0" fill="none" stroke="#22354b" stroke-width="1.6"/>
+<rect x="141.0" y="1405.0" width="1738" height="26.25" fill="white"/>
+<text x="1010.0" y="1422.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">9. Kết quả ghi nguồn và bản chụp hoặc lỗi</text>
+<polyline points="136,1596 225,1596 225,1626 136,1626" fill="none" stroke="#22354b" stroke-width="1.6" />
+<polygon points="147.0,1621.0 136,1626 147.0,1631.0" fill="#22354b" stroke="#22354b" stroke-width="1.6"/>
+<rect x="239" y="1571" width="539.5" height="26.25" fill="white"/>
+<text x="242" y="1588.0" font-size="15" font-weight="400" text-anchor="start" fill="#172b43">10. rollbackGiaoDich(); trả lỗi lưu cho interaction gọi</text>
+<polyline points="136,1726 564,1726" fill="none" stroke="#22354b" stroke-width="1.6" />
+<polygon points="553.0,1731.0 564,1726 553.0,1721.0" fill="#22354b" stroke="#22354b" stroke-width="1.6"/>
+<rect x="141.0" y="1695.0" width="418" height="26.25" fill="white"/>
+<text x="350.0" y="1712.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">11. capNhatThoiGian(MaPhien)</text>
+<polyline points="564,1804 136,1804" fill="none" stroke="#22354b" stroke-width="1.6" stroke-dasharray="7 5"/>
+<polyline points="147.0,1799.0 136,1804 147.0,1809.0" fill="none" stroke="#22354b" stroke-width="1.6"/>
+<rect x="141.0" y="1773.0" width="418" height="26.25" fill="white"/>
+<text x="350.0" y="1790.0" font-size="15" font-weight="400" text-anchor="middle" fill="#172b43">12. Kết quả cập nhật NgayCapNhat hoặc lỗi</text>
+<polyline points="136,1934 225,1934 225,1964 136,1964" fill="none" stroke="#22354b" stroke-width="1.6" />
+<polygon points="147.0,1959.0 136,1964 147.0,1969.0" fill="#22354b" stroke="#22354b" stroke-width="1.6"/>
+<rect x="239" y="1909" width="539.5" height="26.25" fill="white"/>
+<text x="242" y="1926.0" font-size="15" font-weight="400" text-anchor="start" fill="#172b43">13. rollbackGiaoDich(); trả lỗi lưu cho interaction gọi</text>
+<polyline points="136,2064 225,2064 225,2094 136,2094" fill="none" stroke="#22354b" stroke-width="1.6" />
+<polygon points="147.0,2089.0 136,2094 147.0,2099.0" fill="#22354b" stroke="#22354b" stroke-width="1.6"/>
+<rect x="239" y="2039" width="506" height="26.25" fill="white"/>
+<text x="242" y="2056.0" font-size="15" font-weight="400" text-anchor="start" fill="#172b43">14. commitGiaoDich() — COMMIT</text>
+<polyline points="136,2216 225,2216 225,2246 136,2246" fill="none" stroke="#22354b" stroke-width="1.6" />
+<polygon points="147.0,2241.0 136,2246 147.0,2251.0" fill="#22354b" stroke="#22354b" stroke-width="1.6"/>
+<rect x="239" y="2191" width="539.5" height="26.25" fill="white"/>
+<text x="242" y="2208.0" font-size="15" font-weight="400" text-anchor="start" fill="#172b43">15. rollbackGiaoDich(); trả lỗi lưu cho interaction gọi</text>
+<rect x="24" y="2331" width="1972" height="49" fill="#fffbeb" stroke="#c4ae69" stroke-width="1.4"/>
+<text x="39" y="2357.0" font-size="15" font-weight="400" text-anchor="start" fill="#172b43">Trả thành công và MaTNAI cho interaction gọi; Sequence 02 mới trả kết quả về giao diện.</text>
+<rect x="22" y="2457" width="1976" height="170" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
+<text x="38" y="2483.0" font-size="14" font-weight="400" text-anchor="start" fill="#475569">SanPhamGoiY: PK(MaTN, MaSP), ThuTu &gt; 0; mỗi MaTN không trùng ThuTu. MaTN ở đây luôn là MaTNAI.</text>
+<text x="38" y="2513.0" font-size="14" font-weight="400" text-anchor="start" fill="#475569">NguonTraLoi.MaKT có thể NULL với nguồn trang sản phẩm; giữ tiêu đề, URL và bản chụp nội dung theo ERD.</text>
+<text x="38" y="2543.0" font-size="14" font-weight="400" text-anchor="start" fill="#475569">Tin AI có MaTK=NULL. CheDo và TenMoHinh lưu cùng TinNhanChat; không phải một bảng nhà cung cấp AI.</text>
+<text x="38" y="2573.0" font-size="14" font-weight="400" text-anchor="start" fill="#475569">Mỗi break kết thúc toàn bộ interaction này: rollback các thay đổi trong transaction; tin khách trước đó vẫn giữ.</text>
+<text x="38" y="2603.0" font-size="14" font-weight="400" text-anchor="start" fill="#475569">Nếu BEGIN thất bại thì trả lỗi ngay. Không giữ transaction mở trong thời gian chờ AI ở Sequence 02.</text>
+</g></svg>

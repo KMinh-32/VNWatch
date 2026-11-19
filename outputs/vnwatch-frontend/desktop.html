@@ -1,0 +1,17 @@
+<!doctype html>
+<!-- HỌC VNWATCH: Khung HTML riêng được đóng gói vào Electron; root được desktop.tsx gắn giao diện quản trị. -->
+<html lang="vi">
+  <!-- Metadata/font dành cho trình duyệt; phần này không phải nội dung nhìn thấy của trang. -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VNWatch Manager</title>
+  </head>
+  <!-- Nội dung trang: React sẽ quản lý cây giao diện bên trong root. -->
+  <body>
+    <!-- Điểm gắn React; createRoot trong main.tsx/desktop.tsx render ứng dụng tại đây. -->
+    <div id="root"></div>
+    <!-- Module TypeScript điểm vào do Vite xử lý khi dev/build. -->
+    <script type="module" src="/src/desktop.tsx"></script>
+  </body>
+</html>

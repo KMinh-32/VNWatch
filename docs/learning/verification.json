@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-11T22:45:12.847Z",
+  "sourceFiles": 159,
+  "annotatedMigrationCopies": 7,
+  "originalMigrationChecksumsUnchanged": true,
+  "commentBlocks": 2224,
+  "typescriptAndJavaScriptFiles": 113,
+  "emittedCodeUnchanged": true,
+  "javascriptNodeSyntaxChecks": 10,
+  "backendTypecheck": "passed",
+  "frontendWebBuild": "passed",
+  "frontendDesktopBuild": "passed",
+  "electronBridgeTests": 3,
+  "agentTests": 24,
+  "pythonAstAndTokens": "unchanged",
+  "powerShellTokens": "unchanged",
+  "cssHtmlYamlAndOtherConfig": "unchanged",
+  "prismaSchemaValidation": "passed",
+  "dockerComposeValidation": "passed"
+}

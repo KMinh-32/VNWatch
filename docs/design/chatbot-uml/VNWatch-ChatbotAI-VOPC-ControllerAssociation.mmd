@@ -1,0 +1,173 @@
+classDiagram
+    direction LR
+    class KhachHang {
+        <<actor>>
+    }
+    class HeThongAI {
+        <<actor>>
+    }
+    class ChatbotForm {
+        <<boundary>>
+        +cuaSoChat
+        +oNhapCauHoi
+        +dsChuDeHoTro
+        +hienThiLoiChao()
+        +nhapCauHoi()
+        +guiTinNhan()
+        +hienThiTraLoi()
+        +hienThiSanPhamGoiY()
+        +hienThiNguonTraLoi()
+        +dongCuaSo()
+    }
+    class ChatbotController {
+        <<control>>
+        +maPhien
+        +maTK
+        +nguCanhHoiThoai
+        +yDinh
+        +tieuChi
+        +ketQuaTuVan
+        +taiKhoan: TaiKhoan [0..1]
+        +phienChat: PhienChat [1]
+        +lichSuHoiThoai: TinNhanChat [0..*]
+        +danhMucLienQuan: DanhMuc [0..*]
+        +sanPhamLienQuan: SanPham [0..*]
+        +kienThucSuDung: KienThucChatbot [0..*]
+        +goiYTraLoi: SanPhamGoiY [0..*]
+        +nguonTraLoi: NguonTraLoi [0..*]
+        +moPhienChat()
+        +kiemTraChuPhien()
+        +guiTinNhan()
+        +layLichSuHoiThoai()
+        +timSanPhamPhuHop()
+        +layKienThucDaDuyet()
+        +goiHeThongAI()
+        +kiemTraKetQuaVaNguon()
+        +luuKetQuaTuVan()
+        +dongPhienChat()
+    }
+    class TaiKhoan {
+        <<entity>>
+        +maTK
+        +hoTen
+        +email
+        +vaiTro
+        +trangThai
+        +layThongTinKhach()
+        +kiemTraTrangThaiTaiKhoan()
+    }
+    class PhienChat {
+        <<entity>>
+        +maPhien
+        +maTK
+        +tieuDe
+        +trangThai
+        +ngayTao
+        +ngayCapNhat
+        +taoPhien()
+        +layPhien()
+        +kiemTraChuPhien()
+        +capNhatThoiGian()
+        +dongPhien()
+    }
+    class TinNhanChat {
+        <<entity>>
+        +maTN
+        +maPhien
+        +maTK
+        +nguoiGui
+        +noiDung
+        +yDinh
+        +cheDo
+        +tenMoHinh
+        +trangThai
+        +thoiGian
+        +luuTinKhach()
+        +layLichSuTruoc()
+        +luuTinAI()
+        +layLichSuPhien()
+    }
+    class DanhMuc {
+        <<entity>>
+        +maDM
+        +tenDM
+        +maDMCha
+        +thuTuHienThi
+        +moTa
+        +layDanhMuc()
+        +layDanhMucLienQuan()
+    }
+    class SanPham {
+        <<entity>>
+        +maSP
+        +maDM
+        +tenSP
+        +thuongHieu
+        +kieuMay
+        +chatLieuDay
+        +giaBan
+        +soLuongTon
+        +hinhAnh
+        +thongSoChiTiet
+        +trangThai
+        +timSanPhamLienQuan()
+        +layThongTinSanPham()
+        +kiemTraConHang()
+    }
+    class KienThucChatbot {
+        <<entity>>
+        +maKT
+        +loai
+        +chuDe
+        +tieuDe
+        +noiDung
+        +urlNguon
+        +trangThai
+        +nguoiDuyet
+        +ngayDuyet
+        +ngayCapNhat
+        +layKienThucDaDuyet()
+        +timTheoChuDe()
+    }
+    class SanPhamGoiY {
+        <<entity>>
+        +maTN
+        +maSP
+        +thuTu
+        +lyDo
+        +luuDanhSachGoiY()
+        +layDanhSachGoiY()
+    }
+    class NguonTraLoi {
+        <<entity>>
+        +maNguon
+        +maTN
+        +maKT
+        +tieuDeNguon
+        +urlNguon
+        +noiDungTrichDan
+        +thoiDiemSuDung
+        +luuNguonVaBanChup()
+        +layNguonTheoTinNhan()
+    }
+    KhachHang -- ChatbotForm : sử dụng
+    ChatbotForm ..> ChatbotController : gửi yêu cầu
+    ChatbotController ..> HeThongAI : gọi tư vấn
+    ChatbotController "0..*" --> "0..1" TaiKhoan : C01 taiKhoan
+    ChatbotController "0..*" --> "1" PhienChat : C02 phienChat
+    ChatbotController "0..*" --> "0..*" TinNhanChat : C03 lichSuHoiThoai
+    ChatbotController "0..*" --> "0..*" DanhMuc : C04 danhMucLienQuan
+    ChatbotController "0..*" --> "0..*" SanPham : C05 sanPhamLienQuan
+    ChatbotController "0..*" --> "0..*" KienThucChatbot : C06 kienThucSuDung
+    ChatbotController "0..*" --> "0..*" SanPhamGoiY : C07 goiYTraLoi
+    ChatbotController "0..*" --> "0..*" NguonTraLoi : C08 nguonTraLoi
+    TaiKhoan "0..1" -- "0..*" PhienChat : R17 sở hữu
+    PhienChat "1" -- "0..*" TinNhanChat : R19 chứa tin nhắn
+    TaiKhoan "0..1" -- "0..*" TinNhanChat : R18 người gửi
+    TaiKhoan "0..1" -- "0..*" KienThucChatbot : R20 duyệt kiến thức
+    DanhMuc "0..1" -- "0..*" DanhMuc : R01 danh mục cha
+    DanhMuc "1" -- "0..*" SanPham : R02 phân loại
+    TinNhanChat "1" -- "0..*" SanPhamGoiY : R21 đề xuất
+    SanPham "1" -- "0..*" SanPhamGoiY : R22 được gợi ý
+    TinNhanChat "1" -- "0..*" NguonTraLoi : R23 trích dẫn
+    KienThucChatbot "0..1" -- "0..*" NguonTraLoi : R24 tham chiếu

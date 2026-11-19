@@ -1,0 +1,673 @@
+// HỌC VNWATCH — outputs/vnwatch-backend/prisma/schema.prisma
+// Schema nguồn Prisma: model ánh xạ bảng PostgreSQL, enum hạn chế trạng thái, quan hệ/index bảo vệ cấu trúc và hỗ trợ truy vấn.
+// String?/DateTime? là nullable; [] là danh sách/quan hệ nhiều. @default đặt giá trị tạo mới.
+// Prisma sinh client từ schema vào thư mục generated; không sửa client bằng tay.
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+// Database sử dụng PostgreSQL; URL lấy từ prisma.config.ts/môi trường.
+datasource db {
+  provider = "postgresql"
+}
+
+// Enum: chỉ cho phép các trạng thái/giá trị được khai báo bên dưới.
+enum UserRole {
+  CUSTOMER
+  STAFF
+  ADMIN
+}
+
+// Enum: chỉ cho phép các trạng thái/giá trị được khai báo bên dưới.
+enum UserStatus {
+  ACTIVE
+  BLOCKED
+}
+
+// Tài khoản và vai trò; không lộ passwordHash ra API.
+model User {
+  // Định danh bản ghi hoặc request để theo dõi/hủy.
+  id                  String               @id @default(uuid()) @db.Uuid
+  // Địa chỉ đăng nhập; chuẩn hóa trước khi tra cứu.
+  email               String               @unique @db.VarChar(254)
+  // Tên hiển thị, không phải thông tin phân quyền. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  displayName         String               @map("display_name") @db.VarChar(80)
+  // Hash scrypt cùng salt/tham số; không lưu mật khẩu dạng rõ. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  passwordHash        String               @map("password_hash") @db.VarChar(255)
+  // Vai trò tài khoản; backend kiểm tra quyền từ database.
+  role                UserRole             @default(CUSTOMER)
+  // Trạng thái nghiệp vụ của đối tượng; xem enum/DTO tương ứng.
+  status              UserStatus           @default(ACTIVE)
+  // Bộ đếm lần nhập sai phục vụ khóa đăng nhập. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  failedLoginAttempts Int                  @default(0) @map("failed_login_attempts")
+  // Thời điểm hết khóa đăng nhập tạm; null là chưa bị khóa. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  lockedUntil         DateTime?            @map("locked_until") @db.Timestamptz(3)
+  // Thời điểm tạo bản ghi. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  createdAt           DateTime             @default(now()) @map("created_at") @db.Timestamptz(3)
+  // Thời điểm cập nhật, còn dùng làm version để chống ghi đè. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  updatedAt           DateTime             @updatedAt @map("updated_at") @db.Timestamptz(3)
+  sessions            UserSession[]
+  passwordResets      PasswordResetToken[]
+  actions             AuditEvent[]         @relation("AuditActor")
+  receivedActions     AuditEvent[]         @relation("AuditTarget")
+  orders              Order[]
+  orderEvents         OrderEvent[]
+  cartLines           CartLine[]
+  favorites           Favorite[]
+  addresses           SavedAddress[]
+  tickets             SupportTicket[]
+  reviews             ProductReview[]
+  promotionUses       PromotionUse[]
+  businessActions     BusinessAudit[]
+  conversations       HoiThoai[]
+
+  // Index hỗ trợ truy vấn tương ứng; vẫn cần đo/EXPLAIN để đánh giá tốc độ.
+  @@index([createdAt, id])
+  // Ánh xạ model sang tên bảng trong PostgreSQL.
+  @@map("users")
+}
+
+// HoiThoai thuộc tài khoản đã xác thực hoặc một khách vãng lai có cookie bí mật.
+model HoiThoai {
+  maHoiThoai String @id @default(uuid()) @db.Uuid
+  // User hiện có dùng UUID, nên FK giữ UUID thay vì INT trong bản ERD minh họa.
+  maTK String? @db.Uuid
+  taiKhoan User? @relation(fields: [maTK], references: [id], onDelete: Cascade)
+  guestTokenHash String? @db.Char(64)
+  tieuDe String? @db.VarChar(150)
+  trangThai String @default("DANG_MO") @db.VarChar(20)
+  dataKind String @default("REFERENCE") @db.VarChar(20)
+  ngayTao DateTime @default(now()) @db.Timestamptz(3)
+  ngayCapNhat DateTime @updatedAt @db.Timestamptz(3)
+  tinNhan TinNhan[]
+  @@index([maTK, ngayCapNhat])
+  @@index([guestTokenHash, ngayCapNhat])
+  @@map("HoiThoai")
+}
+
+// Mỗi lượt gửi gồm một TinNhan user và một TinNhan assistant.
+model TinNhan {
+  maTinNhan Int @id @default(autoincrement())
+  maHoiThoai String @db.Uuid
+  hoiThoai HoiThoai @relation(fields: [maHoiThoai], references: [maHoiThoai], onDelete: Cascade)
+  nguoiGui String @db.VarChar(15)
+  noiDung String @db.Text
+  yDinh String? @db.VarChar(30)
+  cheDo String? @db.VarChar(20)
+  tenMoHinh String? @db.VarChar(100)
+  trangThai String @default("HOAN_THANH") @db.VarChar(20)
+  thoiGian DateTime @default(now()) @db.Timestamptz(3)
+  // Mã lượt gửi ngăn ghi trùng khi mạng lỗi; JSON giữ nguồn và thẻ gợi ý tại thời điểm trả lời.
+  requestId String @db.Uuid
+  duLieuTraLoi Json?
+  @@unique([maHoiThoai, requestId, nguoiGui])
+  @@index([maHoiThoai, maTinNhan])
+  @@map("TinNhan")
+}
+
+// Phiên opaque có hash token, hạn và mốc thu hồi.
+model UserSession {
+  // Định danh bản ghi hoặc request để theo dõi/hủy.
+  id        String    @id @default(uuid()) @db.Uuid
+  // ID chủ sở hữu; phía server xác định từ phiên hoặc kiểm tra quyền admin. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  userId    String    @map("user_id") @db.Uuid
+  // Hash SHA-256 của token phiên/reset, không phải token gửi lại cho khách. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  tokenHash String    @unique @map("token_hash") @db.Char(64)
+  // Thời điểm tạo bản ghi. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+  // Thời điểm hết hiệu lực. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  expiresAt DateTime  @map("expires_at") @db.Timestamptz(3)
+  // Thời điểm phiên bị thu hồi; null nghĩa chưa thu hồi. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  revokedAt DateTime? @map("revoked_at") @db.Timestamptz(3)
+  // Hồ sơ/danh tính hiện tại; quan hệ DB nếu dùng trong Prisma. @relation khai báo khóa ngoại; onDelete quyết định hành vi xóa.
+  user      User      @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  // Index hỗ trợ truy vấn tương ứng; vẫn cần đo/EXPLAIN để đánh giá tốc độ.
+  @@index([userId, revokedAt, expiresAt])
+  // Ánh xạ model sang tên bảng trong PostgreSQL.
+  @@map("user_sessions")
+}
+
+// Reset một lần: lưu hash, hạn và consumedAt.
+model PasswordResetToken {
+  // Định danh bản ghi hoặc request để theo dõi/hủy.
+  id         String    @id @default(uuid()) @db.Uuid
+  // ID chủ sở hữu; phía server xác định từ phiên hoặc kiểm tra quyền admin. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  userId     String    @map("user_id") @db.Uuid
+  // Hash SHA-256 của token phiên/reset, không phải token gửi lại cho khách. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  tokenHash  String    @unique @map("token_hash") @db.Char(64)
+  // Thời điểm tạo bản ghi. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  createdAt  DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+  // Thời điểm hết hiệu lực. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  expiresAt  DateTime  @map("expires_at") @db.Timestamptz(3)
+  // Thời điểm reset token đã dùng/vô hiệu; token chỉ được dùng một lần. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  consumedAt DateTime? @map("consumed_at") @db.Timestamptz(3)
+  // Hồ sơ/danh tính hiện tại; quan hệ DB nếu dùng trong Prisma. @relation khai báo khóa ngoại; onDelete quyết định hành vi xóa.
+  user       User      @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  // Index hỗ trợ truy vấn tương ứng; vẫn cần đo/EXPLAIN để đánh giá tốc độ.
+  @@index([userId, consumedAt])
+  // Ánh xạ model sang tên bảng trong PostgreSQL.
+  @@map("password_reset_tokens")
+}
+
+// Bộ đếm rate limit chia sẻ giữa các tiến trình backend.
+model AuthRateBucket {
+  keyHash   String   @id @map("key_hash") @db.Char(64)
+  hits      Int      @default(1)
+  // Thời điểm hết hiệu lực. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  expiresAt DateTime @map("expires_at") @db.Timestamptz(3)
+
+  // Index hỗ trợ truy vấn tương ứng; vẫn cần đo/EXPLAIN để đánh giá tốc độ.
+  @@index([expiresAt])
+  // Ánh xạ model sang tên bảng trong PostgreSQL.
+  @@map("auth_rate_buckets")
+}
+
+// Nhật ký thay đổi tài khoản/xác thực.
+model AuditEvent {
+  // Định danh bản ghi hoặc request để theo dõi/hủy.
+  id           String   @id @default(uuid()) @db.Uuid
+  // ID người thực hiện thao tác để ghi nhật ký. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  actorId      String?  @map("actor_id") @db.Uuid
+  // ID tài khoản chịu tác động của thao tác. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  targetUserId String   @map("target_user_id") @db.Uuid
+  // Hành động nghiệp vụ/đích điều hướng thuộc danh sách cho phép.
+  action       String   @db.VarChar(64)
+  // JSON trạng thái trước thay đổi.
+  before       Json
+  // JSON trạng thái sau thay đổi.
+  after        Json
+  // Lý do thao tác, được ghi vào lịch sử/audit.
+  reason       String?  @db.VarChar(200)
+  // Thời điểm tạo bản ghi. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  actor        User?    @relation("AuditActor", fields: [actorId], references: [id], onDelete: Restrict)
+  targetUser   User     @relation("AuditTarget", fields: [targetUserId], references: [id], onDelete: Restrict)
+
+  // Index hỗ trợ truy vấn tương ứng; vẫn cần đo/EXPLAIN để đánh giá tốc độ.
+  @@index([targetUserId, createdAt])
+  // Ánh xạ model sang tên bảng trong PostgreSQL.
+  @@map("audit_events")
+}
+
+// Enum: chỉ cho phép các trạng thái/giá trị được khai báo bên dưới.
+enum CatalogStatus {
+  DRAFT
+  ACTIVE
+  DISCONTINUED
+}
+
+// Enum: chỉ cho phép các trạng thái/giá trị được khai báo bên dưới.
+enum MovementType {
+  QUARTZ
+  AUTOMATIC
+  MECHANICAL
+  SOLAR
+}
+
+// Mẫu đồng hồ chứa thông tin chung, tách khỏi SKU.
+model Product {
+  // Định danh bản ghi hoặc request để theo dõi/hủy.
+  id              String           @id @default(uuid()) @db.Uuid
+  // Tên rút gọn duy nhất của mẫu để tra cứu/định danh.
+  slug            String           @unique @db.VarChar(120)
+  // Tên đối tượng dùng để hiển thị.
+  name            String           @db.VarChar(200)
+  // Tên thương hiệu của mẫu.
+  brand           String           @db.VarChar(100)
+  // Nhóm sản phẩm cho bộ lọc.
+  category        String           @db.VarChar(100)
+  // Mô tả được lưu trong catalog.
+  description     String
+  // Danh sách URL ảnh; client có thể thử ảnh kế tiếp khi lỗi. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  imageUrls       String[]         @default([]) @map("image_urls")
+  // DEMO là dữ liệu giả, REFERENCE là mẫu thật có nguồn tham khảo. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  dataKind        String           @default("DEMO") @map("data_kind") @db.VarChar(16)
+  // Tên nguồn thông tin của mẫu. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  sourceName      String?          @map("source_name") @db.VarChar(120)
+  // URL nguồn thông tin dùng để đối chiếu. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  sourceUrl       String?          @map("source_url")
+  // Mốc đã tra cứu nguồn, không phải thời gian cập nhật tự động. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  sourceCheckedAt DateTime?        @map("source_checked_at") @db.Timestamptz(3)
+  // Nguồn xuất xứ ảnh, có thể khác nguồn thông số. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  imageSourceUrl  String?          @map("image_source_url")
+  // Trạng thái nghiệp vụ của đối tượng; xem enum/DTO tương ứng.
+  status          CatalogStatus    @default(DRAFT)
+  // Thời điểm tạo bản ghi. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  createdAt       DateTime         @default(now()) @map("created_at") @db.Timestamptz(3)
+  // Thời điểm cập nhật, còn dùng làm version để chống ghi đè. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  updatedAt       DateTime         @updatedAt @map("updated_at") @db.Timestamptz(3)
+  // Các phiên bản/SKU thuộc một mẫu.
+  variants        ProductVariant[]
+  favorites       Favorite[]
+  reviews         ProductReview[]
+
+  // Index hỗ trợ truy vấn tương ứng; vẫn cần đo/EXPLAIN để đánh giá tốc độ.
+  @@index([status, createdAt, id])
+  // Index hỗ trợ truy vấn tương ứng; vẫn cần đo/EXPLAIN để đánh giá tốc độ.
+  @@index([dataKind, status], map: "products_data_kind_status_idx")
+  // Ánh xạ model sang tên bảng trong PostgreSQL.
+  @@map("products")
+}
+
+// SKU bán được với giá, tồn và thông số riêng.
+model ProductVariant {
+  // Định danh bản ghi hoặc request để theo dõi/hủy.
+  id               String        @id @default(uuid()) @db.Uuid
+  // ID mẫu đồng hồ; một mẫu có thể có nhiều SKU. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  productId        String        @map("product_id") @db.Uuid
+  // Mã SKU duy nhất của phiên bản đồng hồ.
+  sku              String        @unique @db.VarChar(64)
+  // Nhãn hiển thị của lựa chọn/đối tượng.
+  label            String        @db.VarChar(120)
+  // Đơn giá nguyên VND, không dùng số thực để tính tiền. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  priceVnd         Int           @map("price_vnd")
+  // Tồn thực của SKU; backend thay đổi trong transaction. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  stockQuantity    Int           @default(0) @map("stock_quantity")
+  // Trạng thái nghiệp vụ của đối tượng; xem enum/DTO tương ứng.
+  status           CatalogStatus @default(DRAFT)
+  // Loại máy: quartz, automatic, mechanical hoặc solar. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  movementType     MovementType  @map("movement_type")
+  // Đường kính mm; có thể null nếu nguồn chỉ cung cấp kích thước khác. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  caseDiameterMm   Decimal?      @map("case_diameter_mm") @db.Decimal(5, 2)
+  // Kích thước đầy đủ theo nguồn, phù hợp cả vỏ không tròn. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  caseDimensionsMm String?       @map("case_dimensions_mm") @db.VarChar(100)
+  // Tên nguồn giá. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  priceSourceName  String?       @map("price_source_name") @db.VarChar(120)
+  // URL nguồn giá để người dùng đối chiếu. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  priceSourceUrl   String?       @map("price_source_url")
+  // Mốc kiểm tra giá tham khảo; không bảo đảm giá còn giống ở nguồn ngoài. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  priceCheckedAt   DateTime?     @map("price_checked_at") @db.Timestamptz(3)
+  // Chất liệu vỏ. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  caseMaterial     String        @map("case_material") @db.VarChar(100)
+  // Chất liệu mặt kính. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  crystalMaterial  String        @map("crystal_material") @db.VarChar(100)
+  // Chất liệu dây. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  strapMaterial    String        @map("strap_material") @db.VarChar(100)
+  // Thông số chống nước theo mét do catalog lưu. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  waterResistanceM Int           @map("water_resistance_m")
+  // Số tháng bảo hành; null nghĩa chưa xác định, không tự tạo bảo hành. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  warrantyMonths   Int?          @map("warranty_months")
+  // Thời điểm tạo bản ghi. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  createdAt        DateTime      @default(now()) @map("created_at") @db.Timestamptz(3)
+  // Thời điểm cập nhật, còn dùng làm version để chống ghi đè. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  updatedAt        DateTime      @updatedAt @map("updated_at") @db.Timestamptz(3)
+  product          Product       @relation(fields: [productId], references: [id], onDelete: Restrict)
+  orderItems       OrderItem[]
+  cartLines        CartLine[]
+
+  // Index hỗ trợ truy vấn tương ứng; vẫn cần đo/EXPLAIN để đánh giá tốc độ.
+  @@index([productId, status, priceVnd])
+  // Ánh xạ model sang tên bảng trong PostgreSQL.
+  @@map("product_variants")
+}
+
+// Enum: chỉ cho phép các trạng thái/giá trị được khai báo bên dưới.
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+// Enum: chỉ cho phép các trạng thái/giá trị được khai báo bên dưới.
+enum PaymentStatus {
+  UNPAID
+  PAID
+}
+
+// Enum: chỉ cho phép các trạng thái/giá trị được khai báo bên dưới.
+enum ShippingStatus {
+  NOT_SHIPPED
+  IN_TRANSIT
+  DELIVERED
+}
+
+// Đơn đã lưu snapshot, chủ sở hữu và khóa chống trùng.
+model Order {
+  // Định danh bản ghi hoặc request để theo dõi/hủy.
+  id             String          @id @default(uuid()) @db.Uuid
+  // ID chủ sở hữu; phía server xác định từ phiên hoặc kiểm tra quyền admin. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  userId         String          @map("user_id") @db.Uuid
+  // UUID nhận diện một lần đặt; thử lại cùng nội dung phải nhận cùng đơn. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  idempotencyKey String          @map("idempotency_key") @db.Uuid
+  // Hash nội dung yêu cầu; cùng key nhưng body khác phải bị từ chối. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  requestHash    String          @map("request_hash") @db.Char(64)
+  // Trạng thái nghiệp vụ của đối tượng; xem enum/DTO tương ứng.
+  status         OrderStatus     @default(PENDING)
+  // Trạng thái thanh toán UNPAID/PAID. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  paymentStatus  PaymentStatus   @default(UNPAID) @map("payment_status")
+  // Trạng thái giao vận NOT_SHIPPED/IN_TRANSIT/DELIVERED. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  shippingStatus ShippingStatus  @default(NOT_SHIPPED) @map("shipping_status")
+  // Tên người nhận hàng. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  recipientName  String          @map("recipient_name") @db.VarChar(80)
+  // Số điện thoại người nhận.
+  phone          String          @db.VarChar(16)
+  // Địa chỉ nhận hàng.
+  address        String          @db.VarChar(500)
+  // Tổng tiền hàng trước giảm giá và phí. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  subtotalVnd    Int             @map("subtotal_vnd")
+  // Phí giao hàng demo. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  shippingFeeVnd Int             @map("shipping_fee_vnd")
+  // Tổng server tính = tiền hàng − giảm giá + phí. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  totalVnd       Int             @map("total_vnd")
+  // Số tiền được giảm theo mã hợp lệ. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  discountVnd    Int             @default(0) @map("discount_vnd")
+  // Mã giảm giá được khách chọn và lưu vào đơn. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  promotionCode  String?         @map("promotion_code") @db.VarChar(32)
+  // COD hoặc QR_DEMO; dự án chưa thu tiền thật. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  paymentMethod  String          @default("COD") @map("payment_method") @db.VarChar(8)
+  // Chính sách bảo hành chụp vào đơn để đọc lại sau này. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  warrantyPolicy String          @map("warranty_policy") @db.VarChar(500)
+  // Thời điểm tạo bản ghi. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  createdAt      DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+  // Thời điểm cập nhật, còn dùng làm version để chống ghi đè. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  updatedAt      DateTime        @updatedAt @map("updated_at") @db.Timestamptz(3)
+  // Thời điểm lưu trữ đơn; null là còn trong danh sách quản trị đang dùng. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  archivedAt     DateTime?       @map("archived_at") @db.Timestamptz(3)
+  // Hồ sơ/danh tính hiện tại; quan hệ DB nếu dùng trong Prisma. @relation khai báo khóa ngoại; onDelete quyết định hành vi xóa.
+  user           User            @relation(fields: [userId], references: [id], onDelete: Restrict)
+  // Các dòng SKU/số lượng hoặc snapshot đơn.
+  items          OrderItem[]
+  // Lịch sử hành động/trạng thái của đơn.
+  events         OrderEvent[]
+  promotionUse   PromotionUse?
+  tickets        SupportTicket[]
+
+  // Ràng buộc duy nhất cho tổ hợp cột; database chặn bản ghi trùng.
+  @@unique([userId, idempotencyKey])
+  // Index hỗ trợ truy vấn tương ứng; vẫn cần đo/EXPLAIN để đánh giá tốc độ.
+  @@index([userId, createdAt, id])
+  // Index hỗ trợ truy vấn tương ứng; vẫn cần đo/EXPLAIN để đánh giá tốc độ.
+  @@index([status, createdAt, id])
+  // Index hỗ trợ truy vấn tương ứng; vẫn cần đo/EXPLAIN để đánh giá tốc độ.
+  @@index([archivedAt, status, createdAt, id], map: "orders_archive_status_created_idx")
+  // Ánh xạ model sang tên bảng trong PostgreSQL.
+  @@map("orders")
+}
+
+// Dòng hàng snapshot để catalog thay đổi không làm đổi lịch sử đơn.
+model OrderItem {
+  // Định danh bản ghi hoặc request để theo dõi/hủy.
+  id             String          @id @default(uuid()) @db.Uuid
+  // ID đơn hàng liên quan. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  orderId        String          @map("order_id") @db.Uuid
+  // ID SKU/phiên bản cụ thể được bán và quản lý tồn riêng. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  variantId      String          @map("variant_id") @db.Uuid
+  // Tên mẫu chụp tại thời điểm tạo đơn hoặc đang hiển thị. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  productName    String          @map("product_name") @db.VarChar(200)
+  // Tên lựa chọn SKU chụp vào dòng đơn. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  variantLabel   String          @map("variant_label") @db.VarChar(120)
+  // Mã SKU duy nhất của phiên bản đồng hồ.
+  sku            String          @db.VarChar(64)
+  // Số lượng của dòng hàng; có giới hạn tùy DTO.
+  quantity       Int
+  // Đơn giá snapshot tại lúc tạo đơn. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  unitPriceVnd   Int             @map("unit_price_vnd")
+  // Thành tiền của dòng = đơn giá × số lượng. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  lineTotalVnd   Int             @map("line_total_vnd")
+  // Số tháng bảo hành; null nghĩa chưa xác định, không tự tạo bảo hành. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  warrantyMonths Int?            @map("warranty_months")
+  order          Order           @relation(fields: [orderId], references: [id], onDelete: Restrict)
+  variant        ProductVariant  @relation(fields: [variantId], references: [id], onDelete: Restrict)
+  tickets        SupportTicket[]
+
+  // Ràng buộc duy nhất cho tổ hợp cột; database chặn bản ghi trùng.
+  @@unique([orderId, variantId])
+  // Ánh xạ model sang tên bảng trong PostgreSQL.
+  @@map("order_items")
+}
+
+// Lịch sử chuyển trạng thái/hoạt động của đơn.
+model OrderEvent {
+  // Định danh bản ghi hoặc request để theo dõi/hủy.
+  id        String   @id @default(uuid()) @db.Uuid
+  // ID đơn hàng liên quan. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  orderId   String   @map("order_id") @db.Uuid
+  // ID người thực hiện thao tác để ghi nhật ký. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  actorId   String   @map("actor_id") @db.Uuid
+  // Hành động nghiệp vụ/đích điều hướng thuộc danh sách cho phép.
+  action    String   @db.VarChar(32)
+  // Lý do thao tác, được ghi vào lịch sử/audit.
+  reason    String   @db.VarChar(500)
+  // JSON trạng thái trước thay đổi.
+  before    Json
+  // JSON trạng thái sau thay đổi.
+  after     Json
+  // Thời điểm tạo bản ghi. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Restrict)
+  actor     User     @relation(fields: [actorId], references: [id], onDelete: Restrict)
+
+  // Index hỗ trợ truy vấn tương ứng; vẫn cần đo/EXPLAIN để đánh giá tốc độ.
+  @@index([orderId, createdAt, id])
+  // Ánh xạ model sang tên bảng trong PostgreSQL.
+  @@map("order_events")
+}
+
+// Một dòng giỏ theo cặp user và SKU, không giữ tồn.
+model CartLine {
+  // ID chủ sở hữu; phía server xác định từ phiên hoặc kiểm tra quyền admin. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  userId    String         @map("user_id") @db.Uuid
+  // ID SKU/phiên bản cụ thể được bán và quản lý tồn riêng. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  variantId String         @map("variant_id") @db.Uuid
+  // Số lượng của dòng hàng; có giới hạn tùy DTO.
+  quantity  Int
+  // Thời điểm cập nhật, còn dùng làm version để chống ghi đè. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  updatedAt DateTime       @updatedAt @map("updated_at") @db.Timestamptz(3)
+  // Hồ sơ/danh tính hiện tại; quan hệ DB nếu dùng trong Prisma. @relation khai báo khóa ngoại; onDelete quyết định hành vi xóa.
+  user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  variant   ProductVariant @relation(fields: [variantId], references: [id], onDelete: Restrict)
+
+  // Khóa chính ghép, mỗi cặp giá trị chỉ có một dòng.
+  @@id([userId, variantId])
+  // Ánh xạ model sang tên bảng trong PostgreSQL.
+  @@map("cart_lines")
+}
+
+// Một mẫu yêu thích của một user.
+model Favorite {
+  // ID chủ sở hữu; phía server xác định từ phiên hoặc kiểm tra quyền admin. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  userId    String   @map("user_id") @db.Uuid
+  // ID mẫu đồng hồ; một mẫu có thể có nhiều SKU. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  productId String   @map("product_id") @db.Uuid
+  // Thời điểm tạo bản ghi. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  // Hồ sơ/danh tính hiện tại; quan hệ DB nếu dùng trong Prisma. @relation khai báo khóa ngoại; onDelete quyết định hành vi xóa.
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Restrict)
+
+  // Khóa chính ghép, mỗi cặp giá trị chỉ có một dòng.
+  @@id([userId, productId])
+  // Ánh xạ model sang tên bảng trong PostgreSQL.
+  @@map("favorites")
+}
+
+// Địa chỉ riêng của user phục vụ điền nhanh khi mua.
+model SavedAddress {
+  // Định danh bản ghi hoặc request để theo dõi/hủy.
+  id            String   @id @default(uuid()) @db.Uuid
+  // ID chủ sở hữu; phía server xác định từ phiên hoặc kiểm tra quyền admin. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  userId        String   @map("user_id") @db.Uuid
+  // Nhãn hiển thị của lựa chọn/đối tượng.
+  label         String   @db.VarChar(40)
+  // Tên người nhận hàng. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  recipientName String   @map("recipient_name") @db.VarChar(80)
+  // Số điện thoại người nhận.
+  phone         String   @db.VarChar(16)
+  // Địa chỉ nhận hàng.
+  address       String   @db.VarChar(500)
+  // Thời điểm tạo bản ghi. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  createdAt     DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  // Hồ sơ/danh tính hiện tại; quan hệ DB nếu dùng trong Prisma. @relation khai báo khóa ngoại; onDelete quyết định hành vi xóa.
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Index hỗ trợ truy vấn tương ứng; vẫn cần đo/EXPLAIN để đánh giá tốc độ.
+  @@index([userId, createdAt])
+  // Ánh xạ model sang tên bảng trong PostgreSQL.
+  @@map("saved_addresses")
+}
+
+// Nhật ký thao tác quản trị: actor/target/lý do/trước/sau.
+model BusinessAudit {
+  // Định danh bản ghi hoặc request để theo dõi/hủy.
+  id        String   @id @default(uuid()) @db.Uuid
+  // ID người thực hiện thao tác để ghi nhật ký. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  actorId   String?  @map("actor_id") @db.Uuid
+  // Hành động nghiệp vụ/đích điều hướng thuộc danh sách cho phép.
+  action    String   @db.VarChar(64)
+  // ID đối tượng bị thay đổi trong nhật ký. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  targetId  String   @map("target_id") @db.VarChar(100)
+  // JSON trạng thái trước thay đổi.
+  before    Json
+  // JSON trạng thái sau thay đổi.
+  after     Json
+  // Lý do thao tác, được ghi vào lịch sử/audit.
+  reason    String   @db.VarChar(500)
+  // Thời điểm tạo bản ghi. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  actor     User?    @relation(fields: [actorId], references: [id], onDelete: SetNull)
+
+  // Index hỗ trợ truy vấn tương ứng; vẫn cần đo/EXPLAIN để đánh giá tốc độ.
+  @@index([createdAt, id])
+  // Ánh xạ model sang tên bảng trong PostgreSQL.
+  @@map("business_audits")
+}
+
+// Mã giảm tiền cố định, điều kiện thời gian/lượt dùng.
+model Promotion {
+  // Định danh bản ghi hoặc request để theo dõi/hủy.
+  id             String         @id @default(uuid()) @db.Uuid
+  // Mã lỗi hoặc mã khuyến mãi tùy DTO/model.
+  code           String         @unique @db.VarChar(32)
+  // Số tiền giảm cố định theo mã khuyến mãi. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  amountVnd      Int            @map("amount_vnd")
+  // Giá trị tiền hàng tối thiểu để áp mã giảm giá. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  minSubtotalVnd Int            @map("min_subtotal_vnd")
+  // Tổng lượt dùng tối đa của mã. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  maxUses        Int            @map("max_uses")
+  // Giới hạn lượt dùng cho mỗi user. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  perUserLimit   Int            @map("per_user_limit")
+  // Thời điểm mã bắt đầu hợp lệ. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  startsAt       DateTime       @map("starts_at") @db.Timestamptz(3)
+  // Thời điểm mã hết hiệu lực. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  endsAt         DateTime       @map("ends_at") @db.Timestamptz(3)
+  // Cờ đang hoạt động; ý nghĩa cụ thể tùy đối tượng.
+  active         Boolean        @default(true)
+  // Các lần sử dụng mã giảm giá.
+  uses           PromotionUse[]
+
+  // Ánh xạ model sang tên bảng trong PostgreSQL.
+  @@map("promotions")
+}
+
+// Ghi nhận lần sử dụng mã theo user/đơn.
+model PromotionUse {
+  // Định danh bản ghi hoặc request để theo dõi/hủy.
+  id          String    @id @default(uuid()) @db.Uuid
+  // ID mã khuyến mãi được áp dụng. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  promotionId String    @map("promotion_id") @db.Uuid
+  // ID chủ sở hữu; phía server xác định từ phiên hoặc kiểm tra quyền admin. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  userId      String    @map("user_id") @db.Uuid
+  // ID đơn hàng liên quan. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  orderId     String    @unique @map("order_id") @db.Uuid
+  // Thời điểm tạo bản ghi. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+  promotion   Promotion @relation(fields: [promotionId], references: [id], onDelete: Restrict)
+  // Hồ sơ/danh tính hiện tại; quan hệ DB nếu dùng trong Prisma. @relation khai báo khóa ngoại; onDelete quyết định hành vi xóa.
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  order       Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  // Index hỗ trợ truy vấn tương ứng; vẫn cần đo/EXPLAIN để đánh giá tốc độ.
+  @@index([promotionId, userId])
+  // Ánh xạ model sang tên bảng trong PostgreSQL.
+  @@map("promotion_uses")
+}
+
+// Yêu cầu hỗ trợ của user, có thể liên kết đơn/dòng bảo hành.
+model SupportTicket {
+  // Định danh bản ghi hoặc request để theo dõi/hủy.
+  id          String          @id @default(uuid()) @db.Uuid
+  // ID chủ sở hữu; phía server xác định từ phiên hoặc kiểm tra quyền admin. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  userId      String          @map("user_id") @db.Uuid
+  // ID đơn hàng liên quan. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  orderId     String?         @map("order_id") @db.Uuid
+  // ID dòng hàng trong đơn, dùng cho yêu cầu bảo hành. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  orderItemId String?         @map("order_item_id") @db.Uuid
+  // Loại yêu cầu hỗ trợ.
+  kind        String          @db.VarChar(16)
+  // Tiêu đề ticket.
+  subject     String          @db.VarChar(120)
+  // Trạng thái nghiệp vụ của đối tượng; xem enum/DTO tương ứng.
+  status      String          @default("OPEN") @db.VarChar(16)
+  // Thời điểm tạo bản ghi. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  createdAt   DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+  // Thời điểm cập nhật, còn dùng làm version để chống ghi đè. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  updatedAt   DateTime        @updatedAt @map("updated_at") @db.Timestamptz(3)
+  // Hồ sơ/danh tính hiện tại; quan hệ DB nếu dùng trong Prisma. @relation khai báo khóa ngoại; onDelete quyết định hành vi xóa.
+  user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  order       Order?          @relation(fields: [orderId], references: [id], onDelete: SetNull)
+  orderItem   OrderItem?      @relation(fields: [orderItemId], references: [id], onDelete: SetNull)
+  messages    TicketMessage[]
+
+  // Index hỗ trợ truy vấn tương ứng; vẫn cần đo/EXPLAIN để đánh giá tốc độ.
+  @@index([userId, createdAt])
+  // Index hỗ trợ truy vấn tương ứng; vẫn cần đo/EXPLAIN để đánh giá tốc độ.
+  @@index([status, createdAt])
+  // Ánh xạ model sang tên bảng trong PostgreSQL.
+  @@map("support_tickets")
+}
+
+// Tin nhắn trong ticket, chụp tên/vai trò tác giả.
+model TicketMessage {
+  // Định danh bản ghi hoặc request để theo dõi/hủy.
+  id         String        @id @default(uuid()) @db.Uuid
+  ticketId   String        @map("ticket_id") @db.Uuid
+  // Tên tác giả chụp vào tin nhắn hoặc lấy từ hồ sơ. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  authorName String        @map("author_name") @db.VarChar(80)
+  // Vai trò tác giả phục vụ hiển thị tin nhắn hỗ trợ. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  authorRole String        @map("author_role") @db.VarChar(16)
+  // Nội dung tin nhắn/đánh giá hoặc JSON request tùy hợp đồng.
+  body       String        @db.VarChar(2000)
+  // Thời điểm tạo bản ghi. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  createdAt  DateTime      @default(now()) @map("created_at") @db.Timestamptz(3)
+  ticket     SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+
+  // Index hỗ trợ truy vấn tương ứng; vẫn cần đo/EXPLAIN để đánh giá tốc độ.
+  @@index([ticketId, createdAt])
+  // Ánh xạ model sang tên bảng trong PostgreSQL.
+  @@map("ticket_messages")
+}
+
+// Đánh giá theo cặp user/mẫu và cờ kiểm duyệt.
+model ProductReview {
+  // Định danh bản ghi hoặc request để theo dõi/hủy.
+  id        String   @id @default(uuid()) @db.Uuid
+  // ID chủ sở hữu; phía server xác định từ phiên hoặc kiểm tra quyền admin. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  userId    String   @map("user_id") @db.Uuid
+  // ID mẫu đồng hồ; một mẫu có thể có nhiều SKU. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  productId String   @map("product_id") @db.Uuid
+  // Điểm đánh giá từ 1 đến 5.
+  rating    Int
+  // Nội dung tin nhắn/đánh giá hoặc JSON request tùy hợp đồng.
+  body      String   @db.VarChar(1000)
+  // Cờ kiểm duyệt; true không xuất hiện ở đánh giá công khai.
+  hidden    Boolean  @default(false)
+  // Thời điểm tạo bản ghi. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  // Thời điểm cập nhật, còn dùng làm version để chống ghi đè. @map ánh xạ tên camelCase sang cột PostgreSQL.
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+  // Hồ sơ/danh tính hiện tại; quan hệ DB nếu dùng trong Prisma. @relation khai báo khóa ngoại; onDelete quyết định hành vi xóa.
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Restrict)
+
+  // Ràng buộc duy nhất cho tổ hợp cột; database chặn bản ghi trùng.
+  @@unique([userId, productId])
+  // Index hỗ trợ truy vấn tương ứng; vẫn cần đo/EXPLAIN để đánh giá tốc độ.
+  @@index([productId, hidden, createdAt])
+  // Ánh xạ model sang tên bảng trong PostgreSQL.
+  @@map("product_reviews")
+}

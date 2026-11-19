@@ -1,0 +1,68 @@
+sequenceDiagram
+    actor customer as Khách hàng
+    participant form as ChatbotForm
+    participant controller as ChatbotController
+    participant account as TaiKhoan
+    participant session as PhienChat
+    participant message as TinNhanChat
+    participant category as DanhMuc
+    participant product as SanPham
+    participant knowledge as KienThucChatbot
+    participant selection as SanPhamGoiY
+    participant source as NguonTraLoi
+    actor ai as Hệ thống AI
+    Note over customer,ai: Phạm vi: tư vấn đồng hồ, thương hiệu, chính sách và thông tin công khai của website.<br/>Chatbot không đặt hàng, sửa tồn kho hoặc đọc đơn hàng cá nhân trong use case này; thao tác mua hàng yêu cầu đăng nhập.
+    customer->>form: 1. Nhập câu hỏi<br/>và nhấn Gửi
+    form->>controller: 2. xuLyCauHoi<br/>(MaPhien, NoiDung)
+    controller->>controller: 3. kiemTraDuLieuDauVao(NoiDung, giới hạn tần suất)
+    break Câu hỏi rỗng / vượt giới hạn / gửi quá nhanh
+    controller-->>form: 4. Thông báo dữ liệu<br/>không hợp lệ
+    form-->>customer: 5. Yêu cầu điều chỉnh<br/>câu hỏi / gửi lại sau
+    end
+    opt Khách đã đăng nhập
+    controller->>account: 6. layThongTinKhach(MaTK từ ngữ cảnh)
+    account-->>controller: 7. Danh tính và trạng thái tài khoản<br/>hiện tại
+    end
+    controller->>session: 8. layPhien(MaPhien)
+    session-->>controller: 9. phien, MaTK chủ phiên, TrangThai
+    controller->>controller: 10. kiemTraQuyenPhien(phien, ngữ cảnh xác thực / token khách)
+    break Không đủ quyền / tài khoản bị khóa / phiên đã đóng hoặc không tồn tại
+    controller-->>form: 11. Từ chối xử lý;<br/>không ghi tin nhắn
+    form-->>customer: 12. Thông báo lỗi<br/>truy cập phiên
+    end
+    controller->>message: 13. luuTinKhach(MaPhien, MaTK?, NoiDung, NguoiGui=KHACH_HANG)
+    message-->>controller: 14. MaTNKhach
+    controller->>message: 15. layLichSuTruoc(MaPhien, MaTNKhach)
+    message-->>controller: 16. Lịch sử trước câu hỏi này; giới hạn số lượt / độ dài
+    controller->>controller: 17. xacDinhYDinh(NoiDung, lichSu) → chủ đề, tiêu chí, phạm vi
+    alt Câu hỏi ngoài phạm vi website
+    controller->>controller: 18. taoTraLoiDuPhong(ngoài phạm vi): hướng dẫn chủ đề hỗ trợ
+    else Câu hỏi thuộc phạm vi website
+    opt Cần tìm / so sánh / hỏi thông tin sản phẩm
+    controller->>category: 19. layDanhMucLienQuan(tieuChi)
+    category-->>controller: 20. Danh mục liên quan, gồm danh mục con nếu cần
+    controller->>product: 21. timSanPhamLienQuan(tieuChi, dsMaDM, sản phẩm công khai)
+    product-->>controller: 22. Catalog: MaSP, thương hiệu, giá, tồn kho, thông số, ảnh
+    end
+    controller->>knowledge: 23. layKienThucDaDuyet(chuDe, TrangThai=DA_DUYET)
+    knowledge-->>controller: 24. Kiến thức liên quan và nguồn: MaKT, nội dung, URLNguon
+    alt Không có dữ liệu đủ để trả lời
+    controller->>controller: 25. taoTraLoiDuPhong(thiếu dữ liệu): hỏi rõ hơn / báo chưa có thông tin
+    else Có catalog hoặc kiến thức liên quan
+    controller->>ai: 26. tuVan(cauHoi, lichSu, catalog, kienThucDaDuyet) — chỉ dữ liệu cần cho câu trả lời
+    ai-->>controller: 27. Kết quả có cấu trúc / lỗi / timeout: nội dung, MaSP gợi ý, nguồn, YDinh, CheDo, TenMoHinh?
+    controller->>controller: 28. kiemTraKetQua(): đối chiếu sản phẩm, giá / tồn, nguồn với dữ liệu đã cung cấp
+    opt AI không cấu hình / lỗi / quá hạn / kết quả không hợp lệ
+    controller->>controller: 29. taoTraLoiDuPhong(catalog, kienThucDaDuyet); CheDo=CATALOG, TenMoHinh=NULL
+    end
+    end
+    end
+    Note over controller,ai: Chỉ gợi ý mua sản phẩm đang bán và còn hàng; câu hỏi về sản phẩm hết hàng vẫn được trả lời đúng tình trạng.<br/>Nguồn chỉ thuộc dữ liệu đã tra cứu. Không gửi mật khẩu, email, số điện thoại hoặc dữ liệu đơn hàng cho AI.
+    Note over controller,source: Sequence 03 — luuKetQuaTuVan(MaPhien, ketQua)<br/>Lưu TinNhanChat AI + SanPhamGoiY + NguonTraLoi + cập nhật PhienChat trong một transaction.<br/>Trả về: commit thành công và MaTNAI, hoặc lỗi lưu.
+    alt Transaction đã COMMIT thành công
+    controller-->>form: 30. Câu trả lời, gợi ý, nguồn,<br/>MaTNAI và chế độ tư vấn
+    form-->>customer: 31. Hiển thị trả lời,<br/>sản phẩm và nguồn
+    else Lưu kết quả thất bại
+    controller-->>form: 32. Báo chưa lưu được<br/>kết quả tư vấn
+    form-->>customer: 33. Thông báo lỗi;<br/>cho phép thử lại
+    end

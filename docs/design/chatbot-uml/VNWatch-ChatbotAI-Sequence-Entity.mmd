@@ -1,0 +1,42 @@
+sequenceDiagram
+    actor customer as Khách hàng
+    participant form as ChatbotForm
+    participant controller as ChatbotController
+    participant session as PhienChat
+    participant message as TinNhanChat
+    participant product as SanPham
+    participant knowledge as KienThucChatbot
+    participant selection as SanPhamGoiY
+    participant source as NguonTraLoi
+    actor ai as Hệ thống AI
+    customer->>form: 1: Chọn biểu tượng chatbot
+    form->>controller: 2: moPhienChat()
+    controller->>session: 3: taoPhien(MaTK?)
+    session-->>controller: 4: MaPhien
+    controller-->>form: 5: traPhienChat(MaPhien)
+    form-->>customer: 6: Hiển thị khung chat và lời chào
+    customer->>form: 7: Nhập câu hỏi và nhấn Gửi
+    form->>controller: 8: guiTinNhan(MaPhien, NoiDung)
+    controller->>message: 9: luuTinKhach(MaPhien, NoiDung)
+    message-->>controller: 10: MaTNKhach
+    controller->>message: 11: layLichSuTruoc(MaPhien, MaTNKhach)
+    message-->>controller: 12: lichSuHoiThoai
+    controller->>product: 13: timSanPhamLienQuan(NoiDung)
+    product-->>controller: 14: danhSachSanPham (giá, tồn kho, thương hiệu)
+    controller->>knowledge: 15: layKienThucDaDuyet(NoiDung)
+    knowledge-->>controller: 16: kienThucVaNguonDaDuyet
+    controller->>ai: 17: tuVan(NoiDung, lichSuHoiThoai, danhSachSanPham, kienThucVaNguonDaDuyet)
+    ai-->>controller: 18: ketQuaTuVan: nội dung, sản phẩm gợi ý, nguồn, YDinh, CheDo, TenMoHinh?
+    controller->>controller: 19: kiemTraKetQuaVaNguon()
+    critical Luu ket qua trong mot transaction
+    controller->>message: 20: luuTinAI(MaPhien, ketQuaTuVan, HOAN_TAT)
+    message-->>controller: 21: MaTNAI
+    controller->>selection: 22: luuDanhSachGoiY(MaTNAI, danhSachGoiY)
+    selection-->>controller: 23: Đã lưu danh sách gợi ý
+    controller->>source: 24: luuNguonVaBanChup(MaTNAI, danhSachNguon)
+    source-->>controller: 25: Đã lưu nguồn trả lời
+    controller->>session: 26: capNhatThoiGian(MaPhien)
+    session-->>controller: 27: Đã cập nhật phiên
+    end
+    controller-->>form: 28: traKetQua(MaPhien, MaTNAI, cauTraLoi, sanPhamGoiY, nguon)
+    form-->>customer: 29: Hiển thị câu trả lời, sản phẩm gợi ý và nguồn

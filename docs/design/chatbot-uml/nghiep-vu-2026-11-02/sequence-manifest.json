@@ -1,0 +1,1143 @@
+[
+  {
+    "stem": "VNWatch-ChatbotAI-Sequence-01-MoPhien",
+    "participants": [
+      "customer",
+      "form",
+      "controller",
+      "account",
+      "session",
+      "message",
+      "product",
+      "selection",
+      "source"
+    ],
+    "messages": [
+      {
+        "type": "message",
+        "a": "customer",
+        "b": "form",
+        "caption": "Mở cửa sổ\nchatbot",
+        "reply": false,
+        "op": "moChatbot",
+        "number": 1,
+        "y": 448,
+        "x1": 130,
+        "x2": 460
+      },
+      {
+        "type": "message",
+        "a": "form",
+        "b": "controller",
+        "caption": "moPhienChat\n(MaPhien?)",
+        "reply": false,
+        "op": "moPhienChat",
+        "number": 2,
+        "y": 526,
+        "x1": 460,
+        "x2": 790
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "account",
+        "caption": "layThongTinKhach(MaTK từ ngữ cảnh)",
+        "reply": false,
+        "op": "layThongTinKhach",
+        "number": 3,
+        "y": 656,
+        "x1": 790,
+        "x2": 1120
+      },
+      {
+        "type": "message",
+        "a": "account",
+        "b": "controller",
+        "caption": "Thông tin tối thiểu và trạng thái\ntài khoản",
+        "reply": true,
+        "op": null,
+        "number": 4,
+        "y": 734,
+        "x1": 1120,
+        "x2": 790
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "form",
+        "caption": "Yêu cầu xác thực lại;\nkhông tải lịch sử",
+        "reply": true,
+        "op": null,
+        "number": 5,
+        "y": 894,
+        "x1": 790,
+        "x2": 460
+      },
+      {
+        "type": "message",
+        "a": "form",
+        "b": "customer",
+        "caption": "Hiển thị thông báo",
+        "reply": true,
+        "op": null,
+        "number": 6,
+        "y": 972,
+        "x1": 460,
+        "x2": 130
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "session",
+        "caption": "taoPhien(MaTK hoặc NULL)",
+        "reply": false,
+        "op": "taoPhien",
+        "number": 7,
+        "y": 1132,
+        "x1": 790,
+        "x2": 1450
+      },
+      {
+        "type": "message",
+        "a": "session",
+        "b": "controller",
+        "caption": "Phiên mới: MaPhien, trạng thái mở",
+        "reply": true,
+        "op": null,
+        "number": 8,
+        "y": 1210,
+        "x1": 1450,
+        "x2": 790
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "session",
+        "caption": "layPhien(MaPhien)",
+        "reply": false,
+        "op": "layPhien",
+        "number": 9,
+        "y": 1427,
+        "x1": 790,
+        "x2": 1450
+      },
+      {
+        "type": "message",
+        "a": "session",
+        "b": "controller",
+        "caption": "phien hoặc không tồn tại",
+        "reply": true,
+        "op": null,
+        "number": 10,
+        "y": 1505,
+        "x1": 1450,
+        "x2": 790
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "controller",
+        "caption": "kiemTraQuyenPhien(phien, ngữ cảnh xác thực / token khách)",
+        "reply": false,
+        "op": "kiemTraQuyenPhien",
+        "number": 11,
+        "y": 1613,
+        "x1": 790,
+        "x2": 790
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "form",
+        "caption": "Từ chối truy cập phiên",
+        "reply": true,
+        "op": null,
+        "number": 12,
+        "y": 1765,
+        "x1": 790,
+        "x2": 460
+      },
+      {
+        "type": "message",
+        "a": "form",
+        "b": "customer",
+        "caption": "Thông báo; cho phép\nmở phiên mới",
+        "reply": true,
+        "op": null,
+        "number": 13,
+        "y": 1843,
+        "x1": 460,
+        "x2": 130
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "message",
+        "caption": "layLichSuPhien(MaPhien)",
+        "reply": false,
+        "op": "layLichSuPhien",
+        "number": 14,
+        "y": 2003,
+        "x1": 790,
+        "x2": 1780
+      },
+      {
+        "type": "message",
+        "a": "message",
+        "b": "controller",
+        "caption": "Tin nhắn theo thời gian; dsMaTN của các trả lời",
+        "reply": true,
+        "op": null,
+        "number": 15,
+        "y": 2081,
+        "x1": 1780,
+        "x2": 790
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "selection",
+        "caption": "layDanhSachGoiY(dsMaTN)",
+        "reply": false,
+        "op": "layDanhSachGoiY",
+        "number": 16,
+        "y": 2159,
+        "x1": 790,
+        "x2": 2440
+      },
+      {
+        "type": "message",
+        "a": "selection",
+        "b": "controller",
+        "caption": "Các liên kết MaTN–MaSP, thứ tự và lý do",
+        "reply": true,
+        "op": null,
+        "number": 17,
+        "y": 2237,
+        "x1": 2440,
+        "x2": 790
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "source",
+        "caption": "layNguonTheoTinNhan(dsMaTN)",
+        "reply": false,
+        "op": "layNguonTheoTinNhan",
+        "number": 18,
+        "y": 2315,
+        "x1": 790,
+        "x2": 2770
+      },
+      {
+        "type": "message",
+        "a": "source",
+        "b": "controller",
+        "caption": "Nguồn và bản chụp nội dung đã dùng",
+        "reply": true,
+        "op": null,
+        "number": 19,
+        "y": 2393,
+        "x1": 2770,
+        "x2": 790
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "product",
+        "caption": "layThongTinSanPham(dsMaSP)",
+        "reply": false,
+        "op": "layThongTinSanPham",
+        "number": 20,
+        "y": 2523,
+        "x1": 790,
+        "x2": 2110
+      },
+      {
+        "type": "message",
+        "a": "product",
+        "b": "controller",
+        "caption": "Thông tin công khai hiện tại; báo sản phẩm đã ngừng bán nếu có",
+        "reply": true,
+        "op": null,
+        "number": 21,
+        "y": 2601,
+        "x1": 2110,
+        "x2": 790
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "form",
+        "caption": "MaPhien, lịch sử,\ngợi ý và nguồn",
+        "reply": true,
+        "op": null,
+        "number": 22,
+        "y": 2739,
+        "x1": 790,
+        "x2": 460
+      },
+      {
+        "type": "message",
+        "a": "form",
+        "b": "customer",
+        "caption": "Hiển thị lời chào\nhoặc hội thoại cũ",
+        "reply": true,
+        "op": null,
+        "number": 23,
+        "y": 2817,
+        "x1": 460,
+        "x2": 130
+      }
+    ],
+    "frames": [
+      {
+        "operator": "opt",
+        "guard": "Có ngữ cảnh đăng nhập",
+        "x": 20,
+        "y": 580,
+        "w": 2860,
+        "branches": [],
+        "depth": 0,
+        "h": 204
+      },
+      {
+        "operator": "break",
+        "guard": "Thông tin xác thực không hợp lệ hoặc tài khoản bị khóa",
+        "x": 20,
+        "y": 818,
+        "w": 2860,
+        "branches": [],
+        "depth": 0,
+        "h": 204
+      },
+      {
+        "operator": "alt",
+        "guard": "Chưa có MaPhien",
+        "x": 20,
+        "y": 1056,
+        "w": 2860,
+        "branches": [
+          [
+            1349,
+            "Có MaPhien cần tiếp tục"
+          ]
+        ],
+        "depth": 0,
+        "h": 499
+      },
+      {
+        "operator": "break",
+        "guard": "Phiên không tồn tại, không thuộc khách hoặc đã đóng",
+        "x": 20,
+        "y": 1689,
+        "w": 2860,
+        "branches": [],
+        "depth": 0,
+        "h": 204
+      },
+      {
+        "operator": "opt",
+        "guard": "Tiếp tục phiên đã có: tải lịch sử và dữ liệu hiển thị",
+        "x": 20,
+        "y": 1927,
+        "w": 2860,
+        "branches": [],
+        "depth": 0,
+        "h": 754
+      },
+      {
+        "operator": "opt",
+        "guard": "Lịch sử có sản phẩm gợi ý",
+        "x": 29,
+        "y": 2447,
+        "w": 2842,
+        "branches": [],
+        "depth": 1,
+        "h": 204
+      }
+    ],
+    "width": 2900,
+    "height": 3055
+  },
+  {
+    "stem": "VNWatch-ChatbotAI-Sequence-02-TuVan",
+    "participants": [
+      "customer",
+      "form",
+      "controller",
+      "account",
+      "session",
+      "message",
+      "category",
+      "product",
+      "knowledge",
+      "selection",
+      "source",
+      "ai"
+    ],
+    "messages": [
+      {
+        "type": "message",
+        "a": "customer",
+        "b": "form",
+        "caption": "Nhập câu hỏi\nvà nhấn Gửi",
+        "reply": false,
+        "op": "guiCauHoi",
+        "number": 1,
+        "y": 448,
+        "x1": 130,
+        "x2": 480
+      },
+      {
+        "type": "message",
+        "a": "form",
+        "b": "controller",
+        "caption": "xuLyCauHoi\n(MaPhien, NoiDung)",
+        "reply": false,
+        "op": "xuLyCauHoi",
+        "number": 2,
+        "y": 526,
+        "x1": 480,
+        "x2": 830
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "controller",
+        "caption": "kiemTraDuLieuDauVao(NoiDung, giới hạn tần suất)",
+        "reply": false,
+        "op": "kiemTraDuLieuDauVao",
+        "number": 3,
+        "y": 604,
+        "x1": 830,
+        "x2": 830
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "form",
+        "caption": "Thông báo dữ liệu\nkhông hợp lệ",
+        "reply": true,
+        "op": null,
+        "number": 4,
+        "y": 756,
+        "x1": 830,
+        "x2": 480
+      },
+      {
+        "type": "message",
+        "a": "form",
+        "b": "customer",
+        "caption": "Yêu cầu điều chỉnh\ncâu hỏi / gửi lại sau",
+        "reply": true,
+        "op": null,
+        "number": 5,
+        "y": 834,
+        "x1": 480,
+        "x2": 130
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "account",
+        "caption": "layThongTinKhach(MaTK từ ngữ cảnh)",
+        "reply": false,
+        "op": "layThongTinKhach",
+        "number": 6,
+        "y": 994,
+        "x1": 830,
+        "x2": 1180
+      },
+      {
+        "type": "message",
+        "a": "account",
+        "b": "controller",
+        "caption": "Danh tính và trạng thái tài khoản\nhiện tại",
+        "reply": true,
+        "op": null,
+        "number": 7,
+        "y": 1072,
+        "x1": 1180,
+        "x2": 830
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "session",
+        "caption": "layPhien(MaPhien)",
+        "reply": false,
+        "op": "layPhien",
+        "number": 8,
+        "y": 1180,
+        "x1": 830,
+        "x2": 1530
+      },
+      {
+        "type": "message",
+        "a": "session",
+        "b": "controller",
+        "caption": "phien, MaTK chủ phiên, TrangThai",
+        "reply": true,
+        "op": null,
+        "number": 9,
+        "y": 1258,
+        "x1": 1530,
+        "x2": 830
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "controller",
+        "caption": "kiemTraQuyenPhien(phien, ngữ cảnh xác thực / token khách)",
+        "reply": false,
+        "op": "kiemTraQuyenPhien",
+        "number": 10,
+        "y": 1336,
+        "x1": 830,
+        "x2": 830
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "form",
+        "caption": "Từ chối xử lý;\nkhông ghi tin nhắn",
+        "reply": true,
+        "op": null,
+        "number": 11,
+        "y": 1488,
+        "x1": 830,
+        "x2": 480
+      },
+      {
+        "type": "message",
+        "a": "form",
+        "b": "customer",
+        "caption": "Thông báo lỗi\ntruy cập phiên",
+        "reply": true,
+        "op": null,
+        "number": 12,
+        "y": 1566,
+        "x1": 480,
+        "x2": 130
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "message",
+        "caption": "luuTinKhach(MaPhien, MaTK?, NoiDung, NguoiGui=KHACH_HANG)",
+        "reply": false,
+        "op": "luuTinKhach",
+        "number": 13,
+        "y": 1674,
+        "x1": 830,
+        "x2": 1880
+      },
+      {
+        "type": "message",
+        "a": "message",
+        "b": "controller",
+        "caption": "MaTNKhach",
+        "reply": true,
+        "op": null,
+        "number": 14,
+        "y": 1752,
+        "x1": 1880,
+        "x2": 830
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "message",
+        "caption": "layLichSuTruoc(MaPhien, MaTNKhach)",
+        "reply": false,
+        "op": "layLichSuTruoc",
+        "number": 15,
+        "y": 1830,
+        "x1": 830,
+        "x2": 1880
+      },
+      {
+        "type": "message",
+        "a": "message",
+        "b": "controller",
+        "caption": "Lịch sử trước câu hỏi này; giới hạn số lượt / độ dài",
+        "reply": true,
+        "op": null,
+        "number": 16,
+        "y": 1908,
+        "x1": 1880,
+        "x2": 830
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "controller",
+        "caption": "xacDinhYDinh(NoiDung, lichSu) → chủ đề, tiêu chí, phạm vi",
+        "reply": false,
+        "op": "xacDinhYDinh",
+        "number": 17,
+        "y": 1986,
+        "x1": 830,
+        "x2": 830
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "controller",
+        "caption": "taoTraLoiDuPhong(ngoài phạm vi): hướng dẫn chủ đề hỗ trợ",
+        "reply": false,
+        "op": "taoTraLoiDuPhong",
+        "number": 18,
+        "y": 2138,
+        "x1": 830,
+        "x2": 830
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "category",
+        "caption": "layDanhMucLienQuan(tieuChi)",
+        "reply": false,
+        "op": "layDanhMucLienQuan",
+        "number": 19,
+        "y": 2348,
+        "x1": 830,
+        "x2": 2230
+      },
+      {
+        "type": "message",
+        "a": "category",
+        "b": "controller",
+        "caption": "Danh mục liên quan, gồm danh mục con nếu cần",
+        "reply": true,
+        "op": null,
+        "number": 20,
+        "y": 2426,
+        "x1": 2230,
+        "x2": 830
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "product",
+        "caption": "timSanPhamLienQuan(tieuChi, dsMaDM, sản phẩm công khai)",
+        "reply": false,
+        "op": "timSanPhamLienQuan",
+        "number": 21,
+        "y": 2504,
+        "x1": 830,
+        "x2": 2580
+      },
+      {
+        "type": "message",
+        "a": "product",
+        "b": "controller",
+        "caption": "Catalog: MaSP, thương hiệu, giá, tồn kho, thông số, ảnh",
+        "reply": true,
+        "op": null,
+        "number": 22,
+        "y": 2582,
+        "x1": 2580,
+        "x2": 830
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "knowledge",
+        "caption": "layKienThucDaDuyet(chuDe, TrangThai=DA_DUYET)",
+        "reply": false,
+        "op": "layKienThucDaDuyet",
+        "number": 23,
+        "y": 2690,
+        "x1": 830,
+        "x2": 2930
+      },
+      {
+        "type": "message",
+        "a": "knowledge",
+        "b": "controller",
+        "caption": "Kiến thức liên quan và nguồn: MaKT, nội dung, URLNguon",
+        "reply": true,
+        "op": null,
+        "number": 24,
+        "y": 2768,
+        "x1": 2930,
+        "x2": 830
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "controller",
+        "caption": "taoTraLoiDuPhong(thiếu dữ liệu): hỏi rõ hơn / báo chưa có thông tin",
+        "reply": false,
+        "op": "taoTraLoiDuPhong",
+        "number": 25,
+        "y": 2898,
+        "x1": 830,
+        "x2": 830
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "ai",
+        "caption": "tuVan(cauHoi, lichSu, catalog, kienThucDaDuyet) — chỉ dữ liệu cần cho câu trả lời",
+        "reply": false,
+        "op": null,
+        "number": 26,
+        "y": 3056,
+        "x1": 830,
+        "x2": 3980
+      },
+      {
+        "type": "message",
+        "a": "ai",
+        "b": "controller",
+        "caption": "Kết quả có cấu trúc / lỗi / timeout: nội dung, MaSP gợi ý, nguồn, YDinh, CheDo, TenMoHinh?",
+        "reply": true,
+        "op": null,
+        "number": 27,
+        "y": 3134,
+        "x1": 3980,
+        "x2": 830
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "controller",
+        "caption": "kiemTraKetQua(): đối chiếu sản phẩm, giá / tồn, nguồn với dữ liệu đã cung cấp",
+        "reply": false,
+        "op": "kiemTraKetQua",
+        "number": 28,
+        "y": 3212,
+        "x1": 830,
+        "x2": 830
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "controller",
+        "caption": "taoTraLoiDuPhong(catalog, kienThucDaDuyet); CheDo=CATALOG, TenMoHinh=NULL",
+        "reply": false,
+        "op": "taoTraLoiDuPhong",
+        "number": 29,
+        "y": 3364,
+        "x1": 830,
+        "x2": 830
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "form",
+        "caption": "Câu trả lời, gợi ý, nguồn,\nMaTNAI và chế độ tư vấn",
+        "reply": true,
+        "op": null,
+        "number": 30,
+        "y": 3843,
+        "x1": 830,
+        "x2": 480
+      },
+      {
+        "type": "message",
+        "a": "form",
+        "b": "customer",
+        "caption": "Hiển thị trả lời,\nsản phẩm và nguồn",
+        "reply": true,
+        "op": null,
+        "number": 31,
+        "y": 3921,
+        "x1": 480,
+        "x2": 130
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "form",
+        "caption": "Báo chưa lưu được\nkết quả tư vấn",
+        "reply": true,
+        "op": null,
+        "number": 32,
+        "y": 4057,
+        "x1": 830,
+        "x2": 480
+      },
+      {
+        "type": "message",
+        "a": "form",
+        "b": "customer",
+        "caption": "Thông báo lỗi;\ncho phép thử lại",
+        "reply": true,
+        "op": null,
+        "number": 33,
+        "y": 4135,
+        "x1": 480,
+        "x2": 130
+      }
+    ],
+    "frames": [
+      {
+        "operator": "break",
+        "guard": "Câu hỏi rỗng / vượt giới hạn / gửi quá nhanh",
+        "x": 20,
+        "y": 680,
+        "w": 4070,
+        "branches": [],
+        "depth": 0,
+        "h": 204
+      },
+      {
+        "operator": "opt",
+        "guard": "Khách đã đăng nhập",
+        "x": 20,
+        "y": 918,
+        "w": 4070,
+        "branches": [],
+        "depth": 0,
+        "h": 204
+      },
+      {
+        "operator": "break",
+        "guard": "Không đủ quyền / tài khoản bị khóa / phiên đã đóng hoặc không tồn tại",
+        "x": 20,
+        "y": 1412,
+        "w": 4070,
+        "branches": [],
+        "depth": 0,
+        "h": 204
+      },
+      {
+        "operator": "alt",
+        "guard": "Câu hỏi ngoài phạm vi website",
+        "x": 20,
+        "y": 2062,
+        "w": 4070,
+        "branches": [
+          [
+            2218,
+            "Câu hỏi thuộc phạm vi website"
+          ]
+        ],
+        "depth": 0,
+        "h": 1434
+      },
+      {
+        "operator": "opt",
+        "guard": "Cần tìm / so sánh / hỏi thông tin sản phẩm",
+        "x": 29,
+        "y": 2272,
+        "w": 4052,
+        "branches": [],
+        "depth": 1,
+        "h": 360
+      },
+      {
+        "operator": "alt",
+        "guard": "Không có dữ liệu đủ để trả lời",
+        "x": 29,
+        "y": 2822,
+        "w": 4052,
+        "branches": [
+          [
+            2978,
+            "Có catalog hoặc kiến thức liên quan"
+          ]
+        ],
+        "depth": 1,
+        "h": 644
+      },
+      {
+        "operator": "opt",
+        "guard": "AI không cấu hình / lỗi / quá hạn / kết quả không hợp lệ",
+        "x": 38,
+        "y": 3288,
+        "w": 4034,
+        "branches": [],
+        "depth": 2,
+        "h": 148
+      },
+      {
+        "operator": "alt",
+        "guard": "Transaction đã COMMIT thành công",
+        "x": 20,
+        "y": 3767,
+        "w": 4070,
+        "branches": [
+          [
+            3979,
+            "Lưu kết quả thất bại"
+          ]
+        ],
+        "depth": 0,
+        "h": 418
+      }
+    ],
+    "width": 4110,
+    "height": 4433
+  },
+  {
+    "stem": "VNWatch-ChatbotAI-Sequence-03-LuuKetQua",
+    "participants": [
+      "controller",
+      "session",
+      "message",
+      "selection",
+      "source"
+    ],
+    "messages": [
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "controller",
+        "caption": "batDauGiaoDich() — BEGIN",
+        "reply": false,
+        "op": "batDauGiaoDich",
+        "number": 1,
+        "y": 448,
+        "x1": 130,
+        "x2": 130
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "message",
+        "caption": "luuTinAI(MaPhien, NguoiGui=AI, MaTK=NULL, ketQua, TrangThai=HOAN_TAT)",
+        "reply": false,
+        "op": "luuTinAI",
+        "number": 2,
+        "y": 548,
+        "x1": 130,
+        "x2": 1010
+      },
+      {
+        "type": "message",
+        "a": "message",
+        "b": "controller",
+        "caption": "MaTNAI mới hoặc lỗi ghi",
+        "reply": true,
+        "op": null,
+        "number": 3,
+        "y": 626,
+        "x1": 1010,
+        "x2": 130
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "controller",
+        "caption": "rollbackGiaoDich(); trả lỗi lưu cho interaction gọi",
+        "reply": false,
+        "op": "rollbackGiaoDich",
+        "number": 4,
+        "y": 756,
+        "x1": 130,
+        "x2": 130
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "selection",
+        "caption": "luuDanhSachGoiY(MaTNAI, [(MaSP, ThuTu, LyDo)])",
+        "reply": false,
+        "op": "luuDanhSachGoiY",
+        "number": 5,
+        "y": 938,
+        "x1": 130,
+        "x2": 1450
+      },
+      {
+        "type": "message",
+        "a": "selection",
+        "b": "controller",
+        "caption": "Kết quả ghi SanPhamGoiY hoặc lỗi",
+        "reply": true,
+        "op": null,
+        "number": 6,
+        "y": 1016,
+        "x1": 1450,
+        "x2": 130
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "controller",
+        "caption": "rollbackGiaoDich(); trả lỗi lưu cho interaction gọi",
+        "reply": false,
+        "op": "rollbackGiaoDich",
+        "number": 7,
+        "y": 1176,
+        "x1": 130,
+        "x2": 130
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "source",
+        "caption": "luuNguonVaBanChup(MaTNAI, [(MaKT?, TieuDeNguon, URLNguon?, NoiDungTrichDan?, ThoiDiemSuDung)])",
+        "reply": false,
+        "op": "luuNguonVaBanChup",
+        "number": 8,
+        "y": 1358,
+        "x1": 130,
+        "x2": 1890
+      },
+      {
+        "type": "message",
+        "a": "source",
+        "b": "controller",
+        "caption": "Kết quả ghi nguồn và bản chụp hoặc lỗi",
+        "reply": true,
+        "op": null,
+        "number": 9,
+        "y": 1436,
+        "x1": 1890,
+        "x2": 130
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "controller",
+        "caption": "rollbackGiaoDich(); trả lỗi lưu cho interaction gọi",
+        "reply": false,
+        "op": "rollbackGiaoDich",
+        "number": 10,
+        "y": 1596,
+        "x1": 130,
+        "x2": 130
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "session",
+        "caption": "capNhatThoiGian(MaPhien)",
+        "reply": false,
+        "op": "capNhatThoiGian",
+        "number": 11,
+        "y": 1726,
+        "x1": 130,
+        "x2": 570
+      },
+      {
+        "type": "message",
+        "a": "session",
+        "b": "controller",
+        "caption": "Kết quả cập nhật NgayCapNhat hoặc lỗi",
+        "reply": true,
+        "op": null,
+        "number": 12,
+        "y": 1804,
+        "x1": 570,
+        "x2": 130
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "controller",
+        "caption": "rollbackGiaoDich(); trả lỗi lưu cho interaction gọi",
+        "reply": false,
+        "op": "rollbackGiaoDich",
+        "number": 13,
+        "y": 1934,
+        "x1": 130,
+        "x2": 130
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "controller",
+        "caption": "commitGiaoDich() — COMMIT",
+        "reply": false,
+        "op": "commitGiaoDich",
+        "number": 14,
+        "y": 2064,
+        "x1": 130,
+        "x2": 130
+      },
+      {
+        "type": "message",
+        "a": "controller",
+        "b": "controller",
+        "caption": "rollbackGiaoDich(); trả lỗi lưu cho interaction gọi",
+        "reply": false,
+        "op": "rollbackGiaoDich",
+        "number": 15,
+        "y": 2216,
+        "x1": 130,
+        "x2": 130
+      }
+    ],
+    "frames": [
+      {
+        "operator": "break",
+        "guard": "Ghi tin AI thất bại",
+        "x": 20,
+        "y": 680,
+        "w": 1980,
+        "branches": [],
+        "depth": 0,
+        "h": 148
+      },
+      {
+        "operator": "opt",
+        "guard": "Có sản phẩm gợi ý",
+        "x": 20,
+        "y": 862,
+        "w": 1980,
+        "branches": [],
+        "depth": 0,
+        "h": 204
+      },
+      {
+        "operator": "break",
+        "guard": "Ghi sản phẩm gợi ý thất bại",
+        "x": 20,
+        "y": 1100,
+        "w": 1980,
+        "branches": [],
+        "depth": 0,
+        "h": 148
+      },
+      {
+        "operator": "opt",
+        "guard": "Có nguồn trả lời",
+        "x": 20,
+        "y": 1282,
+        "w": 1980,
+        "branches": [],
+        "depth": 0,
+        "h": 204
+      },
+      {
+        "operator": "break",
+        "guard": "Ghi nguồn trả lời thất bại",
+        "x": 20,
+        "y": 1520,
+        "w": 1980,
+        "branches": [],
+        "depth": 0,
+        "h": 148
+      },
+      {
+        "operator": "break",
+        "guard": "Cập nhật phiên thất bại",
+        "x": 20,
+        "y": 1858,
+        "w": 1980,
+        "branches": [],
+        "depth": 0,
+        "h": 148
+      },
+      {
+        "operator": "break",
+        "guard": "Database báo COMMIT thất bại",
+        "x": 20,
+        "y": 2140,
+        "w": 1980,
+        "branches": [],
+        "depth": 0,
+        "h": 148
+      }
+    ],
+    "width": 2020,
+    "height": 2647
+  }
+]

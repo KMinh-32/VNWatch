@@ -1,0 +1,40 @@
+# HỌC VNWATCH — compose.share.yaml
+# Compose riêng cho proxy/tunnel chia sẻ; chỉ chạy khi có lệnh bật chia sẻ, không cần khi học code.
+name: vnwatch-share
+
+# Các service của bộ compose; mỗi service dùng image và cấu hình riêng.
+services:
+  share-gateway:
+    image: nginx:stable-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+    # Lưu dữ liệu ngoài vòng đời container; không xóa volume khi chỉ muốn dừng ứng dụng.
+    volumes:
+      - ./docker/share-nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    # Ánh xạ cổng host:container; 127.0.0.1 giới hạn truy cập trên máy này.
+    ports:
+      - "127.0.0.1:5181:8080"
+    networks: [shop]
+    # Lệnh kiểm tra readiness của service để compose biết lúc có thể sử dụng.
+    healthcheck:
+      # Service kiểm thử riêng dùng schema/fixture độc lập.
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/healthz"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+    # Chính sách tự khởi động lại container.
+    restart: "no"
+
+  share-tunnel:
+    image: cloudflare/cloudflared@sha256:9b49eed8f62806d5d45ddf59ecefb5710429598ea6d3fcccd2af938f621b2b07
+    command: ["tunnel", "--no-autoupdate", "--protocol", "http2", "--url", "http://share-gateway:8080"]
+    networks: [shop]
+    # Điều kiện thứ tự sẵn sàng; health/completed quyết định lúc service bắt đầu.
+    depends_on:
+      share-gateway:
+        condition: service_healthy
+    # Chính sách tự khởi động lại container.
+    restart: "no"
+
+networks:
+  shop:
+    external: true
+    name: vnwatch-docker_default

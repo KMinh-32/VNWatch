@@ -1,0 +1,39 @@
+# HỌC VNWATCH — outputs/vnwatch-backend/requests/catalog.http
+# Mẫu request cho REST Client: dòng method/URL chọn endpoint, header truyền metadata, JSON là body; ### ngăn các request riêng.
+@baseUrl = http://localhost:3000
+
+### Liveness (public)
+GET {{baseUrl}}/api/v1/health/live
+
+### Readiness queries PostgreSQL (public)
+GET {{baseUrl}}/api/v1/health/ready
+
+### Fresh demo: 2 products, 3 active SKUs
+GET {{baseUrl}}/api/v1/products
+
+### Expected: one product, DEMO-EVERYDAY-BLACK at 1,500,000 VND
+GET {{baseUrl}}/api/v1/products?maxPriceVnd=2000000&q=everyday
+
+### Expected: no matching SKU
+GET {{baseUrl}}/api/v1/products?minPriceVnd=2000000&maxPriceVnd=3000000
+
+### Pagination, deterministic sort
+GET {{baseUrl}}/api/v1/products?page=1&limit=1&sort=name_asc
+
+### Active product detail
+GET {{baseUrl}}/api/v1/products/10000000-0000-4000-8000-000000000001
+
+### Sold out: still visible, inStock=false
+GET {{baseUrl}}/api/v1/products/10000000-0000-4000-8000-000000000002
+
+### Discontinued: 404 PRODUCT_NOT_FOUND
+GET {{baseUrl}}/api/v1/products/10000000-0000-4000-8000-000000000003
+
+### 400 VALIDATION_ERROR, Vietnamese message and X-Request-ID
+GET {{baseUrl}}/api/v1/products?limit=51
+
+### 400 INVALID_PRICE_RANGE
+GET {{baseUrl}}/api/v1/products?minPriceVnd=200&maxPriceVnd=100
+
+### OpenAPI
+GET {{baseUrl}}/docs-json
